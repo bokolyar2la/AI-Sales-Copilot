@@ -12,6 +12,7 @@ from .storage import Store
 from .providers import get_provider
 from .context import uid, now, apply_analysis
 from .prompts import VERSION
+from .configure_llm import error_message
 
 ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / '.env')
@@ -89,9 +90,9 @@ def create_app(database=None, provider=None):
                 analysis, usage = await engine.analyze(s, knowledge)
                 apply_analysis(s, analysis)
                 s['recommendations'][-1].update(provider=engine.name, latency_ms=round((time.perf_counter() - start) * 1000), usage=usage, prompt_version=VERSION)
-            except Exception:
+            except Exception as exc:
                 # Never return provider response bodies or credentials to the browser.
-                s['analysis_error'] = 'Реплика сохранена, но анализ не получен. Проверьте настройки модели и повторите анализ.'
+                s['analysis_error'] = 'Реплика сохранена. ' + error_message(exc)
             store.save(s)
             return s
 
@@ -106,8 +107,8 @@ def create_app(database=None, provider=None):
                 apply_analysis(s, analysis)
                 s['analysis_error'] = None
                 s['version'] += 1
-            except Exception:
-                raise HTTPException(502, 'Модель недоступна или вернула некорректный анализ. Проверьте .env.')
+            except Exception as exc:
+                raise HTTPException(502, error_message(exc))
             store.save(s)
             return s
 

@@ -21,7 +21,7 @@ def error_message(exc):
         return 'Модель не ответила за отведённое время. Попробуйте позже.'
     if isinstance(exc, httpx.RequestError):
         return 'Не удалось соединиться с провайдером. Проверьте интернет.'
-    return 'Ответ модели не прошёл проверку структуры или источников. Настройки не сохранены.'
+    return 'Ответ модели не прошёл проверку структуры или источников. Повторите анализ.'
 
 async def probe():
     session = {'id': 'setup-test', 'turns': [{'id':'setup-turn', 'role':'client', 'text':'Я бухгалтер. Хочу научиться делать таблицы для расчёта стоимости.'}], 'facts':[], 'recommendations':[], 'gaps':[]}
@@ -59,7 +59,7 @@ def main():
     try:
         asyncio.run(probe())
     except Exception as exc:
-        print('\n' + error_message(exc))
+        print('\n' + error_message(exc) + ' Настройки не сохранены.')
         return
     env = ROOT / '.env'
     existing = dotenv_values(env) if env.exists() else {}

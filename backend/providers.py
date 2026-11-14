@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from urllib.parse import urlparse
 import httpx
 from .models import Analysis, Fact, Advice, LABELS
 from .prompts import SYSTEM
@@ -62,8 +63,12 @@ class CompatibleProvider:
         if os.getenv('LLM_API_KEY'):
             headers['Authorization'] = 'Bearer ' + os.environ['LLM_API_KEY']
         payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': session, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
+        payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
+        endpoint = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/')
+        if urlparse(endpoint).hostname == 'api.deepseek.com':
+            payload['thinking'] = {'type': 'disabled'}
         async with httpx.AsyncClient(timeout=float(os.getenv('LLM_TIMEOUT', '45'))) as client:
-            response = await client.post(os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/') + '/chat/completions', headers=headers, json=payload)
+            response = await client.post(endpoint + '/chat/completions', headers=headers, json=payload)
             response.raise_for_status()
             data = response.json()
         return Analysis.model_validate_json(data['choices'][0]['message']['content']), data.get('usage', {})

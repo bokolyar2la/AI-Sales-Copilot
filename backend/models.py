@@ -16,8 +16,8 @@ class Fact(StrictModel):
     replaces: list[str] = Field(default_factory=list)
 
 class Advice(StrictModel):
-    action_type: Literal['QUESTION', 'PRESENT', 'CLARIFY', 'NEXT_STEP', 'NO_ACTION']
-    suggestion: str = Field(max_length=600)
+    action_type: Literal['QUESTION', 'ANSWER', 'SUMMARIZE', 'PRESENT', 'CLARIFY', 'NEXT_STEP', 'NO_ACTION']
+    suggestion: str = Field(max_length=600, description='Готовая реплика клиенту на вы: один вопрос или ответ, не инструкция менеджеру. Для NO_ACTION пусто.')
     reason: str = Field(min_length=1, max_length=1500)
     evidence_ids: list[str]
     target_gap: str

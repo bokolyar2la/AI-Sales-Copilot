@@ -39,4 +39,4 @@ def apply_analysis(session, analysis):
     session['recommendations'].append(rec)
     known = {f['category'] for f in session['facts'] if f['status'] == 'CONFIRMED'}
     session['gaps'] = [c for c in CATEGORIES if c not in known]
-    session['stage'] = {'CLARIFY': 'Уточнение', 'PRESENT': 'Презентация', 'NEXT_STEP': 'Следующий шаг', 'QUESTION': 'Выявление потребностей', 'NO_ACTION': 'Пауза'}[rec['action_type']]
+    session['stage'] = {'CLARIFY': 'Уточнение', 'ANSWER': 'Ответ клиенту', 'SUMMARIZE': 'Подтверждение задачи', 'PRESENT': 'Презентация', 'NEXT_STEP': 'Следующий шаг', 'QUESTION': 'Выявление потребностей', 'NO_ACTION': 'Пауза'}[rec['action_type']]

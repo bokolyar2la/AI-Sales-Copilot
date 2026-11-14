@@ -1,0 +1,131 @@
+[
+  {
+    "case": 0,
+    "turn": 0,
+    "elapsed_s": 2.84,
+    "recommendation": {
+      "action_type": "QUESTION",
+      "suggestion": "Что обычно входит в расчёт одного заказа?",
+      "reason": "Задача и текущий процесс (калькулятор) известны, но состав расчёта заказа — нет. Это нужно, чтобы понять структуру будущей таблицы, прежде чем что-либо резюмировать или презентовать.",
+      "evidence_ids": [
+        "t0-0"
+      ],
+      "target_gap": "состав расчёта заказа",
+      "confidence": 0.7
+    },
+    "facts": [
+      {
+        "category": "goal",
+        "value": "Нужен Excel для работы: делать таблицы для расчёта стоимости заказов",
+        "quote": "Мне Excel нужен для работы. Хочу делать таблицы для расчёта стоимости заказов",
+        "source_turn": "t0-0",
+        "status": "CONFIRMED",
+        "replaces": []
+      },
+      {
+        "category": "situation",
+        "value": "Сейчас считает стоимость заказов на калькуляторе",
+        "quote": "сейчас считаю всё на калькуляторе",
+        "source_turn": "t0-0",
+        "status": "CONFIRMED",
+        "replaces": []
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3117,
+      "completion_tokens": 253,
+      "total_tokens": 3370,
+      "prompt_tokens_details": {
+        "cached_tokens": 128
+      },
+      "prompt_cache_hit_tokens": 128,
+      "prompt_cache_miss_tokens": 2989
+    }
+  },
+  {
+    "case": 0,
+    "turn": 1,
+    "elapsed_s": 2.67,
+    "recommendation": {
+      "action_type": "QUESTION",
+      "suggestion": "Когда доставку приходится пересчитывать, как это отражается на работе с заказом?",
+      "reason": "Клиент сам назвал проблему с забытой доставкой и повторными пересчётами, но последствия пока неизвестны. Это поможет понять значимость задачи до резюме и презентации.",
+      "evidence_ids": [
+        "t0-1"
+      ],
+      "target_gap": "consequence",
+      "confidence": 0.7
+    },
+    "facts": [
+      {
+        "category": "experience",
+        "value": "Excel почти не знает",
+        "quote": "Excel почти не знаю",
+        "source_turn": "t0-1",
+        "status": "CONFIRMED",
+        "replaces": []
+      },
+      {
+        "category": "situation",
+        "value": "Около десяти заказов в день, на расчёт каждого уходит примерно пятнадцать минут",
+        "quote": "Заказов примерно десять в день, на каждый расчёт уходит минут пятнадцать",
+        "source_turn": "t0-1",
+        "status": "CONFIRMED",
+        "replaces": []
+      },
+      {
+        "category": "problem",
+        "value": "Иногда забывает включить доставку в расчёт и приходится пересчитывать",
+        "quote": "Иногда забываю включить доставку и приходится пересчитывать",
+        "source_turn": "t0-1",
+        "status": "CONFIRMED",
+        "replaces": []
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3657,
+      "completion_tokens": 330,
+      "total_tokens": 3987,
+      "prompt_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "prompt_cache_hit_tokens": 1664,
+      "prompt_cache_miss_tokens": 1993
+    }
+  },
+  {
+    "case": 1,
+    "turn": 0,
+    "elapsed_s": 2.74,
+    "recommendation": {
+      "action_type": "ANSWER",
+      "suggestion": "У меня нет подтверждённой актуальной стоимости тарифа «Мастер» и информации о скидке 60%, поэтому не хочу называть вам неверную сумму. Могу уточнить условия у коллег — вам удобнее, если я вернусь с точными данными?",
+      "reason": "Клиент прямо спрашивает цену и скидку, но в knowledge цена и текущие скидки отмечены как непроверенные. По правилам сначала отвечаем по существу: честно сообщаем, что точных данных нет, и предлагаем уточнить. Не подтверждаем скидку 60% как действующую.",
+      "evidence_ids": [
+        "t1-0"
+      ],
+      "target_gap": "constraints",
+      "confidence": 0.9
+    },
+    "facts": [
+      {
+        "category": "motivation",
+        "value": "Клиент интересуется стоимостью тарифа «Мастер» и наличием скидки 60%",
+        "quote": "Сколько стоит Мастер и есть ли сейчас скидка 60%?",
+        "source_turn": "t1-0",
+        "status": "CONFIRMED",
+        "replaces": []
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3102,
+      "completion_tokens": 257,
+      "total_tokens": 3359,
+      "prompt_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "prompt_cache_hit_tokens": 1536,
+      "prompt_cache_miss_tokens": 1566
+    }
+  }
+]

@@ -49,7 +49,7 @@ class DemoProvider:
                         action, suggestion, reason, gap = 'QUESTION', question, 'В истории пока нет подтверждённых сведений: «' + LABELS[category] + '». Уточните их перед предложением программы.', category
                         break
                 else:
-                    action, suggestion, reason = 'NEXT_STEP', 'Кратко подтвердите задачу клиента и согласуйте следующий удобный шаг.', 'Основные блоки потребности заполнены. Демо-режим не оценивает соответствие продукта по смыслу.'
+                    action, suggestion, reason = 'NEXT_STEP', 'Какой следующий шаг был бы для вас удобен?', 'Основные блоки потребности заполнены. Демо-режим не оценивает соответствие продукта по смыслу.'
         return Analysis(facts=facts, recommendation=Advice(action_type=action, suggestion=suggestion, reason=reason, evidence_ids=[turn['id']], target_gap=gap, confidence=0.45)), {}
 
 class CompatibleProvider:

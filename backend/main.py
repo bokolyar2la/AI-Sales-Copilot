@@ -13,6 +13,7 @@ from .providers import get_provider
 from .context import uid, now, apply_analysis
 from .prompts import VERSION
 from .configure_llm import error_message
+from .call_flow import opening, scoped_knowledge
 
 ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / '.env')
@@ -60,6 +61,8 @@ def create_app(database=None, provider=None):
     async def new_session(body: NewSession):
         async with lock:
             s = {'id': uid(), 'title': body.title, 'created_at': now(), 'version': 0, 'closed': False, 'turns': [], 'facts': [], 'recommendations': [], 'gaps': CATEGORIES.copy(), 'stage': 'Начало', 'analysis_error': None}
+            s['sales_context'] = {'school': body.school, 'course': body.course, 'manager': body.manager}
+            s['opening'] = opening(s)
             store.save(s)
             return s
 
@@ -87,7 +90,7 @@ def create_app(database=None, provider=None):
             s['analysis_error'] = None
             start = time.perf_counter()
             try:
-                analysis, usage = await engine.analyze(s, knowledge)
+                analysis, usage = await engine.analyze(s, scoped_knowledge(s, knowledge))
                 apply_analysis(s, analysis)
                 s['recommendations'][-1].update(provider=engine.name, latency_ms=round((time.perf_counter() - start) * 1000), usage=usage, prompt_version=VERSION)
             except Exception as exc:
@@ -103,7 +106,7 @@ def create_app(database=None, provider=None):
             if not s['analysis_error'] or not s['turns']:
                 return s
             try:
-                analysis, _ = await engine.analyze(s, knowledge)
+                analysis, _ = await engine.analyze(s, scoped_knowledge(s, knowledge))
                 apply_analysis(s, analysis)
                 s['analysis_error'] = None
                 s['version'] += 1

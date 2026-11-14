@@ -16,7 +16,7 @@ class Fact(StrictModel):
     replaces: list[str] = Field(default_factory=list)
 
 class Advice(StrictModel):
-    action_type: Literal['QUESTION', 'ANSWER', 'SUMMARIZE', 'PRESENT', 'CLARIFY', 'NEXT_STEP', 'NO_ACTION']
+    action_type: Literal['GREETING', 'AGENDA', 'INTEREST', 'QUESTION', 'ANSWER', 'SUMMARIZE', 'PRESENT', 'CLARIFY', 'NEXT_STEP', 'NO_ACTION']
     suggestion: str = Field(max_length=600, description='Готовая реплика клиенту на вы: один вопрос или ответ, не инструкция менеджеру. Для NO_ACTION пусто.')
     reason: str = Field(min_length=1, max_length=1500)
     evidence_ids: list[str]
@@ -29,6 +29,9 @@ class Analysis(StrictModel):
 
 class NewSession(StrictModel):
     title: str = Field(min_length=1, max_length=120)
+    school: str = Field(default='', max_length=120)
+    course: str = Field(default='', max_length=120)
+    manager: str = Field(default='', max_length=80)
 
 class TurnInput(StrictModel):
     role: Literal['client', 'manager']

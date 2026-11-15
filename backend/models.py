@@ -25,7 +25,7 @@ class Advice(StrictModel):
     confidence: float = Field(ge=0, le=1)
 
 class DialogueEvent(StrictModel):
-    kind: Literal['greeted', 'agenda_agreed', 'interest_shared', 'needs_confirmed', 'presentation_delivered', 'objection_opened', 'objection_resolved', 'ready_to_buy', 'next_step_agreed', 'declined', 'unavailable', 'question_asked', 'question_answered']
+    kind: Literal['greeted', 'agenda_agreed', 'interest_shared', 'needs_confirmed', 'presentation_delivered', 'objection_opened', 'objection_resolved', 'ready_to_buy', 'next_step_agreed', 'declined', 'unavailable', 'question_asked', 'question_answered', 'offer_bridge_delivered', 'questions_declined']
     source_turn: str
     quote: str = Field(min_length=1, max_length=2000)
     topic: str = Field(default='', max_length=120, description='Стабильная смысловая тема: goal, experience, price, time, value, decision и т.п. Для вопроса/возражения обязательна.')
@@ -42,7 +42,7 @@ class HypothesisUpdate(StrictModel):
     test_question: str = Field(max_length=400)
 
 class Strategy(StrictModel):
-    action: Literal['DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'RAPPORT', 'SALES_RECOVERY', 'SUMMARIZE', 'PRESENTATION', 'VALUE_BUILDING', 'OBJECTION_DIAGNOSIS', 'OBJECTION_HANDLING', 'PRICE_PRESENTATION', 'CLOSING', 'FOLLOW_UP', 'ANSWER', 'NO_ACTION']
+    action: Literal['DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'RAPPORT', 'SALES_RECOVERY', 'SUMMARIZE', 'PRESENTATION', 'VALUE_BUILDING', 'OBJECTION_DIAGNOSIS', 'OBJECTION_HANDLING', 'PRICE_PRESENTATION', 'CLOSING', 'FOLLOW_UP', 'ANSWER', 'NO_ACTION', 'EXPLAIN_PROCESS', 'RETURN_TO_NEED', 'EXPLORE_MOTIVATION', 'EXPLORE_CONSEQUENCE', 'ALIGN_BEFORE_PRESENTATION', 'SELECT_SOLUTION']
     objective: str = Field(min_length=1, max_length=300)
     reason: str = Field(min_length=1, max_length=800)
     evidence_ids: list[str] = Field(min_length=1, max_length=10)
@@ -51,10 +51,37 @@ class ProductClaim(StrictModel):
     text: str = Field(min_length=1, max_length=600)
     source_id: str
 
+class SelectionGap(StrictModel):
+    topic: str = Field(min_length=1, max_length=100)
+    impact: str = Field(min_length=1, max_length=300, description='Как разные ответы изменят подбор или аргументацию.')
+
+class QuestionValue(StrictModel):
+    topic: str = Field(min_length=1, max_length=100)
+    new_information: str = Field(min_length=1, max_length=300)
+    decision_impact: str = Field(min_length=1, max_length=300)
+    already_answered: bool
+    changes_selection: bool
+    changes_argument: bool
+    essential_now: bool
+
+class SalesPlan(StrictModel):
+    commercial_goal: str = Field(min_length=1, max_length=300)
+    next_goal: str = Field(min_length=1, max_length=300)
+    significant_needs: list[str] = Field(max_length=4)
+    need_evidence_ids: list[str] = Field(max_length=8)
+    critical_gaps: list[SelectionGap] = Field(max_length=2)
+    useful_gaps: list[str] = Field(max_length=4)
+    readiness: Literal['NEEDS_CLARIFICATION', 'READY_FOR_OFFER', 'READY_TO_BUY', 'NO_MORE_QUESTIONS']
+    question: QuestionValue | None
+    after_answer_action: Literal['DISCOVERY', 'SELECT_SOLUTION', 'PRESENTATION', 'PRICE_PRESENTATION', 'FOLLOW_UP', 'CLOSING', 'NO_ACTION']
+    after_answer_goal: str = Field(max_length=300)
+
 class Intelligence(StrictModel):
     hypotheses: list[HypothesisUpdate] = Field(default_factory=list, max_length=4)
     strategy: Strategy
     product_claims: list[ProductClaim] = Field(default_factory=list, max_length=5)
+    sales_plan: SalesPlan | None = None
+    manager_note: str = Field(default='', max_length=700, description='Служебная заметка, не произносить клиенту.')
 
 class Analysis(StrictModel):
     facts: list[Fact] = Field(max_length=30)

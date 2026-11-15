@@ -14,3 +14,9 @@ evaluation/edtech-live-result.json
 evaluation/iteration1-*.json
 !evaluation/iteration1-r3.json
 !evaluation/iteration1-api-smoke.json
+
+# Local secrets and private exports
+.env.*
+*.sqlite
+*.sqlite3
+*.db

@@ -36,6 +36,8 @@ def _apply_analysis(session, analysis, knowledge):
     if rec['action_type'] != 'NO_ACTION' and (not rec['evidence_ids'] or not rec['suggestion']):
         raise ValueError('Missing evidence')
     working = {**session, '_new_facts': [f.model_dump() for f in analysis.facts]}
+    if analysis.intelligence and analysis.intelligence.sales_plan:
+        working['_sales_plan'] = analysis.intelligence.sales_plan.model_dump()
     state = update_state(working, analysis.events)
     apply_hypotheses(session, analysis)
     for item in analysis.facts:

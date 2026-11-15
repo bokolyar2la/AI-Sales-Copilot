@@ -1,0 +1,237 @@
+{
+  "session": {
+    "turns": [
+      {
+        "id": "t1",
+        "role": "manager",
+        "text": "Что привлекло вас в Excel?"
+      },
+      {
+        "id": "t2",
+        "role": "client",
+        "text": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег."
+      },
+      {
+        "id": "t3",
+        "role": "manager",
+        "text": "Почему важно научиться делать их самому?"
+      },
+      {
+        "id": "t4",
+        "role": "client",
+        "text": "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании."
+      },
+      {
+        "id": "t5",
+        "role": "manager",
+        "text": "Правильно понимаю, хотите самостоятельно готовить отчёты?"
+      },
+      {
+        "id": "t6",
+        "role": "client",
+        "text": "Да, именно так."
+      },
+      {
+        "id": "t7",
+        "role": "manager",
+        "text": "Сколько времени готовы учиться?"
+      },
+      {
+        "id": "t8",
+        "role": "client",
+        "text": "Три-четыре часа в неделю, без жёсткого расписания."
+      },
+      {
+        "id": "t9",
+        "role": "manager",
+        "text": "То есть важен свободный график, верно?"
+      },
+      {
+        "id": "t10",
+        "role": "client",
+        "text": "Да, я уже сказал."
+      },
+      {
+        "id": "t11",
+        "role": "client",
+        "text": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит."
+      }
+    ],
+    "facts": [],
+    "recommendations": [
+      {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: readiness_conflict, offer_ready_stop_discovery, strategy_phrase_mismatch. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "t11",
+          "t2",
+          "t8"
+        ],
+        "target_gap": "program_content_and_price",
+        "confidence": 0.6,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: readiness_conflict, offer_ready_stop_discovery, strategy_phrase_mismatch. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: readiness_conflict, offer_ready_stop_discovery, strategy_phrase_mismatch. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "t11",
+            "t2",
+            "t8"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить в утверждённой базе: подходящий уровень и содержание программы Excel под отчёты, формат и свободный график, полную стоимость. Не называть характеристики и цену до проверки.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу Excel и назвать стоимость",
+          "next_goal": "Уточнить тип отчётов и перейти к персонализированной презентации с ценой",
+          "significant_needs": [
+            "Самостоятельно готовить отчёты без помощи коллег",
+            "Свободный график обучения 3-4 часа в неделю",
+            "Рост в компании"
+          ],
+          "need_evidence_ids": [
+            "t2",
+            "t4",
+            "t8"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "тип отчётов",
+              "impact": "Таблицы с формулами и сводными или ещё графики и выгрузки — разный уровень и содержание программы"
+            }
+          ],
+          "useful_gaps": [
+            "бюджет",
+            "сроки"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": {
+            "topic": "тип отчётов",
+            "new_information": "Какие именно отчёты готовит клиент",
+            "decision_impact": "Определяет уровень и содержание программы Excel",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "PRESENTATION",
+          "after_answer_goal": "Показать связь программы с самостоятельностью в отчётах и назвать стоимость"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": true,
+          "offer_requested": true,
+          "manager_questions_since_offer": 5,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "readiness_conflict",
+            "offer_ready_stop_discovery",
+            "strategy_phrase_mismatch"
+          ],
+          "checks_version": "v2-iteration-1"
+        },
+        "id": "c0593046-ef38-4497-8dd7-b5b3f0e2c46f",
+        "created_at": "2026-11-15T10:02:35.244366+00:00",
+        "feedback": null,
+        "turn_id": "t11",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "readiness_conflict",
+              "offer_ready_stop_discovery",
+              "strategy_phrase_mismatch"
+            ],
+            "checks_version": "v2-iteration-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "readiness_conflict",
+              "offer_ready_stop_discovery",
+              "strategy_phrase_mismatch"
+            ],
+            "checks_version": "v2-iteration-1"
+          }
+        ]
+      }
+    ],
+    "hypotheses": [],
+    "sales_context": {
+      "school": "Skillbox",
+      "course": "Excel",
+      "manager": ""
+    },
+    "dialogue_state": {
+      "version": "edtech-personal-1",
+      "stage": "Начало",
+      "events": [
+        {
+          "kind": "question_asked",
+          "source_turn": "t11",
+          "quote": "а можете уже рассказать, что у вас за обучение?",
+          "topic": "program_content"
+        },
+        {
+          "kind": "question_asked",
+          "source_turn": "t11",
+          "quote": "сколько это стоит",
+          "topic": "price"
+        }
+      ],
+      "questions": [
+        {
+          "topic": "program_content",
+          "role": "client",
+          "source_turn": "t11",
+          "status": "open"
+        },
+        {
+          "topic": "price",
+          "role": "client",
+          "source_turn": "t11",
+          "status": "open"
+        }
+      ],
+      "objections": [],
+      "price_requests": [
+        "t11"
+      ],
+      "price_answered": false,
+      "needs_confirmed": false,
+      "ready_to_buy": false,
+      "outcome": null
+    },
+    "gaps": [
+      "profile",
+      "experience",
+      "situation",
+      "problem",
+      "consequence",
+      "importance",
+      "goal",
+      "motivation",
+      "urgency",
+      "constraints",
+      "objection",
+      "decision",
+      "next_step"
+    ],
+    "stage": "Начало"
+  },
+  "usage": {
+    "prompt_tokens": 13702,
+    "completion_tokens": 1708,
+    "total_tokens": 15410,
+    "prompt_cache_hit_tokens": 7424,
+    "prompt_cache_miss_tokens": 6278,
+    "request_count": 2
+  }
+}

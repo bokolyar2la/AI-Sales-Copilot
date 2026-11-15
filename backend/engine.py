@@ -19,24 +19,26 @@ async def process_turn(session, provider, knowledge):
                 if isinstance(value, (int, float)): usage[key] = usage.get(key, 0) + value
             trace.append({'attempt':attempt+1, 'status':'invalid_schema'})
             if attempt: raise
-            feedback = {'issue':'invalid_schema', 'instruction':'Верни полную схему, intelligence обязателен. Не добавляй поля; статусы и типы только из schema.'}
+            errors = [{'path':list(e['loc']), 'type':e['type']} for e in exc.errors(include_input=False)][:12] if hasattr(exc,'errors') else []
+            feedback = {'issue':'invalid_schema', 'fields':errors, 'instruction':'Исправь перечисленные поля строго по schema. facts — изменения без id и created_at; ID назначает приложение. intelligence и sales_plan обязательны. Не копируй служебные поля памяти в ответ.'}
             continue
         for key, value in used.items():
             if isinstance(value, (int, float)): usage[key] = usage.get(key, 0) + value
         draft = deepcopy(session)
         try:
             apply_analysis(draft, analysis, knowledge)
-        except ValueError:
+        except ValueError as exc:
             trace.append({'attempt':attempt+1, 'status':'invalid_sources_or_memory_delta'})
             if attempt: raise
-            feedback = {'issue':'invalid_sources_or_memory_delta',
-                        'instruction':'Проверь цитаты и ID. facts только из последней реплики клиента. replaces — ID факта ТОЙ ЖЕ category, не ID гипотезы. Не заменяй факт другой категории; сохрани его и добавь новый. Для пересмотра гипотезы используй её id в intelligence.hypotheses.'}
+            feedback = {'issue':'invalid_sources_or_memory_delta', 'check':str(exc), 'latest_turn':session['turns'][-1],
+                        'instruction':'facts и events — только из последней реплики; quote точная непрерывная подстрока, без изменения пунктуации. Если последняя реплика менеджера, facts=[] и hypotheses=[]. replaces — ID факта ТОЙ ЖЕ category, не ID гипотезы. Пересмотр гипотезы через intelligence.hypotheses. Проверяй роль источника.'}
             continue
         validation = draft['recommendations'][-1]['validation']
         trace.append({'attempt':attempt+1, **validation})
         if validation['status'] == 'blocked' and attempt == 0:
             feedback = {'issue':'blocked_phrase', 'checks':validation['issues'],
-                        'instruction':'Исправь фразу и согласуй стратегию с action_type. Не повторяй известный ответ, не утверждай неподтверждённые условия. Не заменяй полезный вопрос молчанием, если можно задать другой уместный вопрос.'}
+                        'previous_phrase':analysis.recommendation.suggestion,
+                        'instruction':'Исправь фразу, план и стратегию вместе. При offer_ready_stop_discovery/promised_offer_due/client_declined_diagnostics переходи к предложению без нового диагностического вопроса. При explain_and_limit_clarification допускается один критичный вопрос с объяснением через ALIGN_BEFORE_PRESENTATION. Нехватка базы — manager_note, а не проблема клиента. Не заменяй полезный ответ молчанием.'}
             continue
         draft['recommendations'][-1]['validation_trace'] = trace
         usage['request_count'] = attempt+1

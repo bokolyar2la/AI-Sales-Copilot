@@ -1,0 +1,2287 @@
+{
+  "version": "v2-sales-leadership-1",
+  "fictional_catalog": true,
+  "method": "Одинаковые скрытые профили/начальные реплики/каталог. Клиент реагирует через DeepSeek на фактические фразы. Продолжения могут различаться; это не доказательство конверсии.",
+  "results": [
+    {
+      "id": "unclear",
+      "title": "Почти не знает Excel и не понимает потребность",
+      "version": "v2-sales-leadership-1",
+      "outcome": "no_usable_phrase",
+      "seed": [],
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Я почти не знаю Excel. Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Понял, что Excel для вас пока в новинку. Чтобы не рассказывать лишнего, подскажите: где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?"
+        },
+        {
+          "id": "t3",
+          "role": "client",
+          "text": "На работе. Я администратор, руководитель иногда просит простой отчёт о посещениях, а я теряюсь и прошу коллег помочь. Хочу научиться делать такие отчёты сама."
+        }
+      ],
+      "logs": [
+        {
+          "client_turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Я почти не знаю Excel. Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+          },
+          "recommendation": {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, что Excel для вас пока в новинку. Чтобы не рассказывать лишнего, подскажите: где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?",
+            "reason": "Клиент пришёл из рекламы, почти не знает Excel и не видит цели обучения. Один вопрос о контексте применения поможет понять мотив и подобрать подходящий уровень, не навязывая программу.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "situation",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "EXPLORE_MOTIVATION",
+              "objective": "Выяснить, в какой ситуации клиенту нужен Excel, чтобы понять мотив обучения",
+              "reason": "Клиент сам говорит, что не понимает, зачем ему обучение; контекст применения прояснит цель и позволит подобрать уровень.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Уточнить мотив"
+            },
+            "manager_note": "До конкретного предложения проверить в утверждённой базе: подходящий уровень (базовый «Отчёты с нуля» или «Анализ и автоматизация»), формат записей и полную стоимость. Не озвучивать характеристики, пока не подтверждены.",
+            "sales_plan": {
+              "commercial_goal": "Помочь клиенту увидеть практическую цель обучения Excel и подобрать подходящий уровень",
+              "next_goal": "Выяснить, где и для чего клиенту нужны таблицы",
+              "significant_needs": [
+                "Почти нулевой уровень Excel",
+                "Нет ясной цели обучения"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [
+                {
+                  "topic": "situation",
+                  "impact": "Рабочие, учебные или личные задачи определят, нужен ли базовый курс отчётов или более продвинутый анализ"
+                }
+              ],
+              "useful_gaps": [
+                "Сроки",
+                "Бюджет"
+              ],
+              "readiness": "NEEDS_CLARIFICATION",
+              "question": {
+                "topic": "situation",
+                "new_information": "Контекст, в котором клиенту нужны таблицы",
+                "decision_impact": "Определит выбор между базовой программой отчётов и программой с анализом и автоматизацией",
+                "already_answered": false,
+                "changes_selection": true,
+                "changes_argument": true,
+                "essential_now": true
+              },
+              "after_answer_action": "SELECT_SOLUTION",
+              "after_answer_goal": "Связать задачу клиента с подходящим уровнем программы и назвать стоимость"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 0,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9a659e08-2f0b-4958-abaa-d5db9d70b2b4",
+            "created_at": "2026-11-15T10:01:05.748152+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "experience",
+                "value": "Почти не знает Excel",
+                "quote": "Я почти не знаю Excel.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "motivation",
+                "value": "Пока не понимает, зачем ему обучение; пришёл из рекламы",
+                "quote": "Посмотрел рекламу, но пока не понимаю, зачем мне обучение.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понял, что Excel для вас пока в новинку. Чтобы не рассказывать лишнего, подскажите: где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?",
+              "reason": "Клиент пришёл из рекламы, почти не знает Excel и не видит цели обучения. Один вопрос о контексте применения поможет понять мотив и подобрать подходящий уровень, не навязывая программу.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "situation",
+              "confidence": 0.6
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Посмотрел рекламу",
+                "topic": "source"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиенту может понадобиться Excel для рабочих задач, и он хочет научиться делать отчёты самостоятельно",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+                    }
+                  ],
+                  "test_question": "Где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?"
+                }
+              ],
+              "strategy": {
+                "action": "EXPLORE_MOTIVATION",
+                "objective": "Выяснить, в какой ситуации клиенту нужен Excel, чтобы понять мотив обучения",
+                "reason": "Клиент сам говорит, что не понимает, зачем ему обучение; контекст применения прояснит цель и позволит подобрать уровень.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": [],
+              "sales_plan": {
+                "commercial_goal": "Помочь клиенту увидеть практическую цель обучения Excel и подобрать подходящий уровень",
+                "next_goal": "Выяснить, где и для чего клиенту нужны таблицы",
+                "significant_needs": [
+                  "Почти нулевой уровень Excel",
+                  "Нет ясной цели обучения"
+                ],
+                "need_evidence_ids": [
+                  "t1"
+                ],
+                "critical_gaps": [
+                  {
+                    "topic": "situation",
+                    "impact": "Рабочие, учебные или личные задачи определят, нужен ли базовый курс отчётов или более продвинутый анализ"
+                  }
+                ],
+                "useful_gaps": [
+                  "Сроки",
+                  "Бюджет"
+                ],
+                "readiness": "NEEDS_CLARIFICATION",
+                "question": {
+                  "topic": "situation",
+                  "new_information": "Контекст, в котором клиенту нужны таблицы",
+                  "decision_impact": "Определит выбор между базовой программой отчётов и программой с анализом и автоматизацией",
+                  "already_answered": false,
+                  "changes_selection": true,
+                  "changes_argument": true,
+                  "essential_now": true
+                },
+                "after_answer_action": "SELECT_SOLUTION",
+                "after_answer_goal": "Связать задачу клиента с подходящим уровнем программы и назвать стоимость"
+              },
+              "manager_note": "До конкретного предложения проверить в утверждённой базе: подходящий уровень (базовый «Отчёты с нуля» или «Анализ и автоматизация»), формат записей и полную стоимость. Не озвучивать характеристики, пока не подтверждены."
+            }
+          },
+          "usage": {
+            "prompt_tokens": 6617,
+            "completion_tokens": 887,
+            "total_tokens": 7504,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 6617,
+            "request_count": 1
+          },
+          "latency_ms": 5478,
+          "manager_analysis_usage": {
+            "prompt_tokens": 8296,
+            "completion_tokens": 528,
+            "total_tokens": 8824,
+            "prompt_cache_hit_tokens": 3328,
+            "prompt_cache_miss_tokens": 4968,
+            "request_count": 1
+          }
+        },
+        {
+          "client_turn": {
+            "id": "t3",
+            "role": "client",
+            "text": "На работе. Я администратор, руководитель иногда просит простой отчёт о посещениях, а я теряюсь и прошу коллег помочь. Хочу научиться делать такие отчёты сама."
+          },
+          "recommendation": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t1",
+              "t3"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Перед оформлением проверить в утверждённой базе: точное содержание и уровень программы «Отчёты с нуля», формат записей и полную стоимость 12000 рублей; при вопросе о более сложной отчётности — условия программы «Анализ и автоматизация» (24000 рублей).",
+            "sales_plan": {
+              "commercial_goal": "Подобрать клиенту программу для самостоятельного создания простых рабочих отчётов и назвать стоимость",
+              "next_goal": "Показать соответствие программы «Отчёты с нуля» задаче клиента и перейти к следующему шагу",
+              "significant_needs": [
+                "Почти нулевой уровень Excel",
+                "Простые рабочие отчёты о посещениях",
+                "Хочет делать отчёты сама без помощи коллег"
+              ],
+              "need_evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Сроки",
+                "Бюджет"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "CLOSING",
+              "after_answer_goal": "Согласовать следующий шаг — оформление или знакомство с форматом обучения"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "6f7db6a2-d5f1-4c82-89d1-57e4c12f5299",
+            "created_at": "2026-11-15T10:01:21.311949+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "situation",
+                "value": "Работает администратором; руководитель иногда просит простой отчёт о посещениях",
+                "quote": "На работе. Я администратор, руководитель иногда просит простой отчёт о посещениях",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "problem",
+                "value": "Теряется при подготовке отчёта и просит коллег помочь",
+                "quote": "я теряюсь и прошу коллег помочь",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "goal",
+                "value": "Хочет научиться сама делать простые рабочие отчёты о посещениях",
+                "quote": "Хочу научиться делать такие отчёты сама.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": "8e96b58a-9cd9-4fec-83cf-123810d94dc6"
+              }
+            ],
+            "recommendation": {
+              "action_type": "PRESENT",
+              "suggestion": "Отлично, задача понятна: вам нужны простые рабочие отчёты о посещениях, чтобы делать их самой без помощи коллег. Для такого старта с нуля подходит программа «Отчёты с нуля»: ввод и оформление таблиц, простые формулы, сортировка, фильтры и базовые рабочие отчёты, входной опыт не нужен, записи доступны без жёсткого расписания. Стоимость — 12000 рублей. Хотите, расскажу, как устроено обучение по шагам?",
+              "reason": "Клиент прямо назвал задачу (простые отчёты о посещениях), уровень (почти не знает Excel) и цель (делать самой без помощи коллег). Этого достаточно для подбора: подходит базовая программа «Отчёты с нуля», её содержание и стоимость подтверждены в базе.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "target_gap": "",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "question_answered",
+                "source_turn": "t3",
+                "quote": "На работе.",
+                "topic": "situation"
+              },
+              {
+                "kind": "needs_confirmed",
+                "source_turn": "t3",
+                "quote": "Хочу научиться делать такие отчёты сама.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "SELECT_SOLUTION",
+                "objective": "Связать задачу клиента с подходящей программой «Отчёты с нуля» и назвать стоимость",
+                "reason": "Задача, уровень и цель подтверждены клиентом; базовая программа прямо соответствует простым рабочим отчётам с нуля.",
+                "evidence_ids": [
+                  "t1",
+                  "t3"
+                ]
+              },
+              "product_claims": [
+                {
+                  "text": "Учебная программа «Отчёты с нуля»: ввод и оформление таблиц, простые формулы, сортировка, фильтры и базовые рабочие отчёты. Входной опыт не нужен. Записи доступны без жёсткого расписания. Стоимость 12000 рублей.",
+                  "source_id": "basic"
+                }
+              ],
+              "sales_plan": {
+                "commercial_goal": "Подобрать клиенту программу для самостоятельного создания простых рабочих отчётов и назвать стоимость",
+                "next_goal": "Показать соответствие программы «Отчёты с нуля» задаче клиента и перейти к следующему шагу",
+                "significant_needs": [
+                  "Почти нулевой уровень Excel",
+                  "Простые рабочие отчёты о посещениях",
+                  "Хочет делать отчёты сама без помощи коллег"
+                ],
+                "need_evidence_ids": [
+                  "t1",
+                  "t3"
+                ],
+                "critical_gaps": [],
+                "useful_gaps": [
+                  "Сроки",
+                  "Бюджет"
+                ],
+                "readiness": "READY_FOR_OFFER",
+                "question": null,
+                "after_answer_action": "CLOSING",
+                "after_answer_goal": "Согласовать следующий шаг — оформление или знакомство с форматом обучения"
+              },
+              "manager_note": "Перед оформлением проверить в утверждённой базе: точное содержание и уровень программы «Отчёты с нуля», формат записей и полную стоимость 12000 рублей; при вопросе о более сложной отчётности — условия программы «Анализ и автоматизация» (24000 рублей)."
+            }
+          },
+          "usage": {
+            "prompt_tokens": 18392,
+            "completion_tokens": 2097,
+            "total_tokens": 20489,
+            "prompt_cache_hit_tokens": 9216,
+            "prompt_cache_miss_tokens": 9176,
+            "request_count": 2
+          },
+          "latency_ms": 10465
+        }
+      ],
+      "actor_usage": [
+        {
+          "prompt_tokens": 507,
+          "completion_tokens": 57,
+          "total_tokens": 564,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "prompt_cache_hit_tokens": 256,
+          "prompt_cache_miss_tokens": 251
+        }
+      ],
+      "final_session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Я почти не знаю Excel. Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+          },
+          {
+            "id": "t2",
+            "role": "manager",
+            "text": "Понял, что Excel для вас пока в новинку. Чтобы не рассказывать лишнего, подскажите: где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?"
+          },
+          {
+            "id": "t3",
+            "role": "client",
+            "text": "На работе. Я администратор, руководитель иногда просит простой отчёт о посещениях, а я теряюсь и прошу коллег помочь. Хочу научиться делать такие отчёты сама."
+          }
+        ],
+        "facts": [
+          {
+            "category": "experience",
+            "value": "Почти не знает Excel",
+            "quote": "Я почти не знаю Excel.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "be733df4-2ee0-4519-bec1-0d96dc35ebde",
+            "created_at": "2026-11-15T10:01:05.747128+00:00"
+          },
+          {
+            "category": "motivation",
+            "value": "Пока не понимает, зачем ему обучение; пришёл из рекламы",
+            "quote": "Посмотрел рекламу, но пока не понимаю, зачем мне обучение.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "7828daf9-c256-4a7c-8744-584792c31ffe",
+            "created_at": "2026-11-15T10:01:05.747128+00:00"
+          },
+          {
+            "category": "situation",
+            "value": "Работает администратором; руководитель иногда просит простой отчёт о посещениях",
+            "quote": "На работе. Я администратор, руководитель иногда просит простой отчёт о посещениях",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "5a086a03-50e7-4240-a1a7-e84957c04dc6",
+            "created_at": "2026-11-15T10:01:21.311444+00:00"
+          },
+          {
+            "category": "problem",
+            "value": "Теряется при подготовке отчёта и просит коллег помочь",
+            "quote": "я теряюсь и прошу коллег помочь",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "d931571d-16a1-46b0-a0ee-5c5a367ad596",
+            "created_at": "2026-11-15T10:01:21.311444+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Хочет научиться сама делать простые рабочие отчёты о посещениях",
+            "quote": "Хочу научиться делать такие отчёты сама.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "8e96b58a-9cd9-4fec-83cf-123810d94dc6",
+            "id": "5b266d67-3fee-4b6b-835e-c8be3bcaaa2c",
+            "created_at": "2026-11-15T10:01:21.311444+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "8e96b58a-9cd9-4fec-83cf-123810d94dc6",
+            "statement": "Клиенту может понадобиться Excel для рабочих задач, и он хочет научиться делать отчёты самостоятельно",
+            "status": "CONFIRMED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+              }
+            ],
+            "test_question": "Где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?",
+            "created_at": "2026-11-15T10:01:05.747128+00:00",
+            "updated_at": "2026-11-15T10:01:21.311444+00:00",
+            "history": [
+              {
+                "id": "8e96b58a-9cd9-4fec-83cf-123810d94dc6",
+                "statement": "Клиенту может понадобиться Excel для рабочих задач, и он хочет научиться делать отчёты самостоятельно",
+                "status": "INFERRED",
+                "evidence": [
+                  {
+                    "source_turn": "t1",
+                    "quote": "Посмотрел рекламу, но пока не понимаю, зачем мне обучение."
+                  }
+                ],
+                "test_question": "Где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?",
+                "created_at": "2026-11-15T10:01:05.747128+00:00",
+                "updated_at": "2026-11-15T10:01:05.747128+00:00"
+              }
+            ],
+            "confirmation_turn": "t3",
+            "confirmation_quote": "Хочу научиться делать такие отчёты сама."
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, что Excel для вас пока в новинку. Чтобы не рассказывать лишнего, подскажите: где вам сейчас чаще всего нужны таблицы — на работе, в учёбе или для личных задач?",
+            "reason": "Клиент пришёл из рекламы, почти не знает Excel и не видит цели обучения. Один вопрос о контексте применения поможет понять мотив и подобрать подходящий уровень, не навязывая программу.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "situation",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "EXPLORE_MOTIVATION",
+              "objective": "Выяснить, в какой ситуации клиенту нужен Excel, чтобы понять мотив обучения",
+              "reason": "Клиент сам говорит, что не понимает, зачем ему обучение; контекст применения прояснит цель и позволит подобрать уровень.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Уточнить мотив"
+            },
+            "manager_note": "До конкретного предложения проверить в утверждённой базе: подходящий уровень (базовый «Отчёты с нуля» или «Анализ и автоматизация»), формат записей и полную стоимость. Не озвучивать характеристики, пока не подтверждены.",
+            "sales_plan": {
+              "commercial_goal": "Помочь клиенту увидеть практическую цель обучения Excel и подобрать подходящий уровень",
+              "next_goal": "Выяснить, где и для чего клиенту нужны таблицы",
+              "significant_needs": [
+                "Почти нулевой уровень Excel",
+                "Нет ясной цели обучения"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [
+                {
+                  "topic": "situation",
+                  "impact": "Рабочие, учебные или личные задачи определят, нужен ли базовый курс отчётов или более продвинутый анализ"
+                }
+              ],
+              "useful_gaps": [
+                "Сроки",
+                "Бюджет"
+              ],
+              "readiness": "NEEDS_CLARIFICATION",
+              "question": {
+                "topic": "situation",
+                "new_information": "Контекст, в котором клиенту нужны таблицы",
+                "decision_impact": "Определит выбор между базовой программой отчётов и программой с анализом и автоматизацией",
+                "already_answered": false,
+                "changes_selection": true,
+                "changes_argument": true,
+                "essential_now": true
+              },
+              "after_answer_action": "SELECT_SOLUTION",
+              "after_answer_goal": "Связать задачу клиента с подходящим уровнем программы и назвать стоимость"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 0,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9a659e08-2f0b-4958-abaa-d5db9d70b2b4",
+            "created_at": "2026-11-15T10:01:05.748152+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.9,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента о контексте применения таблиц",
+              "reason": "Менеджер задал уточняющий вопрос; до ответа клиента новых данных нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Ждём ответ клиента о контексте применения таблиц. После ответа проверить в утверждённой базе подходящий уровень («Отчёты с нуля» или «Анализ и автоматизация»), формат записей и полную стоимость перед конкретным предложением.",
+            "sales_plan": {
+              "commercial_goal": "Помочь клиенту увидеть практическую цель обучения Excel и подобрать подходящий уровень",
+              "next_goal": "Получить ответ о том, где клиенту нужны таблицы",
+              "significant_needs": [
+                "Почти нулевой уровень Excel",
+                "Нет ясной цели обучения"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [
+                {
+                  "topic": "situation",
+                  "impact": "Рабочие, учебные или личные задачи определят выбор между базовой программой отчётов и программой с анализом и автоматизацией"
+                }
+              ],
+              "useful_gaps": [
+                "Сроки",
+                "Бюджет"
+              ],
+              "readiness": "NEEDS_CLARIFICATION",
+              "question": {
+                "topic": "situation",
+                "new_information": "Контекст, в котором клиенту нужны таблицы",
+                "decision_impact": "Определит выбор между базовой программой отчётов и программой с анализом и автоматизацией",
+                "already_answered": false,
+                "changes_selection": true,
+                "changes_argument": true,
+                "essential_now": true
+              },
+              "after_answer_action": "SELECT_SOLUTION",
+              "after_answer_goal": "Связать задачу клиента с подходящим уровнем программы и назвать стоимость"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "d04b82dd-ded1-4f33-8fb5-cba0a1b04cdd",
+            "created_at": "2026-11-15T10:01:09.023327+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t1",
+              "t3"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Перед оформлением проверить в утверждённой базе: точное содержание и уровень программы «Отчёты с нуля», формат записей и полную стоимость 12000 рублей; при вопросе о более сложной отчётности — условия программы «Анализ и автоматизация» (24000 рублей).",
+            "sales_plan": {
+              "commercial_goal": "Подобрать клиенту программу для самостоятельного создания простых рабочих отчётов и назвать стоимость",
+              "next_goal": "Показать соответствие программы «Отчёты с нуля» задаче клиента и перейти к следующему шагу",
+              "significant_needs": [
+                "Почти нулевой уровень Excel",
+                "Простые рабочие отчёты о посещениях",
+                "Хочет делать отчёты сама без помощи коллег"
+              ],
+              "need_evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Сроки",
+                "Бюджет"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "CLOSING",
+              "after_answer_goal": "Согласовать следующий шаг — оформление или знакомство с форматом обучения"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "6f7db6a2-d5f1-4c82-89d1-57e4c12f5299",
+            "created_at": "2026-11-15T10:01:21.311949+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Вымышленная тестовая школа",
+          "course": "Excel",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Задача подтверждена",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Посмотрел рекламу",
+              "topic": "source"
+            },
+            {
+              "kind": "question_answered",
+              "source_turn": "t3",
+              "quote": "На работе.",
+              "topic": "situation"
+            },
+            {
+              "kind": "needs_confirmed",
+              "source_turn": "t3",
+              "quote": "Хочу научиться делать такие отчёты сама.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": true,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "sales_plan": {
+          "commercial_goal": "Помочь клиенту увидеть практическую цель обучения Excel и подобрать подходящий уровень",
+          "next_goal": "Получить ответ о том, где клиенту нужны таблицы",
+          "significant_needs": [
+            "Почти нулевой уровень Excel",
+            "Нет ясной цели обучения"
+          ],
+          "need_evidence_ids": [
+            "t1"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "situation",
+              "impact": "Рабочие, учебные или личные задачи определят выбор между базовой программой отчётов и программой с анализом и автоматизацией"
+            }
+          ],
+          "useful_gaps": [
+            "Сроки",
+            "Бюджет"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "situation",
+            "new_information": "Контекст, в котором клиенту нужны таблицы",
+            "decision_impact": "Определит выбор между базовой программой отчётов и программой с анализом и автоматизацией",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать задачу клиента с подходящим уровнем программы и назвать стоимость"
+        },
+        "gaps": [
+          "profile",
+          "consequence",
+          "importance",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Задача подтверждена"
+      }
+    },
+    {
+      "id": "work_problem",
+      "title": "Конкретная рабочая проблема без связи с курсом",
+      "version": "v2-sales-leadership-1",
+      "outcome": "no_usable_phrase",
+      "seed": [],
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Каждую неделю свожу восемь файлов в один отчёт, трачу часов шесть и иногда ошибаюсь. Только не понимаю, как ваш курс решит эту работу."
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Понимаю: задача не в самом Excel, а в том, чтобы восемь файлов сводились в один отчёт быстро и без ошибок. В программе «Анализ и автоматизация» как раз есть объединение файлов и Power Query для повторяющейся отчётности — это ближе к вашей ситуации, чем базовый курс. Хотите, коротко покажу, как это соотносится с вашим еженедельным отчётом?"
+        },
+        {
+          "id": "t3",
+          "role": "client",
+          "text": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте. И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит."
+        }
+      ],
+      "logs": [
+        {
+          "client_turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Каждую неделю свожу восемь файлов в один отчёт, трачу часов шесть и иногда ошибаюсь. Только не понимаю, как ваш курс решит эту работу."
+          },
+          "recommendation": {
+            "action_type": "ANSWER",
+            "suggestion": "Понимаю: задача не в самом Excel, а в том, чтобы восемь файлов сводились в один отчёт быстро и без ошибок. В программе «Анализ и автоматизация» как раз есть объединение файлов и Power Query для повторяющейся отчётности — это ближе к вашей ситуации, чем базовый курс. Хотите, коротко покажу, как это соотносится с вашим еженедельным отчётом?",
+            "reason": "Клиент прямо назвал задачу (сведение 8 файлов, ~6 часов, ошибки) и возражение о ценности курса. Есть подходящее подтверждённое утверждение про объединение файлов и Power Query, поэтому отвечаем на возражение содержательно и предлагаем перейти к презентации.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [],
+            "strategy": {
+              "action": "OBJECTION_HANDLING",
+              "objective": "Связать программу с задачей сведения файлов и снять сомнение в ценности курса",
+              "reason": "Клиент озвучил конкретную рабочую задачу и прямое возражение «как курс решит эту работу»; есть релевантное подтверждённое утверждение.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на сомнение"
+            },
+            "manager_note": "До конкретного предложения проверить: подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, есть ли в программе разбор Power Query на примере повторяющейся отчётности, формат записей и полную стоимость 24000 рублей. Не обещать трудоустройство, скидки и помощь куратора.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+              "next_goal": "Получить согласие на короткую презентацию связи программы с задачей клиента",
+              "significant_needs": [
+                "Сведение восьми файлов в один отчёт",
+                "Сократить ~6 часов в неделю",
+                "Снизить ошибки в отчётах"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Текущий уровень Excel",
+                "Формат обучения и сроки"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "PRESENTATION",
+              "after_answer_goal": "Показать, как объединение файлов и Power Query закрывают еженедельную отчётность, и назвать стоимость"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 0,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "fde135ae-5b2e-4b74-aac1-b4550df1d051",
+            "created_at": "2026-11-15T10:01:06.196389+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "situation",
+                "value": "Каждую неделю сводит восемь файлов в один отчёт",
+                "quote": "Каждую неделю свожу восемь файлов в один отчёт",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "problem",
+                "value": "На подготовку отчёта уходит около шести часов в неделю",
+                "quote": "трачу часов шесть",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "problem",
+                "value": "Иногда допускает ошибки при сведении отчёта",
+                "quote": "иногда ошибаюсь",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "objection",
+                "value": "Не понимает, как курс решит его рабочую задачу со сведением отчётов",
+                "quote": "Только не понимаю, как ваш курс решит эту работу.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "ANSWER",
+              "suggestion": "Понимаю: задача не в самом Excel, а в том, чтобы восемь файлов сводились в один отчёт быстро и без ошибок. В программе «Анализ и автоматизация» как раз есть объединение файлов и Power Query для повторяющейся отчётности — это ближе к вашей ситуации, чем базовый курс. Хотите, коротко покажу, как это соотносится с вашим еженедельным отчётом?",
+              "reason": "Клиент прямо назвал задачу (сведение 8 файлов, ~6 часов, ошибки) и возражение о ценности курса. Есть подходящее подтверждённое утверждение про объединение файлов и Power Query, поэтому отвечаем на возражение содержательно и предлагаем перейти к презентации.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "",
+              "confidence": 0.8
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Каждую неделю свожу восемь файлов в один отчёт, трачу часов шесть и иногда ошибаюсь.",
+                "topic": "goal"
+              },
+              {
+                "kind": "objection_opened",
+                "source_turn": "t1",
+                "quote": "Только не понимаю, как ваш курс решит эту работу.",
+                "topic": "value"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиент готов учиться, если увидит прямую связь курса с автоматизацией еженедельного отчёта",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Только не понимаю, как ваш курс решит эту работу."
+                    }
+                  ],
+                  "test_question": "Насколько важно, чтобы в курсе разбирали именно объединение нескольких файлов?"
+                }
+              ],
+              "strategy": {
+                "action": "OBJECTION_HANDLING",
+                "objective": "Связать программу с задачей сведения файлов и снять сомнение в ценности курса",
+                "reason": "Клиент озвучил конкретную рабочую задачу и прямое возражение «как курс решит эту работу»; есть релевантное подтверждённое утверждение.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": [
+                {
+                  "text": "Учебная программа «Анализ и автоматизация»: базовый блок Excel, сводные таблицы, Power Query и объединение файлов для повторяющейся отчётности. Можно начать с нуля. Записи без жёсткого расписания. Стоимость 24000 рублей.",
+                  "source_id": "advanced"
+                }
+              ],
+              "sales_plan": {
+                "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+                "next_goal": "Получить согласие на короткую презентацию связи программы с задачей клиента",
+                "significant_needs": [
+                  "Сведение восьми файлов в один отчёт",
+                  "Сократить ~6 часов в неделю",
+                  "Снизить ошибки в отчётах"
+                ],
+                "need_evidence_ids": [
+                  "t1"
+                ],
+                "critical_gaps": [],
+                "useful_gaps": [
+                  "Текущий уровень Excel",
+                  "Формат обучения и сроки"
+                ],
+                "readiness": "READY_FOR_OFFER",
+                "question": null,
+                "after_answer_action": "PRESENTATION",
+                "after_answer_goal": "Показать, как объединение файлов и Power Query закрывают еженедельную отчётность, и назвать стоимость"
+              },
+              "manager_note": "До конкретного предложения проверить: подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, есть ли в программе разбор Power Query на примере повторяющейся отчётности, формат записей и полную стоимость 24000 рублей. Не обещать трудоустройство, скидки и помощь куратора."
+            }
+          },
+          "usage": {
+            "prompt_tokens": 6633,
+            "completion_tokens": 1130,
+            "total_tokens": 7763,
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 6633,
+            "request_count": 1
+          },
+          "latency_ms": 5749,
+          "manager_analysis_usage": {
+            "prompt_tokens": 8644,
+            "completion_tokens": 584,
+            "total_tokens": 9228,
+            "prompt_cache_hit_tokens": 3328,
+            "prompt_cache_miss_tokens": 5316,
+            "request_count": 1
+          }
+        },
+        {
+          "client_turn": {
+            "id": "t3",
+            "role": "client",
+            "text": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте. И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит."
+          },
+          "recommendation": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Проверить до конкретного предложения: точную длительность обучения в неделях (в базе не указана), подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, формат записей. Не обещать трудоустройство, скидки и помощь куратора.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+              "next_goal": "Показать связь программы с задачей клиента и назвать стоимость 24000 рублей",
+              "significant_needs": [
+                "Сведение восьми файлов в один отчёт",
+                "Сократить ~6 часов в неделю",
+                "Снизить ошибки в отчётах"
+              ],
+              "need_evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Текущий уровень Excel",
+                "Точная длительность обучения в неделях"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "PRESENTATION",
+              "after_answer_goal": "Показать, как Power Query и объединение файлов закрывают еженедельную отчётность, и назвать стоимость 24000 рублей"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": true,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "31560581-932c-4df0-9e99-e59fb18c98dc",
+            "created_at": "2026-11-15T10:01:21.777964+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "constraints",
+                "value": "Готов выделять на обучение 4 часа в неделю",
+                "quote": "при 4 часах в неделю",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "next_step",
+                "value": "Согласился на короткую презентацию связи программы с его еженедельным отчётом",
+                "quote": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": "68b0166e-c80a-4ded-a2c7-db6a3e581a54"
+              },
+              {
+                "category": "importance",
+                "value": "Запрашивает длительность обучения и стоимость",
+                "quote": "И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "PRESENT",
+              "suggestion": "Спасибо, тогда коротко по вашей задаче. В программе «Анализ и автоматизация» есть Power Query и объединение файлов — это как раз про сведение восьми файлов в один отчёт без ручной пересборки. Стоимость программы — 24000 рублей, записи доступны без жёсткого расписания, поэтому при 4 часах в неделю вы сами задаёте темп. Точную длительность обучения в неделях сейчас уточню и назову.",
+              "reason": "Клиент согласился на презентацию и прямо запросил стоимость и длительность. Есть подтверждённые утверждения про Power Query, объединение файлов, отсутствие жёсткого расписания и стоимость 24000 рублей; длительность в неделях в базе не подтверждена, поэтому её не выдумываем.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "target_gap": "",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "question_answered",
+                "source_turn": "t3",
+                "quote": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте.",
+                "topic": "presentation_consent"
+              },
+              {
+                "kind": "question_asked",
+                "source_turn": "t3",
+                "quote": "И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит.",
+                "topic": "price_and_duration"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "PRESENTATION",
+                "objective": "Показать связь программы с еженедельным отчётом и назвать известную стоимость",
+                "reason": "Клиент дал согласие на презентацию и запросил цену; дальнейшая диагностика не нужна.",
+                "evidence_ids": [
+                  "t3"
+                ]
+              },
+              "product_claims": [
+                {
+                  "text": "Учебная программа «Анализ и автоматизация»: базовый блок Excel, сводные таблицы, Power Query и объединение файлов для повторяющейся отчётности. Можно начать с нуля. Записи без жёсткого расписания. Стоимость 24000 рублей.",
+                  "source_id": "advanced"
+                }
+              ],
+              "sales_plan": {
+                "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+                "next_goal": "Показать связь программы с задачей клиента и назвать стоимость 24000 рублей",
+                "significant_needs": [
+                  "Сведение восьми файлов в один отчёт",
+                  "Сократить ~6 часов в неделю",
+                  "Снизить ошибки в отчётах"
+                ],
+                "need_evidence_ids": [
+                  "t1",
+                  "t3"
+                ],
+                "critical_gaps": [],
+                "useful_gaps": [
+                  "Текущий уровень Excel",
+                  "Точная длительность обучения в неделях"
+                ],
+                "readiness": "READY_FOR_OFFER",
+                "question": null,
+                "after_answer_action": "PRESENTATION",
+                "after_answer_goal": "Показать, как Power Query и объединение файлов закрывают еженедельную отчётность, и назвать стоимость 24000 рублей"
+              },
+              "manager_note": "Проверить до конкретного предложения: точную длительность обучения в неделях (в базе не указана), подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, формат записей. Не обещать трудоустройство, скидки и помощь куратора."
+            }
+          },
+          "usage": {
+            "prompt_tokens": 19004,
+            "completion_tokens": 2080,
+            "total_tokens": 21084,
+            "prompt_cache_hit_tokens": 9600,
+            "prompt_cache_miss_tokens": 9404,
+            "request_count": 2
+          },
+          "latency_ms": 10093
+        }
+      ],
+      "actor_usage": [
+        {
+          "prompt_tokens": 594,
+          "completion_tokens": 60,
+          "total_tokens": 654,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "prompt_cache_hit_tokens": 256,
+          "prompt_cache_miss_tokens": 338
+        }
+      ],
+      "final_session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Каждую неделю свожу восемь файлов в один отчёт, трачу часов шесть и иногда ошибаюсь. Только не понимаю, как ваш курс решит эту работу."
+          },
+          {
+            "id": "t2",
+            "role": "manager",
+            "text": "Понимаю: задача не в самом Excel, а в том, чтобы восемь файлов сводились в один отчёт быстро и без ошибок. В программе «Анализ и автоматизация» как раз есть объединение файлов и Power Query для повторяющейся отчётности — это ближе к вашей ситуации, чем базовый курс. Хотите, коротко покажу, как это соотносится с вашим еженедельным отчётом?"
+          },
+          {
+            "id": "t3",
+            "role": "client",
+            "text": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте. И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит."
+          }
+        ],
+        "facts": [
+          {
+            "category": "situation",
+            "value": "Каждую неделю сводит восемь файлов в один отчёт",
+            "quote": "Каждую неделю свожу восемь файлов в один отчёт",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "c61c439a-3789-4bc9-b7fa-cace0ea5cdba",
+            "created_at": "2026-11-15T10:01:06.196389+00:00"
+          },
+          {
+            "category": "problem",
+            "value": "На подготовку отчёта уходит около шести часов в неделю",
+            "quote": "трачу часов шесть",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "f26e2326-3101-41e5-b9fe-eb0105d13395",
+            "created_at": "2026-11-15T10:01:06.196389+00:00"
+          },
+          {
+            "category": "problem",
+            "value": "Иногда допускает ошибки при сведении отчёта",
+            "quote": "иногда ошибаюсь",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "09f48b97-80bc-44b3-a71c-80dfbc06fbf4",
+            "created_at": "2026-11-15T10:01:06.196389+00:00"
+          },
+          {
+            "category": "objection",
+            "value": "Не понимает, как курс решит его рабочую задачу со сведением отчётов",
+            "quote": "Только не понимаю, как ваш курс решит эту работу.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "ba4f796f-9577-4125-9f80-259602e82e69",
+            "created_at": "2026-11-15T10:01:06.196389+00:00"
+          },
+          {
+            "category": "constraints",
+            "value": "Готов выделять на обучение 4 часа в неделю",
+            "quote": "при 4 часах в неделю",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "13314c1f-faca-42d8-aa66-7b4d373a98a0",
+            "created_at": "2026-11-15T10:01:21.777895+00:00"
+          },
+          {
+            "category": "next_step",
+            "value": "Согласился на короткую презентацию связи программы с его еженедельным отчётом",
+            "quote": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "68b0166e-c80a-4ded-a2c7-db6a3e581a54",
+            "id": "4c5c312e-6558-4529-9511-c96bfefa47c0",
+            "created_at": "2026-11-15T10:01:21.777895+00:00"
+          },
+          {
+            "category": "importance",
+            "value": "Запрашивает длительность обучения и стоимость",
+            "quote": "И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "e27c8995-3fca-4824-b89e-2e79a50c0f5d",
+            "created_at": "2026-11-15T10:01:21.777895+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "68b0166e-c80a-4ded-a2c7-db6a3e581a54",
+            "statement": "Клиент готов учиться, если увидит прямую связь курса с автоматизацией еженедельного отчёта",
+            "status": "CONFIRMED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "Только не понимаю, как ваш курс решит эту работу."
+              }
+            ],
+            "test_question": "Насколько важно, чтобы в курсе разбирали именно объединение нескольких файлов?",
+            "created_at": "2026-11-15T10:01:06.196389+00:00",
+            "updated_at": "2026-11-15T10:01:21.777895+00:00",
+            "history": [
+              {
+                "id": "68b0166e-c80a-4ded-a2c7-db6a3e581a54",
+                "statement": "Клиент готов учиться, если увидит прямую связь курса с автоматизацией еженедельного отчёта",
+                "status": "INFERRED",
+                "evidence": [
+                  {
+                    "source_turn": "t1",
+                    "quote": "Только не понимаю, как ваш курс решит эту работу."
+                  }
+                ],
+                "test_question": "Насколько важно, чтобы в курсе разбирали именно объединение нескольких файлов?",
+                "created_at": "2026-11-15T10:01:06.196389+00:00",
+                "updated_at": "2026-11-15T10:01:06.196389+00:00"
+              }
+            ],
+            "confirmation_turn": "t3",
+            "confirmation_quote": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте."
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "ANSWER",
+            "suggestion": "Понимаю: задача не в самом Excel, а в том, чтобы восемь файлов сводились в один отчёт быстро и без ошибок. В программе «Анализ и автоматизация» как раз есть объединение файлов и Power Query для повторяющейся отчётности — это ближе к вашей ситуации, чем базовый курс. Хотите, коротко покажу, как это соотносится с вашим еженедельным отчётом?",
+            "reason": "Клиент прямо назвал задачу (сведение 8 файлов, ~6 часов, ошибки) и возражение о ценности курса. Есть подходящее подтверждённое утверждение про объединение файлов и Power Query, поэтому отвечаем на возражение содержательно и предлагаем перейти к презентации.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [],
+            "strategy": {
+              "action": "OBJECTION_HANDLING",
+              "objective": "Связать программу с задачей сведения файлов и снять сомнение в ценности курса",
+              "reason": "Клиент озвучил конкретную рабочую задачу и прямое возражение «как курс решит эту работу»; есть релевантное подтверждённое утверждение.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на сомнение"
+            },
+            "manager_note": "До конкретного предложения проверить: подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, есть ли в программе разбор Power Query на примере повторяющейся отчётности, формат записей и полную стоимость 24000 рублей. Не обещать трудоустройство, скидки и помощь куратора.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+              "next_goal": "Получить согласие на короткую презентацию связи программы с задачей клиента",
+              "significant_needs": [
+                "Сведение восьми файлов в один отчёт",
+                "Сократить ~6 часов в неделю",
+                "Снизить ошибки в отчётах"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Текущий уровень Excel",
+                "Формат обучения и сроки"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "PRESENTATION",
+              "after_answer_goal": "Показать, как объединение файлов и Power Query закрывают еженедельную отчётность, и назвать стоимость"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 0,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "fde135ae-5b2e-4b74-aac1-b4550df1d051",
+            "created_at": "2026-11-15T10:01:06.196389+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.9,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на предложение короткой презентации",
+              "reason": "Менеджер уже задал вопрос и предложил перейти к презентации; до ответа клиента новый шаг не нужен.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Дождаться ответа клиента. При согласии — презентация: связать Power Query и объединение файлов с его еженедельным отчётом, назвать полную стоимость 24000 рублей. До конкретного предложения проверить, что уровень программы соответствует задаче и что разбор объединения файлов есть в программе; не обещать трудоустройство, скидки и помощь куратора.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+              "next_goal": "Получить согласие клиента на короткую презентацию связи программы с его задачей",
+              "significant_needs": [
+                "Сведение восьми файлов в один отчёт",
+                "Сократить ~6 часов в неделю",
+                "Снизить ошибки в отчётах"
+              ],
+              "need_evidence_ids": [
+                "t1"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Текущий уровень Excel",
+                "Формат обучения и сроки"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "PRESENTATION",
+              "after_answer_goal": "Показать, как объединение файлов и Power Query закрывают еженедельную отчётность, и назвать стоимость 24000 рублей"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": false,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "1c04e583-2003-4e1e-a91f-f95108d1f405",
+            "created_at": "2026-11-15T10:01:09.843192+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Проверить до конкретного предложения: точную длительность обучения в неделях (в базе не указана), подходит ли уровень «Анализ и автоматизация» под задачу сведения 8 файлов, формат записей. Не обещать трудоустройство, скидки и помощь куратора.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+              "next_goal": "Показать связь программы с задачей клиента и назвать стоимость 24000 рублей",
+              "significant_needs": [
+                "Сведение восьми файлов в один отчёт",
+                "Сократить ~6 часов в неделю",
+                "Снизить ошибки в отчётах"
+              ],
+              "need_evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Текущий уровень Excel",
+                "Точная длительность обучения в неделях"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "PRESENTATION",
+              "after_answer_goal": "Показать, как Power Query и объединение файлов закрывают еженедельную отчётность, и назвать стоимость 24000 рублей"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": false,
+              "offer_requested": true,
+              "manager_questions_since_offer": 1,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "31560581-932c-4df0-9e99-e59fb18c98dc",
+            "created_at": "2026-11-15T10:01:21.777964+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Вымышленная тестовая школа",
+          "course": "Excel",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Работа с сомнением",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Каждую неделю свожу восемь файлов в один отчёт, трачу часов шесть и иногда ошибаюсь.",
+              "topic": "goal"
+            },
+            {
+              "kind": "objection_opened",
+              "source_turn": "t1",
+              "quote": "Только не понимаю, как ваш курс решит эту работу.",
+              "topic": "value"
+            },
+            {
+              "kind": "question_answered",
+              "source_turn": "t3",
+              "quote": "Да, покажите коротко, как это будет выглядеть на моём еженедельном отчёте.",
+              "topic": "presentation_consent"
+            },
+            {
+              "kind": "question_asked",
+              "source_turn": "t3",
+              "quote": "И сразу скажите, сколько времени займёт обучение при 4 часах в неделю и сколько стоит.",
+              "topic": "price_and_duration"
+            }
+          ],
+          "questions": [
+            {
+              "topic": "price_and_duration",
+              "role": "client",
+              "source_turn": "t3",
+              "status": "open"
+            }
+          ],
+          "objections": [
+            {
+              "topic": "value",
+              "source_turn": "t1",
+              "quote": "Только не понимаю, как ваш курс решит эту работу.",
+              "status": "open"
+            }
+          ],
+          "price_requests": [
+            "t3"
+          ],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "sales_plan": {
+          "commercial_goal": "Подвести к выбору программы «Анализ и автоматизация» для автоматизации еженедельной отчётности",
+          "next_goal": "Получить согласие клиента на короткую презентацию связи программы с его задачей",
+          "significant_needs": [
+            "Сведение восьми файлов в один отчёт",
+            "Сократить ~6 часов в неделю",
+            "Снизить ошибки в отчётах"
+          ],
+          "need_evidence_ids": [
+            "t1"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Текущий уровень Excel",
+            "Формат обучения и сроки"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "PRESENTATION",
+          "after_answer_goal": "Показать, как объединение файлов и Power Query закрывают еженедельную отчётность, и назвать стоимость 24000 рублей"
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "consequence",
+          "goal",
+          "motivation",
+          "urgency",
+          "decision"
+        ],
+        "stage": "Работа с сомнением"
+      }
+    },
+    {
+      "id": "tired",
+      "title": "Устал от вопросов и просит содержание и цену",
+      "version": "v2-sales-leadership-1",
+      "outcome": "no_usable_phrase",
+      "seed": [
+        [
+          "manager",
+          "Что привлекло вас в Excel?"
+        ],
+        [
+          "client",
+          "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег."
+        ],
+        [
+          "manager",
+          "Почему важно научиться делать их самому?"
+        ],
+        [
+          "client",
+          "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании."
+        ],
+        [
+          "manager",
+          "Правильно понимаю, хотите самостоятельно готовить отчёты?"
+        ],
+        [
+          "client",
+          "Да, именно так."
+        ],
+        [
+          "manager",
+          "Сколько времени готовы учиться?"
+        ],
+        [
+          "client",
+          "Три-четыре часа в неделю, без жёсткого расписания."
+        ],
+        [
+          "manager",
+          "То есть важен свободный график, верно?"
+        ],
+        [
+          "client",
+          "Да, я уже сказал."
+        ]
+      ],
+      "turns": [
+        {
+          "id": "t1",
+          "role": "manager",
+          "text": "Что привлекло вас в Excel?"
+        },
+        {
+          "id": "t2",
+          "role": "client",
+          "text": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег."
+        },
+        {
+          "id": "t3",
+          "role": "manager",
+          "text": "Почему важно научиться делать их самому?"
+        },
+        {
+          "id": "t4",
+          "role": "client",
+          "text": "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании."
+        },
+        {
+          "id": "t5",
+          "role": "manager",
+          "text": "Правильно понимаю, хотите самостоятельно готовить отчёты?"
+        },
+        {
+          "id": "t6",
+          "role": "client",
+          "text": "Да, именно так."
+        },
+        {
+          "id": "t7",
+          "role": "manager",
+          "text": "Сколько времени готовы учиться?"
+        },
+        {
+          "id": "t8",
+          "role": "client",
+          "text": "Три-четыре часа в неделю, без жёсткого расписания."
+        },
+        {
+          "id": "t9",
+          "role": "manager",
+          "text": "То есть важен свободный график, верно?"
+        },
+        {
+          "id": "t10",
+          "role": "client",
+          "text": "Да, я уже сказал."
+        },
+        {
+          "id": "t11",
+          "role": "client",
+          "text": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит."
+        }
+      ],
+      "logs": [
+        {
+          "client_turn": {
+            "id": "t11",
+            "role": "client",
+            "text": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит."
+          },
+          "recommendation": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t11",
+              "t2",
+              "t4",
+              "t8"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t11",
+                "t2",
+                "t4",
+                "t8"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Проверить перед оформлением: формат обучения и наличие куратора, полную стоимость и условия оплаты по выбранной программе.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Отчёты с нуля» и оформлению",
+              "next_goal": "Получить отклик на презентацию и перейти к обсуждению первой программы",
+              "significant_needs": [
+                "Самостоятельно готовить отчёты без помощи коллег",
+                "Старт практически с нуля",
+                "Свободный график 3–4 часа в неделю",
+                "Рост в компании и самостоятельность перед руководителем"
+              ],
+              "need_evidence_ids": [
+                "t2",
+                "t4",
+                "t8"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Формат обучения",
+                "Наличие куратора"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "SELECT_SOLUTION",
+              "after_answer_goal": "Связать программу с задачей самостоятельных отчётов и обсудить следующий шаг"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": true,
+              "offer_requested": true,
+              "manager_questions_since_offer": 5,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "80a08a18-14c7-44d7-a3fe-3a2c575b086d",
+            "created_at": "2026-11-15T10:01:30.835119+00:00",
+            "feedback": null,
+            "turn_id": "t11",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "PRESENT",
+              "suggestion": "Спасибо, что сказали прямо — перехожу к делу. Под вашу задачу — самостоятельно готовить отчёты с нуля и без жёсткого расписания — подходит программа «Отчёты с нуля»: ввод и оформление таблиц, простые формулы, сортировка, фильтры и базовые рабочие отчёты, входной опыт не нужен, записи доступны без жёсткого графика. Стоимость — 12 000 рублей. Если позже захотите автоматизировать повторяющуюся отчётность, есть «Анализ и автоматизация» за 24 000 рублей со сводными таблицами и Power Query. Рассказать подробнее про первую программу?",
+              "reason": "Клиент прямо запросил содержание и стоимость и устал от вопросов; данных достаточно для персонализированной презентации с известными ценами без нового диагностического вопроса.",
+              "evidence_ids": [
+                "t11",
+                "t2",
+                "t4",
+                "t8"
+              ],
+              "target_gap": "",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "question_asked",
+                "source_turn": "t11",
+                "quote": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит.",
+                "topic": "presentation_and_price"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "PRESENTATION",
+                "objective": "Показать подходящую программу и назвать известную стоимость под задачу клиента",
+                "reason": "Запрошены содержание и цена, диагностики достаточно, дальнейшие вопросы неуместны.",
+                "evidence_ids": [
+                  "t11",
+                  "t2",
+                  "t4",
+                  "t8"
+                ]
+              },
+              "product_claims": [
+                {
+                  "text": "Учебная программа «Отчёты с нуля»: ввод и оформление таблиц, простые формулы, сортировка, фильтры и базовые рабочие отчёты. Входной опыт не нужен. Записи доступны без жёсткого расписания. Стоимость 12000 рублей.",
+                  "source_id": "basic"
+                },
+                {
+                  "text": "Учебная программа «Анализ и автоматизация»: базовый блок Excel, сводные таблицы, Power Query и объединение файлов для повторяющейся отчётности. Можно начать с нуля. Записи без жёсткого расписания. Стоимость 24000 рублей.",
+                  "source_id": "advanced"
+                }
+              ],
+              "sales_plan": {
+                "commercial_goal": "Подвести к выбору программы «Отчёты с нуля» и оформлению",
+                "next_goal": "Получить отклик на презентацию и перейти к обсуждению первой программы",
+                "significant_needs": [
+                  "Самостоятельно готовить отчёты без помощи коллег",
+                  "Старт практически с нуля",
+                  "Свободный график 3–4 часа в неделю",
+                  "Рост в компании и самостоятельность перед руководителем"
+                ],
+                "need_evidence_ids": [
+                  "t2",
+                  "t4",
+                  "t8"
+                ],
+                "critical_gaps": [],
+                "useful_gaps": [
+                  "Формат обучения",
+                  "Наличие куратора"
+                ],
+                "readiness": "READY_FOR_OFFER",
+                "question": null,
+                "after_answer_action": "SELECT_SOLUTION",
+                "after_answer_goal": "Связать программу с задачей самостоятельных отчётов и обсудить следующий шаг"
+              },
+              "manager_note": "Проверить перед оформлением: формат обучения и наличие куратора, полную стоимость и условия оплаты по выбранной программе."
+            }
+          },
+          "usage": {
+            "prompt_tokens": 15260,
+            "completion_tokens": 1741,
+            "total_tokens": 17001,
+            "prompt_cache_hit_tokens": 7552,
+            "prompt_cache_miss_tokens": 7708,
+            "request_count": 2
+          },
+          "latency_ms": 9523
+        }
+      ],
+      "actor_usage": [],
+      "final_session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "manager",
+            "text": "Что привлекло вас в Excel?"
+          },
+          {
+            "id": "t2",
+            "role": "client",
+            "text": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег."
+          },
+          {
+            "id": "t3",
+            "role": "manager",
+            "text": "Почему важно научиться делать их самому?"
+          },
+          {
+            "id": "t4",
+            "role": "client",
+            "text": "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании."
+          },
+          {
+            "id": "t5",
+            "role": "manager",
+            "text": "Правильно понимаю, хотите самостоятельно готовить отчёты?"
+          },
+          {
+            "id": "t6",
+            "role": "client",
+            "text": "Да, именно так."
+          },
+          {
+            "id": "t7",
+            "role": "manager",
+            "text": "Сколько времени готовы учиться?"
+          },
+          {
+            "id": "t8",
+            "role": "client",
+            "text": "Три-четыре часа в неделю, без жёсткого расписания."
+          },
+          {
+            "id": "t9",
+            "role": "manager",
+            "text": "То есть важен свободный график, верно?"
+          },
+          {
+            "id": "t10",
+            "role": "client",
+            "text": "Да, я уже сказал."
+          },
+          {
+            "id": "t11",
+            "role": "client",
+            "text": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит."
+          }
+        ],
+        "facts": [
+          {
+            "id": "fact-profile",
+            "category": "profile",
+            "value": "Администратор",
+            "source_turn": "t2",
+            "quote": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег.",
+            "status": "CONFIRMED",
+            "replaces": []
+          },
+          {
+            "id": "fact-experience",
+            "category": "experience",
+            "value": "Практически не знает Excel",
+            "source_turn": "t2",
+            "quote": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег.",
+            "status": "CONFIRMED",
+            "replaces": []
+          },
+          {
+            "id": "fact-problem",
+            "category": "problem",
+            "value": "Для отчётов просит помощи коллег",
+            "source_turn": "t2",
+            "quote": "Я администратор, практически не знаю Excel. Руководитель поручает отчёты, и я прошу помощи коллег.",
+            "status": "CONFIRMED",
+            "replaces": []
+          },
+          {
+            "id": "fact-goal",
+            "category": "goal",
+            "value": "Самостоятельно готовить отчёты",
+            "source_turn": "t4",
+            "quote": "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании.",
+            "status": "CONFIRMED",
+            "replaces": []
+          },
+          {
+            "id": "fact-motivation",
+            "category": "motivation",
+            "value": "Неловко перед руководителем, хочет расти в компании",
+            "source_turn": "t4",
+            "quote": "Мне неловко перед руководителем. Хочу быть самостоятельным и дальше расти в компании.",
+            "status": "CONFIRMED",
+            "replaces": []
+          },
+          {
+            "id": "fact-constraints",
+            "category": "constraints",
+            "value": "3–4 часа в неделю без расписания",
+            "source_turn": "t8",
+            "quote": "Три-четыре часа в неделю, без жёсткого расписания.",
+            "status": "CONFIRMED",
+            "replaces": []
+          }
+        ],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+            "evidence_ids": [
+              "t11",
+              "t2",
+              "t4",
+              "t8"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "reason": "Фраза скрыта проверкой: phrase_length. Уточните контекст или повторите анализ.",
+              "evidence_ids": [
+                "t11",
+                "t2",
+                "t4",
+                "t8"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "manager_note": "Проверить перед оформлением: формат обучения и наличие куратора, полную стоимость и условия оплаты по выбранной программе.",
+            "sales_plan": {
+              "commercial_goal": "Подвести к выбору программы «Отчёты с нуля» и оформлению",
+              "next_goal": "Получить отклик на презентацию и перейти к обсуждению первой программы",
+              "significant_needs": [
+                "Самостоятельно готовить отчёты без помощи коллег",
+                "Старт практически с нуля",
+                "Свободный график 3–4 часа в неделю",
+                "Рост в компании и самостоятельность перед руководителем"
+              ],
+              "need_evidence_ids": [
+                "t2",
+                "t4",
+                "t8"
+              ],
+              "critical_gaps": [],
+              "useful_gaps": [
+                "Формат обучения",
+                "Наличие куратора"
+              ],
+              "readiness": "READY_FOR_OFFER",
+              "question": null,
+              "after_answer_action": "SELECT_SOLUTION",
+              "after_answer_goal": "Связать программу с задачей самостоятельных отчётов и обсудить следующий шаг"
+            },
+            "conversation_signals": {
+              "client_declines_questions": false,
+              "client_tired_of_questions": true,
+              "offer_requested": true,
+              "manager_questions_since_offer": 5,
+              "offer_due_after_bridge": false
+            },
+            "validation": {
+              "status": "blocked",
+              "issues": [
+                "phrase_length"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "80a08a18-14c7-44d7-a3fe-3a2c575b086d",
+            "created_at": "2026-11-15T10:01:30.835119+00:00",
+            "feedback": null,
+            "turn_id": "t11",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              },
+              {
+                "attempt": 2,
+                "status": "blocked",
+                "issues": [
+                  "phrase_length"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Вымышленная тестовая школа",
+          "course": "Excel",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Начало",
+          "events": [
+            {
+              "kind": "needs_confirmed",
+              "source_turn": "t6",
+              "quote": "Да, именно так.",
+              "topic": ""
+            },
+            {
+              "kind": "question_asked",
+              "source_turn": "t11",
+              "quote": "Слушайте, а можете уже рассказать, что у вас за обучение? А то мы всё вопросы обсуждаем. Мне интересно, что конкретно я смогу освоить и сколько это стоит.",
+              "topic": "presentation_and_price"
+            }
+          ],
+          "questions": [
+            {
+              "topic": "presentation_and_price",
+              "role": "client",
+              "source_turn": "t11",
+              "status": "open"
+            }
+          ],
+          "objections": [],
+          "price_requests": [
+            "t11"
+          ],
+          "price_answered": false,
+          "needs_confirmed": true,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "situation",
+          "consequence",
+          "importance",
+          "urgency",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Начало"
+      }
+    }
+  ]
+}

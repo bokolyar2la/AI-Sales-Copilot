@@ -5,7 +5,21 @@ from urllib.parse import urlparse
 import httpx
 from .models import Analysis, Fact, Advice, LABELS
 from .prompts import SYSTEM
-from .dialogue_policy import update_state
+from .dialogue_policy import update_state, conversation_signals
+
+
+def model_context(session):
+    # Keep every spoken turn and memory item, but not growing copies of old plans,
+    # timings and validation traces inside recommendations.
+    context = {k: v for k, v in session.items() if k not in ('recommendations', 'analysis_error')}
+    context['recommendations'] = [
+        {k: r[k] for k in ('turn_id','action_type','suggestion','strategy','feedback') if k in r}
+        for r in session.get('recommendations', [])[-3:]
+    ]
+    if session.get('turns'):
+        context['dialogue_state'] = update_state(session, [])
+        context['conversation_signals'] = conversation_signals({**session, 'dialogue_state':context['dialogue_state']})
+    return context
 
 class DemoProvider:
     name = 'demo'
@@ -63,9 +77,7 @@ class CompatibleProvider:
         headers = {}
         if os.getenv('LLM_API_KEY'):
             headers['Authorization'] = 'Bearer ' + os.environ['LLM_API_KEY']
-        context = {**session}
-        if session.get('turns'):
-            context['dialogue_state'] = update_state(session, [])
+        context = model_context(session)
         payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
         payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
         endpoint = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/')
@@ -79,6 +91,8 @@ class CompatibleProvider:
             analysis = Analysis.model_validate_json(data['choices'][0]['message']['content'])
             if session.get('turns') and analysis.intelligence is None:
                 raise ValueError('Missing intelligence result')
+            if session.get('turns') and analysis.intelligence.sales_plan is None:
+                raise ValueError('Missing sales plan')
         except ValueError as exc:
             exc.usage = data.get('usage', {})
             raise

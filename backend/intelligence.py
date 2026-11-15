@@ -17,8 +17,8 @@ STRATEGY_LABELS.update(EXPLAIN_PROCESS='Объяснить цель консул
     EXPLORE_MOTIVATION='Уточнить мотив', EXPLORE_CONSEQUENCE='Понять последствия',
     ALIGN_BEFORE_PRESENTATION='Одно уточнение перед предложением', SELECT_SOLUTION='Подобрать решение')
 ALLOWED = {
-    'GREETING': {'RAPPORT'}, 'AGENDA': {'RAPPORT', 'SALES_RECOVERY'},
-    'INTEREST': {'DISCOVERY', 'NEED_DEVELOPMENT', 'SALES_RECOVERY'},
+    'GREETING': {'RAPPORT'}, 'AGENDA': {'RAPPORT', 'SALES_RECOVERY', 'EXPLAIN_PROCESS'},
+    'INTEREST': {'DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'SALES_RECOVERY'},
     'QUESTION': {'DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'SALES_RECOVERY', 'OBJECTION_DIAGNOSIS'},
     'CLARIFY': {'DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'SALES_RECOVERY', 'OBJECTION_DIAGNOSIS', 'OBJECTION_HANDLING', 'FOLLOW_UP'},
     'ANSWER': {'ANSWER', 'PRICE_PRESENTATION', 'OBJECTION_HANDLING', 'VALUE_BUILDING', 'FOLLOW_UP', 'CLOSING'},
@@ -162,12 +162,56 @@ def commercial_amounts(text):
     return result
 
 
+def unresolved_exit(session, analysis, rec):
+    """Narrow exit guard; actual client evidence outranks model readiness."""
+    turns = session['turns']
+    if not turns or turns[-1]['role'] != 'client':
+        return []
+    state = session.get('dialogue_state', {})
+    indices = {t['id']: i for i, t in enumerate(turns)}
+    concerns = [o for o in state.get('objections', []) if o['status']=='open']
+    # Also cover a new objection fact when the model omitted its event.
+    concerns += [f for f in session.get('facts', []) if f['category']=='objection'
+                 and f['status']=='CONFIRMED' and f['source_turn']==turns[-1]['id']
+                 and not any(o['source_turn']==f['source_turn'] for o in state.get('objections', []))]
+    concerns = [o for o in concerns if o.get('source_turn') in indices
+                and turns[indices[o['source_turn']]]['role']=='client']
+    if not concerns:
+        return []
+    newest = max(indices[o['source_turn']] for o in concerns)
+    # An old purchase signal must not override a newly expressed doubt.
+    consent = any(e['kind'] in ('ready_to_buy','next_step_agreed','unavailable','declined','questions_declined')
+                  and indices.get(e['source_turn'], -1)>=newest for e in state.get('events', []))
+    text = turns[-1]['text'].casefold()
+    from .dialogue_policy import is_price_question
+    requested = is_price_question(text) or bool(re.search(
+        r'(?:пришлите|отправьте|вышлите)[^.!?]*(?:условия|программ|цен|стоимост)|'
+        r'(?:давайте|прошу)[^.!?]*(?:перенес|созвон|заверш)|не хочу[^.!?]*обсуж|без (?:дальнейших )?вопрос', text))
+    if consent or requested:
+        return []
+    strategy = analysis.intelligence.strategy.action if analysis.intelligence else ''
+    phrase_exit = bool(re.search(
+        r'как[^.!?]*связаться|(?:куда|где)[^.!?]*(?:отправ|присла|переда)|'
+        r'(?:оставьте|дайте|укажите)[^.!?]*(?:контакт|телефон|почт)|'
+        r'(?:отправлю|пришлю|передам)[^.!?]*(?:условия|программ)|'
+        r'созвонимся|свяжусь|вернусь[^.!?]*(?:позже|услови)|на этом[^.!?]*законч', rec['suggestion'], re.I))
+    if strategy not in ('FOLLOW_UP','CLOSING') and rec['action_type']!='NEXT_STEP' and not phrase_exit:
+        return []
+    return [{'source_turn':o['source_turn'], 'quote':o['quote'],
+             'reason':'Сомнение остаётся открытым; переход к контакту или завершению не согласован клиентом. Ответь на сомнение или уточни его причину, не обещая результат обучения.'}
+            for o in concerns]
+
+
 def validate_recommendation(session, analysis, rec, knowledge):
     """Hard checks are independent of the model's own self-review."""
     result = deepcopy(rec)
     issues = list(rec.get('policy_flags', []))
     blocked = ['dismissed_repeat'] if 'dismissed_repeat' in issues else []
     phrase = result['suggestion']
+    compatibility = None
+    unanswered = unresolved_exit(session, analysis, rec)
+    if unanswered:
+        blocked.append('unresolved_objection_before_exit')
     if analysis.intelligence:
         blocked.extend(validate_plan(session, analysis, rec))
         strategy = analysis.intelligence.strategy.model_dump()
@@ -183,6 +227,9 @@ def validate_recommendation(session, analysis, rec, knowledge):
                 strategy = None
             else:
                 blocked.append('strategy_phrase_mismatch')
+                compatibility = {'action_type': result['action_type'],
+                    'strategy_action': strategy['action'],
+                    'allowed_strategies': sorted(ALLOWED[result['action_type']])}
     else:
         strategy = None
     if result['action_type'] != 'NO_ACTION':
@@ -226,6 +273,10 @@ def validate_recommendation(session, analysis, rec, knowledge):
                 blocked.append('unverified_product_denial')
     if blocked:
         result.update(action_type='NO_ACTION', suggestion='', reason='Фраза скрыта проверкой: ' + ', '.join(blocked) + '. Уточните контекст или повторите анализ.')
+        if compatibility:
+            result['reason'] += (' Несовместимая пара: ' + compatibility['action_type'] + ' + '
+                + compatibility['strategy_action'] + '. Допустимые стратегии: '
+                + ', '.join(compatibility['allowed_strategies']) + '.')
         strategy = None
     if strategy is None:
         strategy = {'action': DEFAULT[result['action_type']], 'objective': result['reason'][:300],
@@ -244,4 +295,8 @@ def validate_recommendation(session, analysis, rec, knowledge):
                 session['sales_plan'] = result['sales_plan']
     result['validation'] = {'status': 'blocked' if blocked else ('adjusted' if issues else 'passed'),
                             'issues': list(dict.fromkeys(issues + blocked)), 'checks_version': 'v2-sales-leadership-1'}
+    if unanswered:
+        result['validation']['unanswered_objections'] = unanswered
+    if compatibility:
+        result['validation']['strategy_compatibility'] = compatibility
     return result

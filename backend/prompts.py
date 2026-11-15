@@ -18,3 +18,8 @@ confidence — оценка, а не измеренная точность. Ис
 При NO_ACTION suggestion пустая. Подтверждение понимания не равно согласию купить.
 '''
 SYSTEM += '\n\n' + Path(__file__).with_name('intelligence_prompt.md').read_text(encoding='utf-8')
+
+# The model and validator share the exact compatibility contract.
+from .intelligence import ALLOWED
+SYSTEM += '\n\nДопустимые сочетания recommendation.action_type → intelligence.strategy.action:\n'
+SYSTEM += '\n'.join(action + ' → ' + ', '.join(sorted(strategies)) for action, strategies in ALLOWED.items())

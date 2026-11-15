@@ -53,6 +53,12 @@ async def _process_turn(session, provider, knowledge):
             feedback = {'issue':'blocked_phrase', 'checks':validation['issues'],
                         'previous_phrase':analysis.recommendation.suggestion,
                         'instruction':'Исправь фразу, план и стратегию вместе. При develop_need_before_offer развивай актуальную нераскрытую мотивацию/желаемое изменение; отсутствие базы не повод прерывать разговор. Не меняй оценку глубины без новых оснований лишь для обхода проверки. При dismissed_repeat не повторяй отклонённый совет: выбери полезный следующий шаг по реально произнесённым репликам менеджера и новым ответам клиента. При offer_ready_stop_discovery/promised_offer_due/client_declined_diagnostics переходи к предложению без нового диагностического вопроса. При explain_and_limit_clarification допускается один критичный вопрос с объяснением через ALIGN_BEFORE_PRESENTATION. Нехватка базы — manager_note, а не проблема клиента. Не заменяй полезный ответ молчанием.'}
+            if 'unanswered_objections' in validation:
+                feedback['unanswered_objections'] = validation['unanswered_objections']
+                feedback['instruction'] += ' При unresolved_objection_before_exit отработай указанное сомнение; не обходи проверку сменой action_type/readiness или удалением факта/события без подтверждения клиента.'
+            if 'strategy_compatibility' in validation:
+                feedback['strategy_compatibility'] = validation['strategy_compatibility']
+                feedback['instruction'] += ' При strategy_phrase_mismatch согласуй тип фразы и стратегию по допустимой таблице; strategy_compatibility содержит ошибочную пару и допустимые стратегии. Сохрани полезный смысл продолжения диалога.'
             continue
         draft['recommendations'][-1]['validation_trace'] = trace
         usage['request_count'] = attempt+1

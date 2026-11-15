@@ -31,7 +31,7 @@ async def _process_turn(session, provider, knowledge):
             record_validation(trace[-1])
             if attempt: raise
             errors = [{'path':list(e['loc']), 'type':e['type']} for e in exc.errors(include_input=False)][:12] if hasattr(exc,'errors') else []
-            feedback = {'issue':'invalid_schema', 'fields':errors, 'instruction':'Исправь перечисленные поля строго по schema. facts — изменения без id и created_at; ID назначает приложение. intelligence и sales_plan обязательны. Не копируй служебные поля памяти в ответ.'}
+            feedback = {'issue':'invalid_schema', 'fields':errors, 'instruction':'Исправь перечисленные поля строго по schema. facts — изменения без id и created_at; ID назначает приложение. intelligence, sales_plan и sales_plan.need_depth обязательны. Не копируй служебные поля памяти в ответ.'}
             continue
         for key, value in used.items():
             if isinstance(value, (int, float)): usage[key] = usage.get(key, 0) + value
@@ -52,7 +52,7 @@ async def _process_turn(session, provider, knowledge):
         if validation['status'] == 'blocked' and attempt == 0:
             feedback = {'issue':'blocked_phrase', 'checks':validation['issues'],
                         'previous_phrase':analysis.recommendation.suggestion,
-                        'instruction':'Исправь фразу, план и стратегию вместе. При offer_ready_stop_discovery/promised_offer_due/client_declined_diagnostics переходи к предложению без нового диагностического вопроса. При explain_and_limit_clarification допускается один критичный вопрос с объяснением через ALIGN_BEFORE_PRESENTATION. Нехватка базы — manager_note, а не проблема клиента. Не заменяй полезный ответ молчанием.'}
+                        'instruction':'Исправь фразу, план и стратегию вместе. При develop_need_before_offer развивай актуальную нераскрытую мотивацию/желаемое изменение; отсутствие базы не повод прерывать разговор. Не меняй оценку глубины без новых оснований лишь для обхода проверки. При dismissed_repeat не повторяй отклонённый совет: выбери полезный следующий шаг по реально произнесённым репликам менеджера и новым ответам клиента. При offer_ready_stop_discovery/promised_offer_due/client_declined_diagnostics переходи к предложению без нового диагностического вопроса. При explain_and_limit_clarification допускается один критичный вопрос с объяснением через ALIGN_BEFORE_PRESENTATION. Нехватка базы — manager_note, а не проблема клиента. Не заменяй полезный ответ молчанием.'}
             continue
         draft['recommendations'][-1]['validation_trace'] = trace
         usage['request_count'] = attempt+1

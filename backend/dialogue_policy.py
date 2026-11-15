@@ -26,6 +26,16 @@ def initial_state():
             'ready_to_buy': False, 'outcome': None}
 
 
+def spoken_turn_ids(session, rec):
+    """Only later actual speech can match a suggestion; feedback is not speech."""
+    turns = session.get('turns', [])
+    source = next((i for i,t in enumerate(turns) if t['id']==rec.get('turn_id')), None)
+    phrase = rec.get('suggestion', '').strip()
+    if source is None or not phrase:
+        return []
+    return [t['id'] for t in turns[source+1:] if t['role']=='manager' and t['text'].strip()==phrase]
+
+
 def conversation_signals(session):
     turns = session.get('turns', [])
     latest = turns[-1] if turns else {'role':'manager', 'text':''}
@@ -33,12 +43,12 @@ def conversation_signals(session):
     state = session.get('dialogue_state', {})
     refusal = bool(re.search(r'не хочу[^.!?]*отвеч|без (?:дальнейших |лишних )?вопрос|никаких[^.!?]*вопрос|не надо[^.!?]*вопрос|больше[^.!?]*не спраш', text))
     tired = bool(re.search(r'устал[^.!?]*вопрос|вс[её][^.!?]*вопрос|хватит[^.!?]*вопрос|можете уже рассказать|слишком много[^.!?]*вопрос', text))
-    offer = is_price_question(text) or bool(re.search(r'расскаж[^.!?]*программ|что[^.!?]*обучение|что конкретно[^.!?]*осво', text))
+    offer = is_price_question(text) or bool(re.search(r'(?:расскаж|покаж|пришл|дайте)[^.!?]*(?:программ|обучени|курс)|что[^.!?]*обучение|что конкретно[^.!?]*осво|(?:есть ли|как|сколько)[^.!?]*(?:куратор|практик|заняти|проверка заданий)', text))
     bridge_ids = {e['source_turn'] for e in state.get('events', []) if e['kind']=='offer_bridge_delivered'}
     # Suggestions count only after the manager actually says them.
     for rec in session.get('recommendations', []):
         if rec.get('strategy',{}).get('action')=='ALIGN_BEFORE_PRESENTATION':
-            bridge_ids.update(t['id'] for t in turns if t['role']=='manager' and t['text'].strip()==rec['suggestion'].strip())
+            bridge_ids.update(spoken_turn_ids(session, rec))
     bridge_index = max((i for i,t in enumerate(turns) if t['id'] in bridge_ids), default=-1)
     presented = {e['source_turn'] for e in state.get('events', []) if e['kind']=='presentation_delivered'}
     presentation_index = max((i for i,t in enumerate(turns) if t['id'] in presented), default=-1)
@@ -108,6 +118,7 @@ def update_state(session, events):
     # New corrections require a fresh confirmation before recommending a product.
     if any(f.get('replaces') and f['category'] in ('goal', 'problem', 'constraints') for f in session.get('_new_facts', [])):
         state['needs_confirmed'] = False
+        state['ready_to_buy'] = False
     return state
 
 
@@ -134,7 +145,7 @@ def guard_recommendation(session, rec, state):
         if len(state['price_requests']) > 1 and re.search(r'потом|позже|перейд[её]м|верн[её]мся|сначала.*(?:цел|задач|обсуд|вопрос)', rec['suggestion'], re.I):
             replace('ANSWER', 'Понимаю, вы хотите сначала узнать стоимость. Подтверждённой суммы у меня сейчас нет — её нужно уточнить, прежде чем продолжать подбор.',
                     'Клиент повторно запросил цену: повторный перенос разговора о стоимости скрыт.', 'no_repeated_price_deferral', 'price')
-    elif rec['action_type'] == 'PRESENT' and not (state['needs_confirmed'] or state['ready_to_buy'] or (plan and plan['readiness'] in ('READY_FOR_OFFER','READY_TO_BUY','NO_MORE_QUESTIONS'))):
+    elif rec['action_type'] == 'PRESENT' and not (state['needs_confirmed'] or state['ready_to_buy'] or (plan and (plan['readiness'] in ('READY_FOR_OFFER','READY_TO_BUY','NO_MORE_QUESTIONS') or conversation_signals(session)['offer_requested']))):
         goals = [f for f in session['facts'] if f['category'] == 'goal' and f['status'] == 'CONFIRMED']
         if goals:
             phrase = 'Правильно понимаю, основной результат, который вы хотите получить: ' + goals[-1]['value'][:350].rstrip('.?!') + '?'

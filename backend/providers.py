@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 import httpx
 from .models import Analysis, Fact, Advice, LABELS
 from .prompts import SYSTEM
-from .dialogue_policy import update_state, conversation_signals
+from .dialogue_policy import update_state, conversation_signals, spoken_turn_ids
 
 
 def model_context(session):
@@ -15,9 +15,14 @@ def model_context(session):
     # timings and validation traces inside recommendations.
     context = {k: v for k, v in session.items() if k not in ('recommendations', 'analysis_error')}
     context['recommendations'] = [
-        {k: r[k] for k in ('turn_id','action_type','suggestion','strategy','feedback') if k in r}
+        {**{k: r[k] for k in ('turn_id','action_type','suggestion','strategy','feedback') if k in r},
+         'source_type':'ai_suggestion', 'spoken_turn_ids':spoken_turn_ids(session,r)}
         for r in session.get('recommendations', [])[-3:]
     ]
+    context['dialogue_source_rule'] = ('Источник истины — turns. recommendations — советы, не произнесённые реплики. '
+        'spoken_turn_ids отмечает только дословные совпадения после выдачи совета; перефразирование оценивай по turns. '
+        'Если менеджер выбрал другой вопрос, презентацию или аргумент, продолжай фактический разговор, '
+        'пересмотри прежний sales_plan по новым ответам, сохраняя инициативу продажи. Feedback не подтверждает произнесение.')
     if session.get('turns'):
         context['dialogue_state'] = update_state(session, [])
         context['conversation_signals'] = conversation_signals({**session, 'dialogue_state':context['dialogue_state']})
@@ -100,6 +105,8 @@ class CompatibleProvider:
                     raise ValueError('Missing intelligence result')
                 if session.get('turns') and analysis.intelligence.sales_plan is None:
                     raise ValueError('Missing sales plan')
+                if session.get('turns') and analysis.intelligence.sales_plan.need_depth is None:
+                    raise ValueError('Missing sales_plan.need_depth')
         except ValueError as exc:
             exc.usage = data.get('usage', {})
             raise

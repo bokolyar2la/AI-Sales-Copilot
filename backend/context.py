@@ -52,8 +52,7 @@ def _apply_analysis(session, analysis, knowledge):
     rec = guard_recommendation(working, rec, state)
     session['dialogue_state'] = state
     rejected = [r for r in session['recommendations'] if r.get('feedback') in ('rejected', 'hidden')]
-    if any(r['suggestion'] == rec['suggestion'] for r in rejected):
-        rec.update(action_type='NO_ACTION', suggestion='', reason='Этот совет уже отклонён или скрыт. Дождитесь новых сведений.')
+    if rec['suggestion'] and any(r['suggestion'] == rec['suggestion'] for r in rejected):
         rec.setdefault('policy_flags', []).append('dismissed_repeat')
     rec = validate_recommendation(session, analysis, rec, knowledge)
     rec.update(id=uid(), created_at=now(), feedback=None, turn_id=latest['id'])

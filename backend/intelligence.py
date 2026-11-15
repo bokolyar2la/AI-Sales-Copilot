@@ -44,6 +44,18 @@ def validate_plan(session, analysis, rec):
     issues = []
     signals = conversation_signals(session)
     action = analysis.intelligence.strategy.action
+    state = session.get('dialogue_state', {})
+    explicit_next_step = (signals['offer_requested'] or signals['client_declines_questions']
+        or signals['offer_due_after_bridge'] or state.get('ready_to_buy')
+        or state.get('outcome') in ('declined','unavailable','next_step_agreed'))
+    needs_development = plan.need_depth in ('SURFACE_INTEREST','GENERAL_GOAL') or plan.priority_thread is not None
+    if plan.priority_thread and not plan.need_evidence_ids:
+        issues.append('thread_without_client_evidence')
+    if session['turns'][-1]['role']=='client' and needs_development and not explicit_next_step:
+        if (plan.readiness in ('READY_FOR_OFFER','READY_TO_BUY') or
+            action in ('PRESENTATION','SELECT_SOLUTION','VALUE_BUILDING','FOLLOW_UP','CLOSING','NO_ACTION') or
+            rec['action_type'] in ('PRESENT','NEXT_STEP')):
+            issues.append('develop_need_before_offer')
     if rec['action_type']=='NO_ACTION':
         return issues
     diagnostic = action in DIAGNOSTIC or (plan.question is not None and action not in ('CLOSING','FOLLOW_UP','PRESENTATION','VALUE_BUILDING'))
@@ -65,7 +77,7 @@ def validate_plan(session, analysis, rec):
             if any(x['topic']==q.topic and x['role']=='manager' and x['status']=='answered' for x in session.get('dialogue_state',{}).get('questions',[])) and not any(f.replaces for f in analysis.facts):
                 issues.append('answered_topic_repeat')
             essential = q.essential_now and any(g.topic==q.topic for g in plan.critical_gaps)
-            if (signals['client_tired_of_questions'] or signals['manager_questions_since_offer']>=4) and not essential:
+            if signals['client_tired_of_questions'] and not essential:
                 issues.append('optional_question_after_long_discovery')
             if signals['offer_requested'] and (not essential or action!='ALIGN_BEFORE_PRESENTATION'):
                 issues.append('explain_and_limit_clarification')
@@ -79,7 +91,7 @@ def validate_plan(session, analysis, rec):
         issues.append('bridge_without_offer_commitment')
     if rec['action_type']=='SUMMARIZE' and session.get('dialogue_state',{}).get('needs_confirmed'):
         issues.append('repeated_need_confirmation')
-    if rec['action_type']=='PRESENT' and plan.readiness=='NEEDS_CLARIFICATION':
+    if rec['action_type']=='PRESENT' and plan.readiness=='NEEDS_CLARIFICATION' and not explicit_next_step:
         issues.append('presentation_before_selection')
     if signals['offer_requested'] and action=='NO_ACTION':
         issues.append('offer_request_unanswered')
@@ -154,7 +166,7 @@ def validate_recommendation(session, analysis, rec, knowledge):
     """Hard checks are independent of the model's own self-review."""
     result = deepcopy(rec)
     issues = list(rec.get('policy_flags', []))
-    blocked = []
+    blocked = ['dismissed_repeat'] if 'dismissed_repeat' in issues else []
     phrase = result['suggestion']
     if analysis.intelligence:
         blocked.extend(validate_plan(session, analysis, rec))

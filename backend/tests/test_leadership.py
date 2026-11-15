@@ -67,8 +67,8 @@ def test_ready_plan_cannot_ask_another_discovery_question():
     assert 'offer_ready_stop_discovery' in issues(s)
 
 
-def test_optional_question_after_four_is_blocked():
-    s=session('Да, всё так')
+def test_optional_question_when_client_is_tired_is_blocked():
+    s=session('Устал от вопросов')
     s['turns']=[{'id':str(i),'role':'manager','text':'Вопрос '+str(i)+'?'} for i in range(4)]+s['turns']
     a=output(s,strategy='DISCOVERY',action='QUESTION'); a.intelligence.sales_plan.critical_gaps=[]
     a.intelligence.sales_plan.question.essential_now=False

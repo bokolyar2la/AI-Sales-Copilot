@@ -65,6 +65,8 @@ class QuestionValue(StrictModel):
     essential_now: bool
 
 class SalesPlan(StrictModel):
+    need_depth: Literal['SURFACE_INTEREST', 'GENERAL_GOAL', 'MOTIVE_OR_CHANGE', 'PRODUCT_LINKED'] | None = Field(default=None, description='Глубина понимания актуальной потребности, не обязательные этапы. Общая цель не раскрывает её причин; конкретная проблема и желаемое изменение могут быть достаточны без отдельного вопроса о мотивации.')
+    priority_thread: SelectionGap | None = Field(default=None, description='Одна значимая нераскрытая тема из фактической речи клиента и её влияние на аргумент/подбор; null, если сейчас развивать нечего. Источники — need_evidence_ids. Не копия памяти.')
     commercial_goal: str = Field(min_length=1, max_length=300)
     next_goal: str = Field(min_length=1, max_length=300)
     significant_needs: list[str] = Field(max_length=4)

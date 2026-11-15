@@ -1,0 +1,62 @@
+{
+  "supplementary": true,
+  "included_in_paired_statistics": false,
+  "sqlite_reopened_equal": true,
+  "diagnostics": {
+    "trace_id": "9e8a2ec9-e775-49c5-bd92-99138debbd9e",
+    "stages_ms": {
+      "lock_wait": 0.003,
+      "storage_save": 14.122,
+      "initial_save": 3.839,
+      "knowledge_prepare": 0.025,
+      "context_copy": 0.032,
+      "context_prepare": 7.48,
+      "provider_requests": 5965.137,
+      "schema_validation": 0.155,
+      "validation": 1.448,
+      "engine": 5974.42,
+      "result_save": 10.316,
+      "server_response_ready": 5991.664
+    },
+    "calls": [
+      {
+        "stream": false,
+        "model": "deepseek-flash",
+        "thinking": "disabled",
+        "ttft_ms": null,
+        "first_content_ms": null,
+        "content_generation_ms": null,
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "status": "ok",
+        "usage": {
+          "prompt_tokens": 7471,
+          "completion_tokens": 965,
+          "total_tokens": 8436,
+          "prompt_tokens_details": {
+            "cached_tokens": 3840
+          },
+          "prompt_cache_hit_tokens": 3840,
+          "prompt_cache_miss_tokens": 3631
+        },
+        "request_ms": 5965.15
+      }
+    ],
+    "validations": [
+      {
+        "attempt": 1,
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-sales-leadership-1"
+      }
+    ],
+    "request_count": 1,
+    "retry_count": 0,
+    "retry_request_ms": 0
+  },
+  "validation": {
+    "status": "passed",
+    "issues": [],
+    "checks_version": "v2-sales-leadership-1"
+  }
+}

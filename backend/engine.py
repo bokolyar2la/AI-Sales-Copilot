@@ -1,14 +1,24 @@
 """One complete turn, at most one bounded correction, atomic memory commit."""
 from copy import deepcopy
 from .context import apply_analysis
+from .diagnostics import capture, timed, snapshot, record_validation
 
 
 async def process_turn(session, provider, knowledge):
+    with capture() as trace:
+        with timed('engine'):
+            result = await _process_turn(session, provider, knowledge)
+        session['recommendations'][-1]['diagnostics'] = snapshot(trace)
+        return result
+
+
+async def _process_turn(session, provider, knowledge):
     usage = {}
     trace = []
     feedback = None
     for attempt in range(2):
-        request = deepcopy(session)
+        with timed('context_copy'):
+            request = deepcopy(session)
         if feedback:
             request['validation_feedback'] = feedback
         try:
@@ -18,6 +28,7 @@ async def process_turn(session, provider, knowledge):
             for key, value in used.items():
                 if isinstance(value, (int, float)): usage[key] = usage.get(key, 0) + value
             trace.append({'attempt':attempt+1, 'status':'invalid_schema'})
+            record_validation(trace[-1])
             if attempt: raise
             errors = [{'path':list(e['loc']), 'type':e['type']} for e in exc.errors(include_input=False)][:12] if hasattr(exc,'errors') else []
             feedback = {'issue':'invalid_schema', 'fields':errors, 'instruction':'Исправь перечисленные поля строго по schema. facts — изменения без id и created_at; ID назначает приложение. intelligence и sales_plan обязательны. Не копируй служебные поля памяти в ответ.'}
@@ -26,15 +37,18 @@ async def process_turn(session, provider, knowledge):
             if isinstance(value, (int, float)): usage[key] = usage.get(key, 0) + value
         draft = deepcopy(session)
         try:
-            apply_analysis(draft, analysis, knowledge)
+            with timed('validation'):
+                apply_analysis(draft, analysis, knowledge)
         except ValueError as exc:
             trace.append({'attempt':attempt+1, 'status':'invalid_sources_or_memory_delta'})
+            record_validation(trace[-1])
             if attempt: raise
             feedback = {'issue':'invalid_sources_or_memory_delta', 'check':str(exc), 'latest_turn':session['turns'][-1],
                         'instruction':'facts и events — только из последней реплики; quote точная непрерывная подстрока, без изменения пунктуации. Если последняя реплика менеджера, facts=[] и hypotheses=[]. replaces — ID факта ТОЙ ЖЕ category, не ID гипотезы. Пересмотр гипотезы через intelligence.hypotheses. Проверяй роль источника.'}
             continue
         validation = draft['recommendations'][-1]['validation']
         trace.append({'attempt':attempt+1, **validation})
+        record_validation(trace[-1])
         if validation['status'] == 'blocked' and attempt == 0:
             feedback = {'issue':'blocked_phrase', 'checks':validation['issues'],
                         'previous_phrase':analysis.recommendation.suggestion,

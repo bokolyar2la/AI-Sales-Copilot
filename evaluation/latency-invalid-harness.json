@@ -1,0 +1,4023 @@
+{
+  "method": "16 paired synthetic checkpoints; balanced AB/BA; sequential; same model/prompt/budget; thinking disabled in both; Edge headless 1440x1000",
+  "results": [
+    {
+      "case": "vague",
+      "mode": "current",
+      "expect": "Один полезный вопрос о реальной ситуации, не презентация наугад.",
+      "timing": {
+        "trace_id": "3b88e271-6d2c-4038-85f0-3a7f4745faac",
+        "api_ms": 5599.300000011921,
+        "response_json_ms": 0.5,
+        "outcome": "hint",
+        "server": {
+          "trace_id": "3b88e271-6d2c-4038-85f0-3a7f4745faac",
+          "stages_ms": {
+            "lock_wait": 0.009,
+            "storage_save": 15.511,
+            "knowledge_prepare": 0.02,
+            "context_copy": 0.078,
+            "context_prepare": 9.019,
+            "provider_requests": 5565.308,
+            "schema_validation": 0.14,
+            "validation": 1.504,
+            "engine": 5576.237,
+            "server_response_ready": 5594.851
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7341,
+                "completion_tokens": 839,
+                "total_tokens": 8180,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3501
+              },
+              "request_ms": 5565.32
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "display_proxy_ms": 5611.600000023842,
+        "render_wait_ms": 12.300000011920929,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "QUESTION",
+        "suggestion": "Понимаю, реклама часто цепляет, но без задачи сложно понять, нужно ли это вам. Скажите, с какими таблицами или отчётами вы сейчас сталкиваетесь в работе — и что в них даётся тяжелее всего?",
+        "reason": "Клиент сам говорит, что не видит смысла в обучении — это не отказ, а отсутствие связи с задачей. Один вопрос о реальной рабочей ситуации покажет, есть ли у него боль, под которую подходит программа, и различает ли она базовый или продвинутый вариант.",
+        "evidence_ids": [
+          "ccd4e2ec-1ead-4922-aa8c-e60d0e7db6db"
+        ],
+        "target_gap": "situation",
+        "confidence": 0.6,
+        "policy_flags": [],
+        "strategy": {
+          "action": "DISCOVERY",
+          "objective": "Выяснить, есть ли у клиента реальная рабочая задача с таблицами, чтобы связать обучение с ней",
+          "reason": "Клиент не видит ценности обучения; без понимания его рабочей ситуации нельзя ни подобрать программу, ни аргументировать пользу.",
+          "evidence_ids": [
+            "ccd4e2ec-1ead-4922-aa8c-e60d0e7db6db"
+          ],
+          "label": "Выявление задачи"
+        },
+        "manager_note": "Проверить перед конкретным предложением: какой уровень программы соответствует задачам клиента (базовая «Таблицы для работы» или «Автоматизация отчётности»), формат записей и полную стоимость (12000 или 24000 руб.). Не обещать условия, не указанные в approved_claims.",
+        "sales_plan": {
+          "commercial_goal": "Помочь клиенту увидеть, нужно ли ему обучение Excel, и при наличии задачи подобрать подходящую программу",
+          "next_goal": "Понять, сталкивается ли клиент с таблицами/отчётами в работе и что вызывает трудности",
+          "significant_needs": [],
+          "need_evidence_ids": [],
+          "critical_gaps": [
+            {
+              "topic": "рабочая ситуация с таблицами",
+              "impact": "Если есть регулярные отчёты и ручная работа — подходит «Автоматизация отчётности»; если задачи простые или их нет — базовый вариант или отказ от обучения."
+            }
+          ],
+          "useful_gaps": [
+            "опыт работы с Excel",
+            "цель обучения"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "рабочая ситуация с таблицами",
+            "new_information": "Есть ли у клиента реальные задачи с таблицами и отчётами и в чём трудность",
+            "decision_impact": "Определяет, нужен ли базовый курс, продвинутый или обучение не требуется",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать названную задачу с подходящим вариантом программы и объяснить пользу"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "9114ad33-8723-407b-8363-827918a5d3fe",
+        "created_at": "2026-11-15T11:42:39.721607+00:00",
+        "feedback": null,
+        "turn_id": "ccd4e2ec-1ead-4922-aa8c-e60d0e7db6db",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "3b88e271-6d2c-4038-85f0-3a7f4745faac",
+          "stages_ms": {
+            "lock_wait": 0.009,
+            "storage_save": 6.252,
+            "knowledge_prepare": 0.02,
+            "context_copy": 0.078,
+            "context_prepare": 9.019,
+            "provider_requests": 5565.308,
+            "schema_validation": 0.14,
+            "validation": 1.504,
+            "engine": 5576.237
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7341,
+                "completion_tokens": 839,
+                "total_tokens": 8180,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3501
+              },
+              "request_ms": 5565.32
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "provider": "compatible",
+        "latency_ms": 5576,
+        "usage": {
+          "prompt_tokens": 7341,
+          "completion_tokens": 839,
+          "total_tokens": 8180,
+          "prompt_cache_hit_tokens": 3840,
+          "prompt_cache_miss_tokens": 3501,
+          "request_count": 1
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "ccd4e2ec-1ead-4922-aa8c-e60d0e7db6db",
+          "role": "client",
+          "text": "Посмотрел рекламу Excel, но пока не понимаю, зачем мне обучение.",
+          "request_id": "ed8e9984-d6cc-442f-8ec9-354b8b35e153",
+          "created_at": "2026-11-15T11:42:34.139385+00:00"
+        }
+      ]
+    },
+    {
+      "case": "vague",
+      "mode": "stream_off",
+      "expect": "Один полезный вопрос о реальной ситуации, не презентация наугад.",
+      "timing": {
+        "trace_id": "867dd1fe-3fd5-4b4a-af04-e3710770244a",
+        "api_ms": 4944.299999952316,
+        "response_json_ms": 0.3999999761581421,
+        "outcome": "hint",
+        "server": {
+          "trace_id": "867dd1fe-3fd5-4b4a-af04-e3710770244a",
+          "stages_ms": {
+            "lock_wait": 0.004,
+            "storage_save": 13.918,
+            "knowledge_prepare": 0.035,
+            "context_copy": 0.087,
+            "context_prepare": 5.347,
+            "provider_requests": 4917.777,
+            "schema_validation": 0.126,
+            "validation": 0.328,
+            "engine": 4923.881,
+            "server_response_ready": 4940.418
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1033.076,
+              "first_content_ms": 1033.083,
+              "content_generation_ms": 3882.798,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7333,
+                "completion_tokens": 917,
+                "total_tokens": 8250,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3493
+              },
+              "request_ms": 4917.789
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "display_proxy_ms": 4950.5,
+        "render_wait_ms": 6.200000047683716,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "QUESTION",
+        "suggestion": "Понятно, спасибо, что честно сказали. Чтобы не рассказывать лишнего: с какими задачами вы сейчас сталкиваетесь в работе или учёбе — например, таблицы, отчёты, расчёты?",
+        "reason": "Клиент сам говорит, что не видит смысла в обучении; без понимания его текущих задач невозможно показать ценность. Один открытый вопрос о задачах даст основание для персонального аргумента.",
+        "evidence_ids": [
+          "56621c8b-7527-4f60-8027-55ebced07ba6"
+        ],
+        "target_gap": "situation",
+        "confidence": 0.6,
+        "policy_flags": [],
+        "strategy": {
+          "action": "DISCOVERY",
+          "objective": "Выяснить текущие задачи клиента, чтобы связать обучение с его реальной ситуацией",
+          "reason": "Клиент не видит цели обучения; нужно узнать контекст, а не презентовать программу вслепую.",
+          "evidence_ids": [
+            "56621c8b-7527-4f60-8027-55ebced07ba6"
+          ],
+          "label": "Выявление задачи"
+        },
+        "manager_note": "Проверить перед конкретным предложением: какой уровень/содержание подходит под задачи клиента, формат записей и полную стоимость (12000 или 24000 руб.). Не называть программу до понимания задач клиента.",
+        "sales_plan": {
+          "commercial_goal": "Помочь клиенту увидеть практический смысл обучения Excel и подвести к подходящему варианту",
+          "next_goal": "Понять, с какими задачами клиент сталкивается и где Excel мог бы пригодиться",
+          "significant_needs": [],
+          "need_evidence_ids": [
+            "56621c8b-7527-4f60-8027-55ebced07ba6"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "situation",
+              "impact": "Если задачи связаны с простыми таблицами — подойдёт базовая программа; если с отчётностью и объединением файлов — вариант автоматизации."
+            }
+          ],
+          "useful_gaps": [
+            "experience",
+            "goal"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "situation",
+            "new_information": "Текущие рабочие или учебные задачи клиента, где используется Excel",
+            "decision_impact": "Определяет, показывать базовую программу или вариант с автоматизацией отчётности",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать задачи клиента с подходящим вариантом программы и объяснить пользу"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "44aa99c5-849b-49e7-bf6e-4b63d42721b0",
+        "created_at": "2026-11-15T11:42:44.870777+00:00",
+        "feedback": null,
+        "turn_id": "56621c8b-7527-4f60-8027-55ebced07ba6",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "867dd1fe-3fd5-4b4a-af04-e3710770244a",
+          "stages_ms": {
+            "lock_wait": 0.004,
+            "storage_save": 8.008,
+            "knowledge_prepare": 0.035,
+            "context_copy": 0.087,
+            "context_prepare": 5.347,
+            "provider_requests": 4917.777,
+            "schema_validation": 0.126,
+            "validation": 0.328,
+            "engine": 4923.881
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1033.076,
+              "first_content_ms": 1033.083,
+              "content_generation_ms": 3882.798,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7333,
+                "completion_tokens": 917,
+                "total_tokens": 8250,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3493
+              },
+              "request_ms": 4917.789
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "provider": "compatible",
+        "latency_ms": 4924,
+        "usage": {
+          "prompt_tokens": 7333,
+          "completion_tokens": 917,
+          "total_tokens": 8250,
+          "prompt_cache_hit_tokens": 3840,
+          "prompt_cache_miss_tokens": 3493,
+          "request_count": 1
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "56621c8b-7527-4f60-8027-55ebced07ba6",
+          "role": "client",
+          "text": "Посмотрел рекламу Excel, но пока не понимаю, зачем мне обучение.",
+          "request_id": "196893bd-f06e-48a5-8136-8de01b0ee146",
+          "created_at": "2026-11-15T11:42:39.938663+00:00"
+        }
+      ]
+    },
+    {
+      "case": "novice",
+      "mode": "stream_off",
+      "expect": "Связать самостоятельность с задачей; не спрашивать повторно, хочет ли сам делать отчёт.",
+      "timing": {
+        "trace_id": "ed01f139-ce9b-4a75-8530-0b9ead4177c0",
+        "api_ms": 11215,
+        "response_json_ms": 0.3999999761581421,
+        "outcome": "hint",
+        "server": {
+          "trace_id": "ed01f139-ce9b-4a75-8530-0b9ead4177c0",
+          "stages_ms": {
+            "lock_wait": 0.007,
+            "storage_save": 14.873,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.096,
+            "context_prepare": 21.7,
+            "provider_requests": 11166.286,
+            "schema_validation": 3.33,
+            "validation": 0.349,
+            "engine": 11193.676,
+            "server_response_ready": 11210.92
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1130.223,
+              "first_content_ms": 1130.229,
+              "content_generation_ms": 4365.221,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7357,
+                "completion_tokens": 1061,
+                "total_tokens": 8418,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3517
+              },
+              "request_ms": 5497.25
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1213.97,
+              "first_content_ms": 1213.977,
+              "content_generation_ms": 4452.883,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7447,
+                "completion_tokens": 1236,
+                "total_tokens": 8683,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3223
+              },
+              "request_ms": 5669.054
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5669.054
+        },
+        "display_proxy_ms": 11219.600000023842,
+        "render_wait_ms": 4.600000023841858,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "QUESTION",
+        "suggestion": "Понял вас: отчёт нужен регулярно, а зависимость от коллег создаёт неловкость. Чтобы подобрать подходящий уровень, уточните: отчёт о посещениях — это в основном подсчёты и сводные таблицы по готовым выгрузкам, или ещё нужно объединять несколько однотипных файлов?",
+        "reason": "Задача и уровень новичка известны, но выбор между базовой программой и автоматизацией отчётности зависит от того, нужны ли сводные таблицы и объединение файлов.",
+        "evidence_ids": [
+          "27c6316e-ac64-4867-9bff-4bfaf47da60e"
+        ],
+        "target_gap": "problem",
+        "confidence": 0.7,
+        "policy_flags": [],
+        "strategy": {
+          "action": "DISCOVERY",
+          "objective": "Понять сложность отчёта, чтобы выбрать между базовой программой и автоматизацией",
+          "reason": "Клиент новичок, задача — отчёт о посещениях; различие в сложности отчёта меняет подбор программы.",
+          "evidence_ids": [
+            "27c6316e-ac64-4867-9bff-4bfaf47da60e"
+          ],
+          "label": "Выявление задачи"
+        },
+        "manager_note": "Проверить перед предложением: подходит ли базовая программа «Таблицы для работы» (12000 руб.) или «Автоматизация отчётности» (24000 руб.) под реальный формат отчёта о посещениях; уточнить полную стоимость и формат записей.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу по Excel, чтобы клиент сам делал отчёт о посещениях",
+          "next_goal": "Выяснить, нужны ли сводные таблицы и объединение файлов",
+          "significant_needs": [
+            "Самостоятельно делать отчёт о посещениях",
+            "Не зависеть от помощи коллег"
+          ],
+          "need_evidence_ids": [
+            "27c6316e-ac64-4867-9bff-4bfaf47da60e"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "Сложность отчёта",
+              "impact": "Простые подсчёты и оформление — базовая программа; сводные таблицы и объединение однотипных файлов — автоматизация отчётности."
+            }
+          ],
+          "useful_gaps": [
+            "Сроки",
+            "Бюджет"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "Сложность отчёта",
+            "new_information": "Нужны ли сводные таблицы и объединение нескольких файлов или достаточно простых подсчётов",
+            "decision_impact": "Определяет выбор между базовой программой и автоматизацией отчётности",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать сложность отчёта с подходящей программой и назвать стоимость"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "ba51b6f2-68cb-4030-ad48-00dfca27129d",
+        "created_at": "2026-11-15T11:42:56.232369+00:00",
+        "feedback": null,
+        "turn_id": "27c6316e-ac64-4867-9bff-4bfaf47da60e",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "invalid_schema"
+          },
+          {
+            "attempt": 2,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "ed01f139-ce9b-4a75-8530-0b9ead4177c0",
+          "stages_ms": {
+            "lock_wait": 0.007,
+            "storage_save": 4.378,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.096,
+            "context_prepare": 21.7,
+            "provider_requests": 11166.286,
+            "schema_validation": 3.33,
+            "validation": 0.349,
+            "engine": 11193.676
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1130.223,
+              "first_content_ms": 1130.229,
+              "content_generation_ms": 4365.221,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7357,
+                "completion_tokens": 1061,
+                "total_tokens": 8418,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3517
+              },
+              "request_ms": 5497.25
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1213.97,
+              "first_content_ms": 1213.977,
+              "content_generation_ms": 4452.883,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7447,
+                "completion_tokens": 1236,
+                "total_tokens": 8683,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3223
+              },
+              "request_ms": 5669.054
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5669.054
+        },
+        "provider": "compatible",
+        "latency_ms": 11194,
+        "usage": {
+          "prompt_tokens": 14804,
+          "completion_tokens": 2297,
+          "total_tokens": 17101,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6740,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "27c6316e-ac64-4867-9bff-4bfaf47da60e",
+          "role": "client",
+          "text": "Я администратор. Руководитель просит отчёт о посещениях, а я почти не знаю Excel и прошу коллег помочь. Неловко каждый раз.",
+          "request_id": "5f1c0689-1835-4cee-8200-9e99a0aff09f",
+          "created_at": "2026-11-15T11:42:45.034086+00:00"
+        }
+      ]
+    },
+    {
+      "case": "novice",
+      "mode": "current",
+      "expect": "Связать самостоятельность с задачей; не спрашивать повторно, хочет ли сам делать отчёт.",
+      "timing": {
+        "trace_id": "735680e6-06ae-46b9-bb51-7ef26161b4de",
+        "api_ms": 5611.699999988079,
+        "response_json_ms": 0.3999999761581421,
+        "outcome": "hint",
+        "server": {
+          "trace_id": "735680e6-06ae-46b9-bb51-7ef26161b4de",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 17.492,
+            "knowledge_prepare": 0.019,
+            "context_copy": 0.076,
+            "context_prepare": 5.418,
+            "provider_requests": 5582.378,
+            "schema_validation": 0.121,
+            "validation": 0.325,
+            "engine": 5588.479,
+            "server_response_ready": 5608.082
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7360,
+                "completion_tokens": 1265,
+                "total_tokens": 8625,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3520
+              },
+              "request_ms": 5582.39
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "display_proxy_ms": 5617.600000023842,
+        "render_wait_ms": 5.900000035762787,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "QUESTION",
+        "suggestion": "Понял вас: отчёт нужен регулярно, а просить коллег каждый раз неудобно. Чтобы подобрать подходящий вариант, уточните: отчёт о посещениях — это в основном подсчёт и оформление таблицы или ещё нужны сводные данные и объединение нескольких файлов?",
+        "reason": "Задача и уровень известны, но выбор между базовой программой и автоматизацией отчётности зависит от сложности отчёта. Один вопрос различает реальные варианты.",
+        "evidence_ids": [
+          "e6d4f55b-394f-4cd7-9ff7-dc3827b0b65d"
+        ],
+        "target_gap": "problem",
+        "confidence": 0.7,
+        "policy_flags": [],
+        "strategy": {
+          "action": "DISCOVERY",
+          "objective": "Понять сложность отчёта о посещениях, чтобы выбрать между базовой программой и автоматизацией",
+          "reason": "Клиент назвал задачу, уровень и неудобство; осталась развилка по сложности отчёта, которая меняет подбор программы.",
+          "evidence_ids": [
+            "e6d4f55b-394f-4cd7-9ff7-dc3827b0b65d"
+          ],
+          "label": "Выявление задачи"
+        },
+        "manager_note": "Проверить перед предложением: какая программа подходит по сложности отчёта, формат записей и полную стоимость (12000 или 24000 руб.).",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу по Excel под регулярный отчёт о посещениях",
+          "next_goal": "Выяснить сложность отчёта: простая таблица или сводные данные и объединение файлов",
+          "significant_needs": [
+            "Регулярно готовить отчёт о посещениях для руководителя",
+            "Делать это самостоятельно, без помощи коллег"
+          ],
+          "need_evidence_ids": [
+            "e6d4f55b-394f-4cd7-9ff7-dc3827b0b65d"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "сложность отчёта",
+              "impact": "Простая таблица с формулами — базовая программа; сводные данные и объединение однотипных файлов — автоматизация отчётности."
+            }
+          ],
+          "useful_gaps": [
+            "сроки",
+            "формат обучения"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "сложность отчёта",
+            "new_information": "Нужны ли сводные данные и объединение нескольких файлов или достаточно простой таблицы с подсчётом",
+            "decision_impact": "Определяет выбор между базовой программой и автоматизацией отчётности",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать названную задачу с подходящей программой и назвать её стоимость"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "6361327e-a4fc-4662-afdb-844fe70474d3",
+        "created_at": "2026-11-15T11:43:02.021459+00:00",
+        "feedback": null,
+        "turn_id": "e6d4f55b-394f-4cd7-9ff7-dc3827b0b65d",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "735680e6-06ae-46b9-bb51-7ef26161b4de",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 7.143,
+            "knowledge_prepare": 0.019,
+            "context_copy": 0.076,
+            "context_prepare": 5.418,
+            "provider_requests": 5582.378,
+            "schema_validation": 0.121,
+            "validation": 0.325,
+            "engine": 5588.479
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7360,
+                "completion_tokens": 1265,
+                "total_tokens": 8625,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3520
+              },
+              "request_ms": 5582.39
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "provider": "compatible",
+        "latency_ms": 5589,
+        "usage": {
+          "prompt_tokens": 7360,
+          "completion_tokens": 1265,
+          "total_tokens": 8625,
+          "prompt_cache_hit_tokens": 3840,
+          "prompt_cache_miss_tokens": 3520,
+          "request_count": 1
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "e6d4f55b-394f-4cd7-9ff7-dc3827b0b65d",
+          "role": "client",
+          "text": "Я администратор. Руководитель просит отчёт о посещениях, а я почти не знаю Excel и прошу коллег помочь. Неловко каждый раз.",
+          "request_id": "636680e6-becf-4448-af0f-18c1e4fc4dba",
+          "created_at": "2026-11-15T11:42:56.425775+00:00"
+        }
+      ]
+    },
+    {
+      "case": "automation",
+      "mode": "current",
+      "expect": "Объяснить механизм применения к задаче; не гарантировать экономию часов.",
+      "timing": {
+        "trace_id": "9a532c04-81aa-4a98-8fb0-80df7a8d76aa",
+        "api_ms": 11696.900000035763,
+        "response_json_ms": 0.6000000238418579,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "9a532c04-81aa-4a98-8fb0-80df7a8d76aa",
+          "stages_ms": {
+            "lock_wait": 0.004,
+            "storage_save": 11.589,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.083,
+            "context_prepare": 9.135,
+            "provider_requests": 11666.876,
+            "schema_validation": 0.267,
+            "validation": 2.337,
+            "engine": 11679.003,
+            "server_response_ready": 11692.854
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7367,
+                "completion_tokens": 1155,
+                "total_tokens": 8522,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3527
+              },
+              "request_ms": 5561.812
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7579,
+                "completion_tokens": 1179,
+                "total_tokens": 8758,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3355
+              },
+              "request_ms": 6105.084
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6105.084
+        },
+        "display_proxy_ms": 11705.5,
+        "render_wait_ms": 8.599999964237213,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "19534201-3e3b-4443-96d6-973d4ab313f6"
+        ],
+        "target_gap": "",
+        "confidence": 0.8,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "19534201-3e3b-4443-96d6-973d4ab313f6"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед конкретным предложением: подходит ли уровень «Автоматизация отчётности» под текущий опыт клиента в Excel, есть ли в программе практика на его типе файлов, формат записей и полная стоимость 24000 рублей. Не обещать разбор его файлов или конкретный результат без подтверждения.",
+        "sales_plan": {
+          "commercial_goal": "Подвести к выбору программы «Автоматизация отчётности» под задачу сбора данных из однотипных файлов",
+          "next_goal": "Получить отклик клиента на связь программы с его задачей и обсудить формат обучения",
+          "significant_needs": [
+            "Сократить еженедельное ручное копирование строк из восьми однотипных файлов",
+            "Снизить количество ошибок при переносе данных"
+          ],
+          "need_evidence_ids": [
+            "19534201-3e3b-4443-96d6-973d4ab313f6"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Текущий уровень работы в Excel",
+            "Есть ли опыт с формулами"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "PRESENTATION",
+          "after_answer_goal": "Рассказать, как устроено обучение и что нужно для старта, если клиент проявит интерес"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "0a436fdd-bac5-4393-914b-020ba6fff028",
+        "created_at": "2026-11-15T11:43:13.938124+00:00",
+        "feedback": null,
+        "turn_id": "19534201-3e3b-4443-96d6-973d4ab313f6",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "9a532c04-81aa-4a98-8fb0-80df7a8d76aa",
+          "stages_ms": {
+            "lock_wait": 0.004,
+            "storage_save": 4.74,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.083,
+            "context_prepare": 9.135,
+            "provider_requests": 11666.876,
+            "schema_validation": 0.267,
+            "validation": 2.337,
+            "engine": 11679.003
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7367,
+                "completion_tokens": 1155,
+                "total_tokens": 8522,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3527
+              },
+              "request_ms": 5561.812
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7579,
+                "completion_tokens": 1179,
+                "total_tokens": 8758,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3355
+              },
+              "request_ms": 6105.084
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6105.084
+        },
+        "provider": "compatible",
+        "latency_ms": 11679,
+        "usage": {
+          "prompt_tokens": 14946,
+          "completion_tokens": 2334,
+          "total_tokens": 17280,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6882,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "19534201-3e3b-4443-96d6-973d4ab313f6",
+          "role": "client",
+          "text": "Каждую неделю копирую строки из восьми однотипных файлов. Шесть часов трачу и ошибки исправляю вечером. Как обучение поможет?",
+          "request_id": "5e51bd3a-ac4e-44ae-8eac-0822f1daa4b6",
+          "created_at": "2026-11-15T11:43:02.254408+00:00"
+        }
+      ]
+    },
+    {
+      "case": "automation",
+      "mode": "stream_off",
+      "expect": "Объяснить механизм применения к задаче; не гарантировать экономию часов.",
+      "timing": {
+        "trace_id": "c90d638c-7efb-4a87-b0a2-6c67bd16b48e",
+        "api_ms": 11987.099999964237,
+        "response_json_ms": 0.3999999761581421,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "c90d638c-7efb-4a87-b0a2-6c67bd16b48e",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 14.522,
+            "knowledge_prepare": 0.094,
+            "context_copy": 0.194,
+            "context_prepare": 10.636,
+            "provider_requests": 11954.6,
+            "schema_validation": 0.27,
+            "validation": 0.713,
+            "engine": 11966.79,
+            "server_response_ready": 11983.76
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1146.513,
+              "first_content_ms": 1146.523,
+              "content_generation_ms": 4738.997,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7361,
+                "completion_tokens": 1254,
+                "total_tokens": 8615,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3521
+              },
+              "request_ms": 5887.105
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1399.007,
+              "first_content_ms": 1399.013,
+              "content_generation_ms": 4666.896,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7627,
+                "completion_tokens": 1239,
+                "total_tokens": 8866,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3403
+              },
+              "request_ms": 6067.513
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6067.513
+        },
+        "display_proxy_ms": 11991.300000011921,
+        "render_wait_ms": 4.200000047683716,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "65b44d51-2ec6-423c-8338-33923ea6d6f2"
+        ],
+        "target_gap": "",
+        "confidence": 0.8,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "65b44d51-2ec6-423c-8338-33923ea6d6f2"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед конкретным предложением: подходящий уровень программы под текущий опыт клиента, формат записей и полную стоимость 24 000 рублей; не обещать разбор именно его файлов без подтверждения.",
+        "sales_plan": {
+          "commercial_goal": "Подвести к выбору программы «Автоматизация отчётности» под задачу еженедельной сборки из восьми файлов",
+          "next_goal": "Связать содержание программы с его файлами и получить отклик",
+          "significant_needs": [
+            "Сократить шесть часов ручного копирования из восьми однотипных файлов",
+            "Снизить ошибки, которые приходится исправлять вечером"
+          ],
+          "need_evidence_ids": [
+            "65b44d51-2ec6-423c-8338-33923ea6d6f2"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Уровень владения Excel",
+            "Формат и сроки обучения"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Показать, как объединение файлов и сводные таблицы ложатся на его восемь файлов"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "743a6ea6-d5e8-4025-b501-9552111bd367",
+        "created_at": "2026-11-15T11:43:26.102750+00:00",
+        "feedback": null,
+        "turn_id": "65b44d51-2ec6-423c-8338-33923ea6d6f2",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "c90d638c-7efb-4a87-b0a2-6c67bd16b48e",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 8.376,
+            "knowledge_prepare": 0.094,
+            "context_copy": 0.194,
+            "context_prepare": 10.636,
+            "provider_requests": 11954.6,
+            "schema_validation": 0.27,
+            "validation": 0.713,
+            "engine": 11966.79
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1146.513,
+              "first_content_ms": 1146.523,
+              "content_generation_ms": 4738.997,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7361,
+                "completion_tokens": 1254,
+                "total_tokens": 8615,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3521
+              },
+              "request_ms": 5887.105
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1399.007,
+              "first_content_ms": 1399.013,
+              "content_generation_ms": 4666.896,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7627,
+                "completion_tokens": 1239,
+                "total_tokens": 8866,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3403
+              },
+              "request_ms": 6067.513
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6067.513
+        },
+        "provider": "compatible",
+        "latency_ms": 11967,
+        "usage": {
+          "prompt_tokens": 14988,
+          "completion_tokens": 2493,
+          "total_tokens": 17481,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6924,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "65b44d51-2ec6-423c-8338-33923ea6d6f2",
+          "role": "client",
+          "text": "Каждую неделю копирую строки из восьми однотипных файлов. Шесть часов трачу и ошибки исправляю вечером. Как обучение поможет?",
+          "request_id": "44e0193b-2da9-4421-9842-ea6f231be6f2",
+          "created_at": "2026-11-15T11:43:14.127041+00:00"
+        }
+      ]
+    },
+    {
+      "case": "early_price",
+      "mode": "stream_off",
+      "expect": "Назвать подтверждённые варианты либо одно осмысленное уточнение; не уходить в анкету.",
+      "timing": {
+        "trace_id": "d2fec5d1-f6e8-4391-839c-7bdb92367eb4",
+        "api_ms": 10613.899999976158,
+        "response_json_ms": 0.3999999761581421,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "d2fec5d1-f6e8-4391-839c-7bdb92367eb4",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 14.776,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.073,
+            "context_prepare": 9.393,
+            "provider_requests": 10583.258,
+            "schema_validation": 0.227,
+            "validation": 0.637,
+            "engine": 10593.888,
+            "server_response_ready": 10610.53
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1574.82,
+              "first_content_ms": 1574.829,
+              "content_generation_ms": 3514.341,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7366,
+                "completion_tokens": 902,
+                "total_tokens": 8268,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3526
+              },
+              "request_ms": 5131.463
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 2025.808,
+              "first_content_ms": 2025.814,
+              "content_generation_ms": 3399.217,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7645,
+                "completion_tokens": 917,
+                "total_tokens": 8562,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3421
+              },
+              "request_ms": 5451.811
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5451.811
+        },
+        "display_proxy_ms": 10622.099999964237,
+        "render_wait_ms": 8.300000011920929,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: explain_and_limit_clarification, unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "3d5fde7a-16b5-4943-8e09-af23bfa2e77c"
+        ],
+        "target_gap": "situation",
+        "confidence": 0.7,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: explain_and_limit_clarification, unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: explain_and_limit_clarification, unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "3d5fde7a-16b5-4943-8e09-af23bfa2e77c"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить: какая программа соответствует текущим задачам клиента, полная стоимость и условия оплаты, формат записей и срок доступа.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу Excel и назвать её полную стоимость",
+          "next_goal": "Понять текущие задачи клиента в Excel, чтобы выбрать программу",
+          "significant_needs": [
+            "узнать стоимость Excel"
+          ],
+          "need_evidence_ids": [
+            "3d5fde7a-16b5-4943-8e09-af23bfa2e77c"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "situation",
+              "impact": "Простые таблицы и отчёты → «Таблицы для работы» за 12 000; сводные, Power Query, объединение файлов → «Автоматизация отчётности» за 24 000."
+            }
+          ],
+          "useful_gaps": [
+            "experience",
+            "goal"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "situation",
+            "new_information": "Какие задачи в Excel клиент решает сейчас",
+            "decision_impact": "Определяет выбор между программой за 12 000 и за 24 000 рублей",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать задачи клиента с подходящей программой и её стоимостью"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "explain_and_limit_clarification",
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "144fb432-a466-498b-8838-5fa963bc9001",
+        "created_at": "2026-11-15T11:43:36.897761+00:00",
+        "feedback": null,
+        "turn_id": "3d5fde7a-16b5-4943-8e09-af23bfa2e77c",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "explain_and_limit_clarification",
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "explain_and_limit_clarification",
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "d2fec5d1-f6e8-4391-839c-7bdb92367eb4",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 7.438,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.073,
+            "context_prepare": 9.393,
+            "provider_requests": 10583.258,
+            "schema_validation": 0.227,
+            "validation": 0.637,
+            "engine": 10593.888
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1574.82,
+              "first_content_ms": 1574.829,
+              "content_generation_ms": 3514.341,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7366,
+                "completion_tokens": 902,
+                "total_tokens": 8268,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3526
+              },
+              "request_ms": 5131.463
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 2025.808,
+              "first_content_ms": 2025.814,
+              "content_generation_ms": 3399.217,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7645,
+                "completion_tokens": 917,
+                "total_tokens": 8562,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3421
+              },
+              "request_ms": 5451.811
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5451.811
+        },
+        "provider": "compatible",
+        "latency_ms": 10594,
+        "usage": {
+          "prompt_tokens": 15011,
+          "completion_tokens": 1819,
+          "total_tokens": 16830,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6947,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "3d5fde7a-16b5-4943-8e09-af23bfa2e77c",
+          "role": "client",
+          "text": "Сразу скажите, сколько стоит Excel, а потом уже вопросы.",
+          "request_id": "d73f59ab-994c-4f0b-8462-ed59e85f127f",
+          "created_at": "2026-11-15T11:43:26.296084+00:00"
+        }
+      ]
+    },
+    {
+      "case": "early_price",
+      "mode": "current",
+      "expect": "Назвать подтверждённые варианты либо одно осмысленное уточнение; не уходить в анкету.",
+      "timing": {
+        "trace_id": "79e7eb74-6891-4dbe-89d6-85c019360e90",
+        "api_ms": 10278.199999988079,
+        "response_json_ms": 0.40000003576278687,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "79e7eb74-6891-4dbe-89d6-85c019360e90",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 14.979,
+            "knowledge_prepare": 0.011,
+            "context_copy": 0.094,
+            "context_prepare": 8.636,
+            "provider_requests": 10245.419,
+            "schema_validation": 0.652,
+            "validation": 0.882,
+            "engine": 10257.593,
+            "server_response_ready": 10274.436
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7348,
+                "completion_tokens": 889,
+                "total_tokens": 8237,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3508
+              },
+              "request_ms": 5286.13
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7585,
+                "completion_tokens": 873,
+                "total_tokens": 8458,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3361
+              },
+              "request_ms": 4959.308
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4959.308
+        },
+        "display_proxy_ms": 10285.699999988079,
+        "render_wait_ms": 7.5,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "cc867eac-fe10-42b3-94a0-a668ba7c0487"
+        ],
+        "target_gap": "goal",
+        "confidence": 0.7,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "cc867eac-fe10-42b3-94a0-a668ba7c0487"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить: какая программа точнее подходит по задачам клиента, актуальность полных цен 12 000 и 24 000 ₽, формат записей и условия доступа.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать подходящую программу по Excel и назвать её полную стоимость",
+          "next_goal": "Понять, нужны ли простые таблицы/отчёты или автоматизация однотипных файлов",
+          "significant_needs": [
+            "узнать стоимость Excel"
+          ],
+          "need_evidence_ids": [
+            "cc867eac-fe10-42b3-94a0-a668ba7c0487"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "goal",
+              "impact": "Простые таблицы и отчёты ведут к программе за 12 000 ₽, автоматизация и сводные — к программе за 24 000 ₽."
+            }
+          ],
+          "useful_gaps": [
+            "опыт",
+            "сроки"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "goal",
+            "new_information": "Какие задачи в Excel нужно закрыть",
+            "decision_impact": "Определяет выбор между программой за 12 000 ₽ и программой за 24 000 ₽",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "PRICE_PRESENTATION",
+          "after_answer_goal": "Назвать подходящую программу и её полную стоимость"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "94fd841f-8cc9-4831-b7f9-8ccd44032ccf",
+        "created_at": "2026-11-15T11:43:47.359744+00:00",
+        "feedback": null,
+        "turn_id": "cc867eac-fe10-42b3-94a0-a668ba7c0487",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "explain_and_limit_clarification",
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "79e7eb74-6891-4dbe-89d6-85c019360e90",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 4.884,
+            "knowledge_prepare": 0.011,
+            "context_copy": 0.094,
+            "context_prepare": 8.636,
+            "provider_requests": 10245.419,
+            "schema_validation": 0.652,
+            "validation": 0.882,
+            "engine": 10257.593
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7348,
+                "completion_tokens": 889,
+                "total_tokens": 8237,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3508
+              },
+              "request_ms": 5286.13
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7585,
+                "completion_tokens": 873,
+                "total_tokens": 8458,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3361
+              },
+              "request_ms": 4959.308
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4959.308
+        },
+        "provider": "compatible",
+        "latency_ms": 10258,
+        "usage": {
+          "prompt_tokens": 14933,
+          "completion_tokens": 1762,
+          "total_tokens": 16695,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6869,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "cc867eac-fe10-42b3-94a0-a668ba7c0487",
+          "role": "client",
+          "text": "Сразу скажите, сколько стоит Excel, а потом уже вопросы.",
+          "request_id": "6cda1ecd-cf71-4134-a158-8ee77f06798d",
+          "created_at": "2026-11-15T11:43:37.097263+00:00"
+        }
+      ]
+    },
+    {
+      "case": "repeated_price",
+      "mode": "current",
+      "expect": "Цена без новой диагностики; уважение отказа от вопросов.",
+      "timing": {
+        "trace_id": "0e8a1ad8-2b02-4b94-8753-e3dbe9a94f17",
+        "api_ms": 10359.300000011921,
+        "response_json_ms": 0.30000001192092896,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "0e8a1ad8-2b02-4b94-8753-e3dbe9a94f17",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "storage_save": 25.936,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.111,
+            "context_prepare": 14.494,
+            "provider_requests": 10311.052,
+            "schema_validation": 0.212,
+            "validation": 0.561,
+            "engine": 10326.727,
+            "server_response_ready": 10355.372
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7473,
+                "completion_tokens": 958,
+                "total_tokens": 8431,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3633
+              },
+              "request_ms": 5341.29
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7723,
+                "completion_tokens": 950,
+                "total_tokens": 8673,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3371
+              },
+              "request_ms": 4969.784
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4969.784
+        },
+        "display_proxy_ms": 10367.399999976158,
+        "render_wait_ms": 8.099999964237213,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "8c1e224f-23f3-4ee1-975f-2618be6483b8"
+        ],
+        "target_gap": "",
+        "confidence": 0.9,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "8c1e224f-23f3-4ee1-975f-2618be6483b8"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед оформлением: актуальность полных цен 12 000 и 24 000 рублей, формат записей и условия доступа. Не задавать диагностических вопросов, пока клиент сам не опишет задачи.",
+        "sales_plan": {
+          "commercial_goal": "Дать клиенту прозрачные цены и помочь выбрать подходящий вариант Excel.",
+          "next_goal": "Получить от клиента описание рабочих задач, чтобы рекомендовать один из двух вариантов.",
+          "significant_needs": [
+            "узнать стоимость без предварительных вопросов"
+          ],
+          "need_evidence_ids": [
+            "8c1e224f-23f3-4ee1-975f-2618be6483b8"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "рабочие задачи в Excel",
+            "текущий уровень"
+          ],
+          "readiness": "NO_MORE_QUESTIONS",
+          "question": null,
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать названные задачи клиента с одним из двух вариантов и перейти к оформлению."
+        },
+        "conversation_signals": {
+          "client_declines_questions": true,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "1bf60e88-1ea7-4431-8ba6-58f20f07d559",
+        "created_at": "2026-11-15T11:43:57.892430+00:00",
+        "feedback": null,
+        "turn_id": "8c1e224f-23f3-4ee1-975f-2618be6483b8",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "0e8a1ad8-2b02-4b94-8753-e3dbe9a94f17",
+          "stages_ms": {
+            "lock_wait": 0.005,
+            "storage_save": 9.736,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.111,
+            "context_prepare": 14.494,
+            "provider_requests": 10311.052,
+            "schema_validation": 0.212,
+            "validation": 0.561,
+            "engine": 10326.727
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7473,
+                "completion_tokens": 958,
+                "total_tokens": 8431,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3633
+              },
+              "request_ms": 5341.29
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7723,
+                "completion_tokens": 950,
+                "total_tokens": 8673,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3371
+              },
+              "request_ms": 4969.784
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4969.784
+        },
+        "provider": "compatible",
+        "latency_ms": 10327,
+        "usage": {
+          "prompt_tokens": 15196,
+          "completion_tokens": 1908,
+          "total_tokens": 17104,
+          "prompt_cache_hit_tokens": 8192,
+          "prompt_cache_miss_tokens": 7004,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Какая цена?",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:43:47.407709+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Подберём вариант под ваши задачи.",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:43:47.407709+00:00"
+        },
+        {
+          "id": "8c1e224f-23f3-4ee1-975f-2618be6483b8",
+          "role": "client",
+          "text": "Нет, сначала стоимость. Больше никаких вопросов.",
+          "request_id": "3a2b41d4-854b-4068-a90e-1303c4112ce3",
+          "created_at": "2026-11-15T11:43:47.555442+00:00"
+        }
+      ]
+    },
+    {
+      "case": "repeated_price",
+      "mode": "stream_off",
+      "expect": "Цена без новой диагностики; уважение отказа от вопросов.",
+      "timing": {
+        "trace_id": "e47b601d-dff7-4262-8055-f747595a174c",
+        "api_ms": 10848.5,
+        "response_json_ms": 0.5,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "e47b601d-dff7-4262-8055-f747595a174c",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 15.887,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.078,
+            "context_prepare": 10.227,
+            "provider_requests": 10815.116,
+            "schema_validation": 0.222,
+            "validation": 0.58,
+            "engine": 10826.505,
+            "server_response_ready": 10844.943
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1238.228,
+              "first_content_ms": 1238.234,
+              "content_generation_ms": 4511.985,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7471,
+                "completion_tokens": 1133,
+                "total_tokens": 8604,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3631
+              },
+              "request_ms": 5751.474
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1384.003,
+              "first_content_ms": 1384.009,
+              "content_generation_ms": 3678.198,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7725,
+                "completion_tokens": 904,
+                "total_tokens": 8629,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3373
+              },
+              "request_ms": 5063.657
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5063.657
+        },
+        "display_proxy_ms": 10856.700000047684,
+        "render_wait_ms": 8.200000047683716,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "ff2c148c-7566-44ce-a7a5-c9b75a0ec847"
+        ],
+        "target_gap": "",
+        "confidence": 0.9,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "ff2c148c-7566-44ce-a7a5-c9b75a0ec847"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед оформлением: актуальность полных цен 12 000 и 24 000 рублей, состав и уровень каждой программы, формат записей и условия доступа. Клиент отказался от диагностики — не задавать вопросы, пока он сам не назовёт задачу.",
+        "sales_plan": {
+          "commercial_goal": "Дать клиенту прозрачные цены и состав программ, чтобы он выбрал вариант",
+          "next_goal": "Получить от клиента выбор направления задачи для подбора программы",
+          "significant_needs": [
+            "Узнать стоимость без предварительных вопросов"
+          ],
+          "need_evidence_ids": [
+            "ff2c148c-7566-44ce-a7a5-c9b75a0ec847"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Задача в Excel: простые таблицы или сводные и объединение файлов"
+          ],
+          "readiness": "NO_MORE_QUESTIONS",
+          "question": null,
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать названную клиентом задачу с одной из двух программ"
+        },
+        "conversation_signals": {
+          "client_declines_questions": true,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "47dfd51d-a0db-42b9-af57-fa5ac964c436",
+        "created_at": "2026-11-15T11:44:08.902344+00:00",
+        "feedback": null,
+        "turn_id": "ff2c148c-7566-44ce-a7a5-c9b75a0ec847",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "explain_and_limit_clarification",
+              "client_declined_diagnostics",
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "e47b601d-dff7-4262-8055-f747595a174c",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 10.1,
+            "knowledge_prepare": 0.015,
+            "context_copy": 0.078,
+            "context_prepare": 10.227,
+            "provider_requests": 10815.116,
+            "schema_validation": 0.222,
+            "validation": 0.58,
+            "engine": 10826.505
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1238.228,
+              "first_content_ms": 1238.234,
+              "content_generation_ms": 4511.985,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7471,
+                "completion_tokens": 1133,
+                "total_tokens": 8604,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3631
+              },
+              "request_ms": 5751.474
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1384.003,
+              "first_content_ms": 1384.009,
+              "content_generation_ms": 3678.198,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7725,
+                "completion_tokens": 904,
+                "total_tokens": 8629,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3373
+              },
+              "request_ms": 5063.657
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5063.657
+        },
+        "provider": "compatible",
+        "latency_ms": 10827,
+        "usage": {
+          "prompt_tokens": 15196,
+          "completion_tokens": 2037,
+          "total_tokens": 17233,
+          "prompt_cache_hit_tokens": 8192,
+          "prompt_cache_miss_tokens": 7004,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Какая цена?",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:43:57.942930+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Подберём вариант под ваши задачи.",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:43:57.942930+00:00"
+        },
+        {
+          "id": "ff2c148c-7566-44ce-a7a5-c9b75a0ec847",
+          "role": "client",
+          "text": "Нет, сначала стоимость. Больше никаких вопросов.",
+          "request_id": "e7f2c7bd-0502-4f64-8db2-1118474dff8f",
+          "created_at": "2026-11-15T11:43:58.065612+00:00"
+        }
+      ]
+    },
+    {
+      "case": "tired",
+      "mode": "stream_off",
+      "expect": "Персонализированное предложение базового варианта без очередного вопроса об уровне.",
+      "timing": {
+        "trace_id": "e82e3f95-a86d-48ce-8443-53c6473224d7",
+        "api_ms": 10177,
+        "response_json_ms": 0.30000001192092896,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "e82e3f95-a86d-48ce-8443-53c6473224d7",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 14.344,
+            "knowledge_prepare": 0.018,
+            "context_copy": 0.156,
+            "context_prepare": 8.731,
+            "provider_requests": 10147.131,
+            "schema_validation": 0.216,
+            "validation": 0.897,
+            "engine": 10157.508,
+            "server_response_ready": 10173.793
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1211.734,
+              "first_content_ms": 1211.742,
+              "content_generation_ms": 4197.977,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7768,
+                "completion_tokens": 1064,
+                "total_tokens": 8832,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3928
+              },
+              "request_ms": 5411.6
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1325.089,
+              "first_content_ms": 1325.096,
+              "content_generation_ms": 3408.984,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 8064,
+                "completion_tokens": 894,
+                "total_tokens": 8958,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4608
+                },
+                "prompt_cache_hit_tokens": 4608,
+                "prompt_cache_miss_tokens": 3456
+              },
+              "request_ms": 4735.547
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4735.547
+        },
+        "display_proxy_ms": 10186.100000023842,
+        "render_wait_ms": 9.100000023841858,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "408332f4-290a-4572-b057-bd3fca462a6c",
+          "t7",
+          "t5",
+          "t3",
+          "t1"
+        ],
+        "target_gap": "",
+        "confidence": 0.85,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "408332f4-290a-4572-b057-bd3fca462a6c",
+            "t7",
+            "t5",
+            "t3",
+            "t1"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед оформлением: актуальность полной цены 12000 руб., условия доступа к записям и срок доступа, порядок оплаты. Не обещать куратора, проверку заданий или практику на файлах клиента — в утверждённых условиях этого нет.",
+        "sales_plan": {
+          "commercial_goal": "Подвести к записи на программу «Таблицы для работы»",
+          "next_goal": "Получить отклик на программу и стоимость",
+          "significant_needs": [
+            "Простые отчёты без сложного анализа",
+            "Самостоятельность без помощи коллег",
+            "Старт с нуля в Excel",
+            "Записи без жёсткого расписания, 3–4 часа в неделю"
+          ],
+          "need_evidence_ids": [
+            "t7",
+            "t3",
+            "t1",
+            "t5"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Формат оплаты"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "CLOSING",
+          "after_answer_goal": "Согласовать следующий шаг — запись или уточнение формата оплаты"
+        },
+        "conversation_signals": {
+          "client_declines_questions": true,
+          "client_tired_of_questions": true,
+          "offer_requested": true,
+          "manager_questions_since_offer": 3,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "53c20b01-3fe5-4509-a0fa-92512f3a4cb3",
+        "created_at": "2026-11-15T11:44:19.218734+00:00",
+        "feedback": null,
+        "turn_id": "408332f4-290a-4572-b057-bd3fca462a6c",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "e82e3f95-a86d-48ce-8443-53c6473224d7",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 6.003,
+            "knowledge_prepare": 0.018,
+            "context_copy": 0.156,
+            "context_prepare": 8.731,
+            "provider_requests": 10147.131,
+            "schema_validation": 0.216,
+            "validation": 0.897,
+            "engine": 10157.508
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1211.734,
+              "first_content_ms": 1211.742,
+              "content_generation_ms": 4197.977,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7768,
+                "completion_tokens": 1064,
+                "total_tokens": 8832,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3928
+              },
+              "request_ms": 5411.6
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1325.089,
+              "first_content_ms": 1325.096,
+              "content_generation_ms": 3408.984,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 8064,
+                "completion_tokens": 894,
+                "total_tokens": 8958,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4608
+                },
+                "prompt_cache_hit_tokens": 4608,
+                "prompt_cache_miss_tokens": 3456
+              },
+              "request_ms": 4735.547
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4735.547
+        },
+        "provider": "compatible",
+        "latency_ms": 10158,
+        "usage": {
+          "prompt_tokens": 15832,
+          "completion_tokens": 1958,
+          "total_tokens": 17790,
+          "prompt_cache_hit_tokens": 8448,
+          "prompt_cache_miss_tokens": 7384,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Я администратор, Excel почти не знаю. Отчёты делаю с помощью коллег.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Почему важно научиться?",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t3",
+          "role": "client",
+          "text": "Неловко перед руководителем. Хочу самостоятельности и роста.",
+          "request_id": "seed3",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t4",
+          "role": "manager",
+          "text": "Сколько времени на обучение?",
+          "request_id": "seed4",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t5",
+          "role": "client",
+          "text": "Три-четыре часа в неделю без расписания.",
+          "request_id": "seed5",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t6",
+          "role": "manager",
+          "text": "Нужны простые отчёты или сложный анализ?",
+          "request_id": "seed6",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "t7",
+          "role": "client",
+          "text": "Только простые отчёты сейчас.",
+          "request_id": "seed7",
+          "created_at": "2026-11-15T11:44:08.938727+00:00"
+        },
+        {
+          "id": "408332f4-290a-4572-b057-bd3fca462a6c",
+          "role": "client",
+          "text": "Мы всё вопросы обсуждаем. Расскажите уже программу и цену.",
+          "request_id": "8d910e4d-ab09-409b-8153-1e815588bb16",
+          "created_at": "2026-11-15T11:44:09.054540+00:00"
+        }
+      ]
+    },
+    {
+      "case": "tired",
+      "mode": "current",
+      "expect": "Персонализированное предложение базового варианта без очередного вопроса об уровне.",
+      "timing": {
+        "trace_id": "894dd803-d19f-460a-b282-a121e2a67cdd",
+        "api_ms": 9895.600000023842,
+        "response_json_ms": 0.30000001192092896,
+        "outcome": "error",
+        "server": {
+          "trace_id": "894dd803-d19f-460a-b282-a121e2a67cdd",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 11.771,
+            "knowledge_prepare": 0.011,
+            "context_copy": 1.741,
+            "context_prepare": 8.192,
+            "provider_requests": 9867.794,
+            "schema_validation": 0.211,
+            "validation": 0.413,
+            "engine": 9878.658,
+            "server_response_ready": 9891.952
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7775,
+                "completion_tokens": 798,
+                "total_tokens": 8573,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3935
+              },
+              "request_ms": 4673.461
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 8015,
+                "completion_tokens": 831,
+                "total_tokens": 8846,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4608
+                },
+                "prompt_cache_hit_tokens": 4608,
+                "prompt_cache_miss_tokens": 3407
+              },
+              "request_ms": 5194.351
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5194.351
+        },
+        "display_proxy_ms": 9901.900000035763,
+        "render_wait_ms": 6.300000011920929,
+        "visible": true
+      },
+      "analysis_error": "Реплика сохранена. Ответ модели не прошёл проверку структуры или источников. Повторите анализ.",
+      "recommendation": null,
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Я администратор, Excel почти не знаю. Отчёты делаю с помощью коллег.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Почему важно научиться?",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t3",
+          "role": "client",
+          "text": "Неловко перед руководителем. Хочу самостоятельности и роста.",
+          "request_id": "seed3",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t4",
+          "role": "manager",
+          "text": "Сколько времени на обучение?",
+          "request_id": "seed4",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t5",
+          "role": "client",
+          "text": "Три-четыре часа в неделю без расписания.",
+          "request_id": "seed5",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t6",
+          "role": "manager",
+          "text": "Нужны простые отчёты или сложный анализ?",
+          "request_id": "seed6",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "t7",
+          "role": "client",
+          "text": "Только простые отчёты сейчас.",
+          "request_id": "seed7",
+          "created_at": "2026-11-15T11:44:19.256264+00:00"
+        },
+        {
+          "id": "dea782ac-7282-42c3-90d4-58992b396ef4",
+          "role": "client",
+          "text": "Мы всё вопросы обсуждаем. Расскажите уже программу и цену.",
+          "request_id": "cf8ecf85-9e40-43e7-9244-9893050bddc2",
+          "created_at": "2026-11-15T11:44:19.392023+00:00"
+        }
+      ]
+    },
+    {
+      "case": "bridge_answer",
+      "mode": "current",
+      "expect": "Выполнить обещанный переход к предложению.",
+      "timing": {
+        "trace_id": "dc1ebba6-5fa3-4cd5-8bf4-4920094a1664",
+        "api_ms": 9363.800000011921,
+        "response_json_ms": 0.5,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "dc1ebba6-5fa3-4cd5-8bf4-4920094a1664",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 11.858,
+            "knowledge_prepare": 0.011,
+            "context_copy": 0.093,
+            "context_prepare": 9.82,
+            "provider_requests": 9335.308,
+            "schema_validation": 0.213,
+            "validation": 0.724,
+            "engine": 9346.47,
+            "server_response_ready": 9360.091
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7552,
+                "completion_tokens": 858,
+                "total_tokens": 8410,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3712
+              },
+              "request_ms": 4662.721
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7821,
+                "completion_tokens": 898,
+                "total_tokens": 8719,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3469
+              },
+              "request_ms": 4672.604
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4672.604
+        },
+        "display_proxy_ms": 9372.200000047684,
+        "render_wait_ms": 8.400000035762787,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "a207c4e4-d678-4a86-80ce-298faf05e6b7",
+          "t2"
+        ],
+        "target_gap": "",
+        "confidence": 0.9,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "a207c4e4-d678-4a86-80ce-298faf05e6b7",
+            "t2"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед конкретным предложением: актуальность полной цены 12000 рублей и набора модулей программы «Таблицы для работы», формат записей и условия доступа. Не обещать куратора, проверку заданий или разбор личных файлов без подтверждения.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу под задачу самостоятельных простых отчётов и перейти к оформлению",
+          "next_goal": "Показать подходящую программу и полную стоимость, проверить отклик",
+          "significant_needs": [
+            "Делать простые отчёты самостоятельно, без помощи коллег",
+            "Объединение файлов не требуется"
+          ],
+          "need_evidence_ids": [
+            "t1",
+            "a207c4e4-d678-4a86-80ce-298faf05e6b7"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Текущий способ ведения отчётов",
+            "Уровень опыта в Excel"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "PRESENTATION",
+          "after_answer_goal": "Показать программу и стоимость, получить отклик клиента"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 1,
+          "offer_due_after_bridge": true
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "a7ab8a29-5dd4-403a-9d4f-5dfd4b4fee58",
+        "created_at": "2026-11-15T11:44:38.777680+00:00",
+        "feedback": null,
+        "turn_id": "a207c4e4-d678-4a86-80ce-298faf05e6b7",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "dc1ebba6-5fa3-4cd5-8bf4-4920094a1664",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 6.151,
+            "knowledge_prepare": 0.011,
+            "context_copy": 0.093,
+            "context_prepare": 9.82,
+            "provider_requests": 9335.308,
+            "schema_validation": 0.213,
+            "validation": 0.724,
+            "engine": 9346.47
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7552,
+                "completion_tokens": 858,
+                "total_tokens": 8410,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3712
+              },
+              "request_ms": 4662.721
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7821,
+                "completion_tokens": 898,
+                "total_tokens": 8719,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3469
+              },
+              "request_ms": 4672.604
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4672.604
+        },
+        "provider": "compatible",
+        "latency_ms": 9347,
+        "usage": {
+          "prompt_tokens": 15373,
+          "completion_tokens": 1756,
+          "total_tokens": 17129,
+          "prompt_cache_hit_tokens": 8192,
+          "prompt_cache_miss_tokens": 7181,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Хочу отчёты без помощи коллег.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:44:29.307532+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Расскажу программу и цену. Последнее уточнение для подбора: нужны простые отчёты или объединение файлов?",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:44:29.307532+00:00"
+        },
+        {
+          "id": "a207c4e4-d678-4a86-80ce-298faf05e6b7",
+          "role": "client",
+          "text": "Простые отчёты, без объединения. Теперь расскажите программу.",
+          "request_id": "d5e4af1f-3c2e-4e6f-abf6-1da90eebf71d",
+          "created_at": "2026-11-15T11:44:29.424795+00:00"
+        }
+      ]
+    },
+    {
+      "case": "bridge_answer",
+      "mode": "stream_off",
+      "expect": "Выполнить обещанный переход к предложению.",
+      "timing": {
+        "trace_id": "ee2ddec2-a0fa-40c5-b91c-7502632d2e2a",
+        "api_ms": 10039.900000035763,
+        "response_json_ms": 0.6000000238418579,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "ee2ddec2-a0fa-40c5-b91c-7502632d2e2a",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 13.2,
+            "knowledge_prepare": 0.012,
+            "context_copy": 0.101,
+            "context_prepare": 10.318,
+            "provider_requests": 10009.065,
+            "schema_validation": 0.193,
+            "validation": 0.645,
+            "engine": 10020.627,
+            "server_response_ready": 10035.85
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 2409.859,
+              "first_content_ms": 2409.866,
+              "content_generation_ms": 3019.621,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7539,
+                "completion_tokens": 788,
+                "total_tokens": 8327,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3699
+              },
+              "request_ms": 5431.553
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1350.014,
+              "first_content_ms": 1350.021,
+              "content_generation_ms": 3226.07,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7788,
+                "completion_tokens": 848,
+                "total_tokens": 8636,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3436
+              },
+              "request_ms": 4577.531
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4577.531
+        },
+        "display_proxy_ms": 10046.699999988079,
+        "render_wait_ms": 6.799999952316284,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "57744686-e070-4bb1-afed-a239ae2711a7",
+          "t2"
+        ],
+        "target_gap": "",
+        "confidence": 0.9,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unverified_commercial_amount. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "57744686-e070-4bb1-afed-a239ae2711a7",
+            "t2"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить перед оформлением: подходящий уровень программы «Таблицы для работы», формат записей и полную стоимость 12 000 рублей; при вопросе о кураторе, проверке заданий или доступе — уточнить у школы.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать программу для самостоятельного создания простых отчётов и перейти к оформлению.",
+          "next_goal": "Показать подходящую программу и полную стоимость, получить отклик.",
+          "significant_needs": [
+            "Простые отчёты без помощи коллег",
+            "Без объединения файлов"
+          ],
+          "need_evidence_ids": [
+            "t1",
+            "57744686-e070-4bb1-afed-a239ae2711a7"
+          ],
+          "critical_gaps": [],
+          "useful_gaps": [
+            "Опыт работы с Excel",
+            "Сроки начала обучения"
+          ],
+          "readiness": "READY_FOR_OFFER",
+          "question": null,
+          "after_answer_action": "CLOSING",
+          "after_answer_goal": "Получить отклик на предложение и согласовать следующий шаг."
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": true,
+          "manager_questions_since_offer": 1,
+          "offer_due_after_bridge": true
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim",
+            "unverified_commercial_amount"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "2ff453b3-757a-4e74-b488-3fb93edd23bc",
+        "created_at": "2026-11-15T11:44:48.981124+00:00",
+        "feedback": null,
+        "turn_id": "57744686-e070-4bb1-afed-a239ae2711a7",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim",
+              "unverified_commercial_amount"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "ee2ddec2-a0fa-40c5-b91c-7502632d2e2a",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 5.325,
+            "knowledge_prepare": 0.012,
+            "context_copy": 0.101,
+            "context_prepare": 10.318,
+            "provider_requests": 10009.065,
+            "schema_validation": 0.193,
+            "validation": 0.645,
+            "engine": 10020.627
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 2409.859,
+              "first_content_ms": 2409.866,
+              "content_generation_ms": 3019.621,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7539,
+                "completion_tokens": 788,
+                "total_tokens": 8327,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3699
+              },
+              "request_ms": 5431.553
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1350.014,
+              "first_content_ms": 1350.021,
+              "content_generation_ms": 3226.07,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7788,
+                "completion_tokens": 848,
+                "total_tokens": 8636,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4352
+                },
+                "prompt_cache_hit_tokens": 4352,
+                "prompt_cache_miss_tokens": 3436
+              },
+              "request_ms": 4577.531
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 4577.531
+        },
+        "provider": "compatible",
+        "latency_ms": 10021,
+        "usage": {
+          "prompt_tokens": 15327,
+          "completion_tokens": 1636,
+          "total_tokens": 16963,
+          "prompt_cache_hit_tokens": 8192,
+          "prompt_cache_miss_tokens": 7135,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "client",
+          "text": "Хочу отчёты без помощи коллег.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:44:38.822602+00:00"
+        },
+        {
+          "id": "t2",
+          "role": "manager",
+          "text": "Расскажу программу и цену. Последнее уточнение для подбора: нужны простые отчёты или объединение файлов?",
+          "request_id": "seed2",
+          "created_at": "2026-11-15T11:44:38.822602+00:00"
+        },
+        {
+          "id": "57744686-e070-4bb1-afed-a239ae2711a7",
+          "role": "client",
+          "text": "Простые отчёты, без объединения. Теперь расскажите программу.",
+          "request_id": "8ee454f5-da0b-4f60-8880-abd292efbf4d",
+          "created_at": "2026-11-15T11:44:38.954701+00:00"
+        }
+      ]
+    },
+    {
+      "case": "price_objection",
+      "mode": "stream_off",
+      "expect": "Работа с сомнением в ценности без выдуманной окупаемости или скидки.",
+      "timing": {
+        "trace_id": "54d2c82b-cc28-4360-875e-2d1d298c8401",
+        "api_ms": 12559.699999988079,
+        "response_json_ms": 0.6000000238418579,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "54d2c82b-cc28-4360-875e-2d1d298c8401",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 19.281,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.102,
+            "context_prepare": 11.912,
+            "provider_requests": 12520.4,
+            "schema_validation": 0.303,
+            "validation": 0.769,
+            "engine": 12533.86,
+            "server_response_ready": 12555.617
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1333.714,
+              "first_content_ms": 1333.72,
+              "content_generation_ms": 4841.92,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7396,
+                "completion_tokens": 1136,
+                "total_tokens": 8532,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3556
+              },
+              "request_ms": 6177.224
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1477.817,
+              "first_content_ms": 1477.823,
+              "content_generation_ms": 4862.812,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7597,
+                "completion_tokens": 1194,
+                "total_tokens": 8791,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3373
+              },
+              "request_ms": 6343.194
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6343.194
+        },
+        "display_proxy_ms": 12569.199999988079,
+        "render_wait_ms": 9.5,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "b6418d03-26a8-45c9-912c-aeb66bd56100"
+        ],
+        "target_gap": "problem",
+        "confidence": 0.6,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "b6418d03-26a8-45c9-912c-aeb66bd56100"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить: подходит ли клиенту уровень «Автоматизация отчётности» или достаточно базовой программы за 12000; уточнить полную стоимость и условия записи перед конкретным предложением. Не обещать окупаемость и сроки — только связать содержание программы с задачами клиента.",
+        "sales_plan": {
+          "commercial_goal": "Снять возражение по цене через связь программы с конкретной рабочей задачей клиента",
+          "next_goal": "Выяснить задачи и частоту их возникновения в работе",
+          "significant_needs": [
+            "Сомнение в окупаемости программы стоимостью 24000 рублей"
+          ],
+          "need_evidence_ids": [
+            "b6418d03-26a8-45c9-912c-aeb66bd56100"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "problem",
+              "impact": "Если задачи простые и редкие — подойдёт более дешёвая базовая программа; если регулярная отчётность и объединение файлов — оправдана автоматизация за 24000."
+            }
+          ],
+          "useful_gaps": [
+            "experience",
+            "situation"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "problem",
+            "new_information": "Какие задачи клиент хочет решать в Excel и как часто они возникают",
+            "decision_impact": "Определяет выбор между базовой программой за 12000 и автоматизацией за 24000 и аргумент окупаемости",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать подходящую программу с задачами клиента и обосновать отдачу от стоимости"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "7e59c1f1-de26-4714-abab-3efba31f9349",
+        "created_at": "2026-11-15T11:45:01.686522+00:00",
+        "feedback": null,
+        "turn_id": "b6418d03-26a8-45c9-912c-aeb66bd56100",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "54d2c82b-cc28-4360-875e-2d1d298c8401",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 8.942,
+            "knowledge_prepare": 0.016,
+            "context_copy": 0.102,
+            "context_prepare": 11.912,
+            "provider_requests": 12520.4,
+            "schema_validation": 0.303,
+            "validation": 0.769,
+            "engine": 12533.86
+          },
+          "calls": [
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1333.714,
+              "first_content_ms": 1333.72,
+              "content_generation_ms": 4841.92,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7396,
+                "completion_tokens": 1136,
+                "total_tokens": 8532,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3556
+              },
+              "request_ms": 6177.224
+            },
+            {
+              "stream": true,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": 1477.817,
+              "first_content_ms": 1477.823,
+              "content_generation_ms": 4862.812,
+              "response_model": "deepseek-flash",
+              "finish_reason": "stop",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7597,
+                "completion_tokens": 1194,
+                "total_tokens": 8791,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3373
+              },
+              "request_ms": 6343.194
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 6343.194
+        },
+        "provider": "compatible",
+        "latency_ms": 12534,
+        "usage": {
+          "prompt_tokens": 14993,
+          "completion_tokens": 2330,
+          "total_tokens": 17323,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6929,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "manager",
+          "text": "Стоимость программы автоматизации — 24000 рублей.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:44:49.016176+00:00"
+        },
+        {
+          "id": "b6418d03-26a8-45c9-912c-aeb66bd56100",
+          "role": "client",
+          "text": "Дорого. Не уверен, что это вообще окупится.",
+          "request_id": "8f309406-16e1-4547-ba6d-587d3f5e53ef",
+          "created_at": "2026-11-15T11:44:49.143032+00:00"
+        }
+      ]
+    },
+    {
+      "case": "price_objection",
+      "mode": "current",
+      "expect": "Работа с сомнением в ценности без выдуманной окупаемости или скидки.",
+      "timing": {
+        "trace_id": "d6e8899e-7051-46a3-83d8-99c0af6f85b0",
+        "api_ms": 12281.300000011921,
+        "response_json_ms": 0.5,
+        "outcome": "blocked",
+        "server": {
+          "trace_id": "d6e8899e-7051-46a3-83d8-99c0af6f85b0",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 11.043,
+            "knowledge_prepare": 0.016,
+            "context_copy": 1.797,
+            "context_prepare": 8.976,
+            "provider_requests": 12252.295,
+            "schema_validation": 0.278,
+            "validation": 0.769,
+            "engine": 12264.461,
+            "server_response_ready": 12277.613
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7405,
+                "completion_tokens": 1276,
+                "total_tokens": 8681,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3565
+              },
+              "request_ms": 6497.491
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7625,
+                "completion_tokens": 1138,
+                "total_tokens": 8763,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3401
+              },
+              "request_ms": 5754.823
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5754.823
+        },
+        "display_proxy_ms": 12288.900000035763,
+        "render_wait_ms": 7.600000023841858,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "NO_ACTION",
+        "suggestion": "",
+        "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+        "evidence_ids": [
+          "0409a1dc-3d7f-4b42-88db-3172d593c9a4"
+        ],
+        "target_gap": "problem",
+        "confidence": 0.6,
+        "policy_flags": [],
+        "strategy": {
+          "action": "NO_ACTION",
+          "objective": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+          "reason": "Фраза скрыта проверкой: unsupported_product_claim, unsupported_product_claim. Уточните контекст или повторите анализ.",
+          "evidence_ids": [
+            "0409a1dc-3d7f-4b42-88db-3172d593c9a4"
+          ],
+          "label": "Дать клиенту ответить"
+        },
+        "manager_note": "Проверить: подходит ли клиенту уровень «Автоматизация отчётности» или достаточно базовой программы; полную стоимость 24000 и 12000 называть полностью; не обещать окупаемость и трудоустройство.",
+        "sales_plan": {
+          "commercial_goal": "Снять возражение по цене и окупаемости, подвести к подходящей программе",
+          "next_goal": "Понять рабочие задачи клиента, чтобы обосновать отдачу",
+          "significant_needs": [
+            "Сомнение в окупаемости программы за 24000 рублей"
+          ],
+          "need_evidence_ids": [
+            "0409a1dc-3d7f-4b42-88db-3172d593c9a4"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "problem",
+              "impact": "От задач зависит, какая программа подходит и как обосновать отдачу: базовые таблицы или автоматизация отчётности"
+            }
+          ],
+          "useful_gaps": [
+            "experience",
+            "situation"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "problem",
+            "new_information": "Какие рабочие задачи клиент хочет закрывать с помощью Excel",
+            "decision_impact": "Определяет выбор между базовой программой за 12000 и автоматизацией за 24000 и аргумент отдачи",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать задачи клиента с подходящей программой и обосновать отдачу"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "blocked",
+          "issues": [
+            "unsupported_product_claim"
+          ],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "4351d7cc-9095-4e44-a332-89eb613c4a83",
+        "created_at": "2026-11-15T11:45:14.174724+00:00",
+        "feedback": null,
+        "turn_id": "0409a1dc-3d7f-4b42-88db-3172d593c9a4",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          },
+          {
+            "attempt": 2,
+            "status": "blocked",
+            "issues": [
+              "unsupported_product_claim"
+            ],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "d6e8899e-7051-46a3-83d8-99c0af6f85b0",
+          "stages_ms": {
+            "lock_wait": 0.003,
+            "storage_save": 4.783,
+            "knowledge_prepare": 0.016,
+            "context_copy": 1.797,
+            "context_prepare": 8.976,
+            "provider_requests": 12252.295,
+            "schema_validation": 0.278,
+            "validation": 0.769,
+            "engine": 12264.461
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7405,
+                "completion_tokens": 1276,
+                "total_tokens": 8681,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3565
+              },
+              "request_ms": 6497.491
+            },
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7625,
+                "completion_tokens": 1138,
+                "total_tokens": 8763,
+                "prompt_tokens_details": {
+                  "cached_tokens": 4224
+                },
+                "prompt_cache_hit_tokens": 4224,
+                "prompt_cache_miss_tokens": 3401
+              },
+              "request_ms": 5754.823
+            }
+          ],
+          "request_count": 2,
+          "retry_count": 1,
+          "retry_request_ms": 5754.823
+        },
+        "provider": "compatible",
+        "latency_ms": 12265,
+        "usage": {
+          "prompt_tokens": 15030,
+          "completion_tokens": 2414,
+          "total_tokens": 17444,
+          "prompt_cache_hit_tokens": 8064,
+          "prompt_cache_miss_tokens": 6966,
+          "request_count": 2
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "t1",
+          "role": "manager",
+          "text": "Стоимость программы автоматизации — 24000 рублей.",
+          "request_id": "seed1",
+          "created_at": "2026-11-15T11:45:01.733106+00:00"
+        },
+        {
+          "id": "0409a1dc-3d7f-4b42-88db-3172d593c9a4",
+          "role": "client",
+          "text": "Дорого. Не уверен, что это вообще окупится.",
+          "request_id": "6c9fafc9-064f-46e3-8a0d-1a1c5243cf18",
+          "created_at": "2026-11-15T11:45:01.904488+00:00"
+        }
+      ]
+    },
+    {
+      "case": "budget_limit",
+      "mode": "current",
+      "expect": "Не обещать несуществующий тариф, скидку или навязывать кредит.",
+      "timing": {
+        "trace_id": "c8583d66-c2c6-44e2-81d8-4e1db6570112",
+        "api_ms": 5535.100000023842,
+        "response_json_ms": 0.5,
+        "outcome": "hint",
+        "server": {
+          "trace_id": "c8583d66-c2c6-44e2-81d8-4e1db6570112",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 14.626,
+            "knowledge_prepare": 0.018,
+            "context_copy": 0.069,
+            "context_prepare": 6.332,
+            "provider_requests": 5508.092,
+            "schema_validation": 0.123,
+            "validation": 0.319,
+            "engine": 5515.096,
+            "server_response_ready": 5531.884
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7346,
+                "completion_tokens": 1043,
+                "total_tokens": 8389,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3506
+              },
+              "request_ms": 5508.103
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "display_proxy_ms": 5541.900000035763,
+        "render_wait_ms": 6.800000011920929,
+        "visible": true
+      },
+      "analysis_error": null,
+      "recommendation": {
+        "action_type": "CLARIFY",
+        "suggestion": "Понял вас: нужна автоматизация, и бюджет ограничен 10 000 рублей без кредита. Чтобы подобрать подходящий вариант, уточните, какие именно задачи хотите автоматизировать — например, однотипные отчёты или объединение файлов?",
+        "reason": "Клиент назвал цель (автоматизация) и жёсткое бюджетное ограничение, но задача слишком общая. Уточнение конкретных задач позволит понять, реально ли уложиться в бюджет и какой вариант предложить.",
+        "evidence_ids": [
+          "809b6c5e-8444-4588-b3a8-9afc0019cdd7"
+        ],
+        "target_gap": "problem",
+        "confidence": 0.7,
+        "policy_flags": [],
+        "strategy": {
+          "action": "DISCOVERY",
+          "objective": "Выяснить конкретные задачи автоматизации, чтобы оценить возможность уложиться в бюджет",
+          "reason": "Цель названа общо, а бюджет жёсткий — нужно понять задачу, чтобы не предлагать заведомо неподходящее.",
+          "evidence_ids": [
+            "809b6c5e-8444-4588-b3a8-9afc0019cdd7"
+          ],
+          "label": "Выявление задачи"
+        },
+        "manager_note": "Проверить: полная стоимость программ (базовая 12000, автоматизация 24000) превышает бюджет клиента 10000 — нужны варианты рассрочки без кредита, скидки или иного решения; уточнить у школы. Не обещать скидку или рассрочку без подтверждения.",
+        "sales_plan": {
+          "commercial_goal": "Подобрать вариант обучения автоматизации в рамках бюджета 10 000 рублей",
+          "next_goal": "Понять конкретные задачи автоматизации клиента",
+          "significant_needs": [
+            "Автоматизация рабочих задач",
+            "Бюджет до 10 000 рублей без кредита"
+          ],
+          "need_evidence_ids": [
+            "809b6c5e-8444-4588-b3a8-9afc0019cdd7"
+          ],
+          "critical_gaps": [
+            {
+              "topic": "problem",
+              "impact": "От конкретных задач зависит, подходит ли базовая программа или нужна автоматизация отчётности, и реально ли уложиться в бюджет"
+            }
+          ],
+          "useful_gaps": [
+            "experience",
+            "situation"
+          ],
+          "readiness": "NEEDS_CLARIFICATION",
+          "question": {
+            "topic": "problem",
+            "new_information": "Какие именно задачи клиент хочет автоматизировать",
+            "decision_impact": "Определяет, достаточно ли базовой программы или нужен более продвинутый вариант, и укладывается ли это в бюджет",
+            "already_answered": false,
+            "changes_selection": true,
+            "changes_argument": true,
+            "essential_now": true
+          },
+          "after_answer_action": "SELECT_SOLUTION",
+          "after_answer_goal": "Связать задачи клиента с подходящим вариантом и честно обсудить бюджет"
+        },
+        "conversation_signals": {
+          "client_declines_questions": false,
+          "client_tired_of_questions": false,
+          "offer_requested": false,
+          "manager_questions_since_offer": 0,
+          "offer_due_after_bridge": false
+        },
+        "validation": {
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        },
+        "id": "cb161039-383b-430d-9a44-d6d22da0cb24",
+        "created_at": "2026-11-15T11:45:19.916572+00:00",
+        "feedback": null,
+        "turn_id": "809b6c5e-8444-4588-b3a8-9afc0019cdd7",
+        "validation_trace": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "diagnostics": {
+          "trace_id": "c8583d66-c2c6-44e2-81d8-4e1db6570112",
+          "stages_ms": {
+            "lock_wait": 0.002,
+            "storage_save": 6.352,
+            "knowledge_prepare": 0.018,
+            "context_copy": 0.069,
+            "context_prepare": 6.332,
+            "provider_requests": 5508.092,
+            "schema_validation": 0.123,
+            "validation": 0.319,
+            "engine": 5515.096
+          },
+          "calls": [
+            {
+              "stream": false,
+              "model": "deepseek-flash",
+              "thinking": "disabled",
+              "ttft_ms": null,
+              "first_content_ms": null,
+              "content_generation_ms": null,
+              "finish_reason": "stop",
+              "response_model": "deepseek-flash",
+              "status": "ok",
+              "usage": {
+                "prompt_tokens": 7346,
+                "completion_tokens": 1043,
+                "total_tokens": 8389,
+                "prompt_tokens_details": {
+                  "cached_tokens": 3840
+                },
+                "prompt_cache_hit_tokens": 3840,
+                "prompt_cache_miss_tokens": 3506
+              },
+              "request_ms": 5508.103
+            }
+          ],
+          "request_count": 1,
+          "retry_count": 0,
+          "retry_request_ms": 0
+        },
+        "provider": "compatible",
+        "latency_ms": 5515,
+        "usage": {
+          "prompt_tokens": 7346,
+          "completion_tokens": 1043,
+          "total_tokens": 8389,
+          "prompt_cache_hit_tokens": 3840,
+          "prompt_cache_miss_tokens": 3506,
+          "request_count": 1
+        },
+        "prompt_version": "v2-sales-leadership-1"
+      },
+      "http_status": 200,
+      "turns": [
+        {
+          "id": "809b6c5e-8444-4588-b3a8-9afc0019cdd7",
+          "role": "client",
+          "text": "Автоматизация нужна, но больше 10000 рублей потратить не могу. Кредит брать не хочу.",
+          "request_id": "989968d2-6cda-4be6-a28c-b16ec36ca370",
+          "created_at": "2026-11-15T11:45:14.394197+00:00"
+        }
+      ]
+    }
+  ]
+}

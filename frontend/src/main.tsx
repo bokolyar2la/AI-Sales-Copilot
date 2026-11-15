@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import './style.css';
+import {recordResponse,recordRendered} from './diagnostics';
 
 type Turn={id:string;role:'client'|'manager';text:string};
 type Fact={id:string;category:string;value:string;status:string;source_turn:string};
@@ -10,9 +11,13 @@ type Flow={stage:string;needs_confirmed:boolean;ready_to_buy:boolean;price_reque
 type Session={hypotheses?:Hypothesis[];dialogue_state?:Flow;opening?:Rec;sales_context?:{school:string;course:string;manager:string};id:string;title:string;version:number;closed:boolean;turns:Turn[];facts:Fact[];recommendations:Rec[];gaps:string[];stage:string;analysis_error:string|null};
 type Scenario={title:string;turns:{role:'client'|'manager';text:string}[]};
 async function api<T>(path:string, method='GET', body?:unknown):Promise<T>{
+ const start=performance.now();
  const response=await fetch('/api'+path,{method,headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
  if(!response.ok){const data=await response.json();throw new Error(typeof data.detail==='string'?data.detail:'Проверьте заполнение полей.');}
- return response.status===204?undefined as T:response.json();
+ if(response.status===204)return undefined as T;
+ const jsonStart=performance.now();const data=await response.json();const received=performance.now();
+ recordResponse(path,start,received,received-jsonStart,response,data);
+ return data;
 }
 function App(){
  const [sessions,setSessions]=useState<Session[]>([]),[active,setActive]=useState<Session|null>(null),[labels,setLabels]=useState<Record<string,string>>({}),[provider,setProvider]=useState(''),[scenarios,setScenarios]=useState<Scenario[]>([]);
@@ -28,6 +33,7 @@ function App(){
  async function create(){setActive(await api<Session>('/sessions','POST',{title,school,course,manager}));setStep(0);setSummary(null);setSidebar(false);await refresh();}
  async function send(r:Turn['role'],value:string){if(!active)return;const s=await api<Session>(`/sessions/${active.id}/turns`,'POST',{role:r,text:value,request_id:crypto.randomUUID(),expected_version:active.version});setActive(s);setText('');setSummary(null);await refresh();}
  const rec=active?.recommendations.at(-1)||(active?.turns.length===0?active.opening:undefined);
+ useEffect(()=>{if(active)recordRendered(active.id);},[active?.id,active?.version,rec?.id,active?.analysis_error]);
  const visible=rec&&!active?.analysis_error&&!['hidden','rejected'].includes(rec.feedback||'');
  const status:Record<string,string>={CONFIRMED:'Подтверждено',INFERRED:'Предположение',OUTDATED:'Устарело',CONTRADICTED:'Противоречие',REJECTED:'Опровергнуто'};
  const source=(id:string)=>{setMode('sales');requestAnimationFrame(()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'center'}));};

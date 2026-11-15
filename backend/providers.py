@@ -1,6 +1,8 @@
 import json
 import os
 import re
+from time import perf_counter
+from .diagnostics import timed, add_call
 from urllib.parse import urlparse
 import httpx
 from .models import Analysis, Fact, Advice, LABELS
@@ -70,6 +72,10 @@ class DemoProvider:
 class CompatibleProvider:
     name = 'compatible'
 
+    def __init__(self, *, diagnostic_stream=False):
+        # Opt-in only: production configuration keeps buffered responses.
+        self.diagnostic_stream = diagnostic_stream
+
     async def analyze(self, session, knowledge):
         model = os.getenv('LLM_MODEL', '')
         if not model:
@@ -77,26 +83,83 @@ class CompatibleProvider:
         headers = {}
         if os.getenv('LLM_API_KEY'):
             headers['Authorization'] = 'Bearer ' + os.environ['LLM_API_KEY']
-        context = model_context(session)
-        payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
-        payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
+        with timed('context_prepare'):
+            context = model_context(session)
+            payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
+            payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
         endpoint = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/')
         if urlparse(endpoint).hostname == 'api.deepseek.com':
             payload['thinking'] = {'type': 'disabled'}
-        async with httpx.AsyncClient(timeout=float(os.getenv('LLM_TIMEOUT', '45'))) as client:
-            response = await client.post(endpoint + '/chat/completions', headers=headers, json=payload)
-            response.raise_for_status()
-            data = response.json()
+        if self.diagnostic_stream:
+            payload.update(stream=True, stream_options={'include_usage': True})
+        data = await self._complete(endpoint, headers, payload)
         try:
-            analysis = Analysis.model_validate_json(data['choices'][0]['message']['content'])
-            if session.get('turns') and analysis.intelligence is None:
-                raise ValueError('Missing intelligence result')
-            if session.get('turns') and analysis.intelligence.sales_plan is None:
-                raise ValueError('Missing sales plan')
+            with timed('schema_validation'):
+                analysis = Analysis.model_validate_json(data['choices'][0]['message']['content'])
+                if session.get('turns') and analysis.intelligence is None:
+                    raise ValueError('Missing intelligence result')
+                if session.get('turns') and analysis.intelligence.sales_plan is None:
+                    raise ValueError('Missing sales plan')
         except ValueError as exc:
             exc.usage = data.get('usage', {})
             raise
         return analysis, data.get('usage', {})
+
+    async def _complete(self, endpoint, headers, payload):
+        start = perf_counter()
+        call = {'stream': self.diagnostic_stream, 'model': payload['model'],
+                'thinking': payload.get('thinking', {}).get('type', 'unspecified'),
+                'ttft_ms': None, 'first_content_ms': None, 'content_generation_ms': None}
+        add_call(call)
+        def elapsed(): return round((perf_counter()-start)*1000, 3)
+        try:
+            with timed('provider_requests'):
+                async with httpx.AsyncClient(timeout=float(os.getenv('LLM_TIMEOUT', '45'))) as client:
+                    if not self.diagnostic_stream:
+                        response = await client.post(endpoint + '/chat/completions', headers=headers, json=payload)
+                        response.raise_for_status()
+                        data = response.json()
+                        call['finish_reason'] = data['choices'][0].get('finish_reason')
+                        call['response_model'] = data.get('model')
+                    else:
+                        content, usage, finish, done = [], {}, None, False
+                        last_content = None
+                        async with client.stream('POST', endpoint + '/chat/completions', headers=headers, json=payload) as response:
+                            response.raise_for_status()
+                            async for line in response.aiter_lines():
+                                if not line.startswith('data:'): continue
+                                raw = line[5:].strip()
+                                if raw == '[DONE]':
+                                    done = True
+                                    break
+                                chunk = json.loads(raw)
+                                call['response_model'] = chunk.get('model', call.get('response_model'))
+                                if chunk.get('usage'): usage = chunk['usage']
+                                for choice in chunk.get('choices', []):
+                                    delta = choice.get('delta', {})
+                                    if (delta.get('content') or delta.get('reasoning_content')) and call['ttft_ms'] is None:
+                                        call['ttft_ms'] = elapsed()
+                                    if delta.get('content'):
+                                        if call['first_content_ms'] is None: call['first_content_ms'] = elapsed()
+                                        content.append(delta['content'])
+                                        last_content = elapsed()
+                                    if choice.get('finish_reason'): finish = choice['finish_reason']
+                        if not done or finish is None:
+                            raise ValueError('Incomplete provider stream')
+                        call['finish_reason'] = finish
+                        if last_content is not None:
+                            call['content_generation_ms'] = round(last_content-call['first_content_ms'],3)
+                        data = {'choices':[{'message':{'content':''.join(content)},'finish_reason':finish}], 'usage':usage}
+            call['status'] = 'ok'
+            call['usage'] = data.get('usage', {})
+            return data
+        except Exception as exc:
+            call['status'] = 'error'
+            call['error_type'] = type(exc).__name__
+            raise
+        finally:
+            call['request_ms'] = elapsed()
+
 
 def get_provider():
     name = os.getenv('LLM_PROVIDER', 'demo')

@@ -2,6 +2,8 @@ import asyncio
 import json
 import os
 import time
+from contextlib import asynccontextmanager
+from urllib.parse import urlparse
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -16,16 +18,40 @@ from .configure_llm import error_message
 from .call_flow import opening, scoped_knowledge
 from .dialogue_policy import initial_state
 from .engine import process_turn
+from .diagnostics import capture, timed, snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / '.env')
 
-def create_app(database=None, provider=None):
+def create_app(database=None, provider=None, *, diagnostic_origin=None):
+    if diagnostic_origin:
+        origin_url=urlparse(diagnostic_origin)
+        if origin_url.scheme!='http' or origin_url.hostname!='127.0.0.1' or origin_url.username or origin_url.path or origin_url.query or origin_url.fragment:
+            raise ValueError('Diagnostic origin must be loopback')
     app = FastAPI(title='AI Sales Copilot Alpha', version='0.1.0')
     store = Store(database or ROOT / os.getenv('DATABASE_PATH', 'data/copilot.sqlite3'))
     engine = provider or get_provider()
     lock = asyncio.Lock()  # Single local process, serialized state mutations.
     knowledge = json.loads((ROOT / 'backend/knowledge.json').read_text(encoding='utf-8'))
+
+    @asynccontextmanager
+    async def measured_lock():
+        with timed('lock_wait'):
+            await lock.acquire()
+        try:
+            yield
+        finally:
+            lock.release()
+
+    @app.middleware('http')
+    async def diagnostics(request: Request, call_next):
+        if request.method != 'POST' or not request.url.path.endswith(('/turns','/retry')):
+            return await call_next(request)
+        with capture() as trace:
+            with timed('server_response_ready'):
+                response = await call_next(request)
+            response.headers['X-Copilot-Diagnostics'] = json.dumps(snapshot(trace), separators=(',',':'))
+            return response
 
     @app.middleware('http')
     async def local_only(request: Request, call_next):
@@ -33,7 +59,7 @@ def create_app(database=None, provider=None):
         if host not in ('127.0.0.1', 'localhost', 'testserver'):
             return JSONResponse({'detail': 'Только локальный доступ.'}, status_code=403)
         origin = request.headers.get('origin')
-        if origin and origin not in ('http://127.0.0.1:8765', 'http://localhost:8765', 'http://localhost:5173', 'http://127.0.0.1:5173'):
+        if origin and origin not in ('http://127.0.0.1:8765', 'http://localhost:8765', 'http://localhost:5173', 'http://127.0.0.1:5173', diagnostic_origin):
             return JSONResponse({'detail': 'Недопустимый источник запроса.'}, status_code=403)
         return await call_next(request)
 
@@ -61,7 +87,7 @@ def create_app(database=None, provider=None):
 
     @app.post('/api/sessions', status_code=201)
     async def new_session(body: NewSession):
-        async with lock:
+        async with measured_lock():
             s = {'id': uid(), 'title': body.title, 'created_at': now(), 'version': 0, 'closed': False, 'turns': [], 'facts': [], 'recommendations': [], 'gaps': CATEGORIES.copy(), 'stage': 'Начало', 'analysis_error': None}
             s['sales_context'] = {'school': body.school, 'course': body.course, 'manager': body.manager}
             s['opening'] = opening(s)
@@ -76,7 +102,7 @@ def create_app(database=None, provider=None):
 
     @app.post('/api/sessions/{sid}/turns')
     async def turn(sid: str, body: TurnInput):
-        async with lock:
+        async with measured_lock():
             s = get(sid)
             previous = next((t for t in s['turns'] if t['request_id'] == body.request_id), None)
             if previous:
@@ -92,21 +118,25 @@ def create_app(database=None, provider=None):
             s['turns'].append({'id': uid(), 'role': body.role, 'text': body.text, 'request_id': body.request_id, 'created_at': now()})
             s['version'] += 1
             s['analysis_error'] = 'Реплика сохранена, анализ не завершён. Повторите анализ, если обработка была прервана.'
-            store.save(s)
+            with timed('initial_save'):
+                store.save(s)
             start = time.perf_counter()
             try:
-                analysis, usage = await process_turn(s, engine, scoped_knowledge(s, knowledge))
+                with timed('knowledge_prepare'):
+                    selected_knowledge = scoped_knowledge(s, knowledge)
+                analysis, usage = await process_turn(s, engine, selected_knowledge)
                 s['analysis_error'] = None
                 s['recommendations'][-1].update(provider=engine.name, latency_ms=round((time.perf_counter() - start) * 1000), usage=usage, prompt_version=VERSION)
             except Exception as exc:
                 # Never return provider response bodies or credentials to the browser.
                 s['analysis_error'] = 'Реплика сохранена. ' + error_message(exc)
-            store.save(s)
+            with timed('result_save'):
+                store.save(s)
             return s
 
     @app.post('/api/sessions/{sid}/retry')
     async def retry(sid: str):
-        async with lock:
+        async with measured_lock():
             s = get(sid)
             blocked = bool(s['recommendations'] and s['recommendations'][-1].get('validation', {}).get('status') == 'blocked')
             if (not s['analysis_error'] and not blocked) or not s['turns']:
@@ -115,18 +145,21 @@ def create_app(database=None, provider=None):
                 raise HTTPException(409, 'Сессия завершена.')
             start = time.perf_counter()
             try:
-                analysis, usage = await process_turn(s, engine, scoped_knowledge(s, knowledge))
+                with timed('knowledge_prepare'):
+                    selected_knowledge = scoped_knowledge(s, knowledge)
+                analysis, usage = await process_turn(s, engine, selected_knowledge)
                 s['recommendations'][-1].update(provider=engine.name, latency_ms=round((time.perf_counter() - start) * 1000), usage=usage, prompt_version=VERSION)
                 s['analysis_error'] = None
                 s['version'] += 1
             except Exception as exc:
                 raise HTTPException(502, error_message(exc))
-            store.save(s)
+            with timed('result_save'):
+                store.save(s)
             return s
 
     @app.post('/api/sessions/{sid}/recommendations/{rid}/feedback')
     async def feedback(sid: str, rid: str, body: Feedback):
-        async with lock:
+        async with measured_lock():
             s = get(sid)
             rec = next((r for r in s['recommendations'] if r['id'] == rid), None)
             if not rec:
@@ -137,7 +170,7 @@ def create_app(database=None, provider=None):
 
     @app.post('/api/sessions/{sid}/close')
     async def close(sid: str):
-        async with lock:
+        async with measured_lock():
             s = get(sid)
             s['closed'] = True
             store.save(s)
@@ -150,7 +183,7 @@ def create_app(database=None, provider=None):
 
     @app.delete('/api/sessions/{sid}', status_code=204)
     async def delete(sid: str):
-        async with lock:
+        async with measured_lock():
             get(sid)
             store.delete(sid)
 

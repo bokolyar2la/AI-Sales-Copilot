@@ -1,6 +1,7 @@
 import json
 import sqlite3
 from pathlib import Path
+from .diagnostics import timed
 
 class Store:
     def __init__(self, path):
@@ -18,8 +19,9 @@ class Store:
         return json.loads(row[0]) if row else None
 
     def save(self, session):
-        with self.connect() as db:
-            db.execute('INSERT OR REPLACE INTO sessions VALUES (?,?)', (session['id'], json.dumps(session, ensure_ascii=False)))
+        with timed('storage_save'):
+            with self.connect() as db:
+                db.execute('INSERT OR REPLACE INTO sessions VALUES (?,?)', (session['id'], json.dumps(session, ensure_ascii=False)))
 
     def list(self):
         with self.connect() as db:

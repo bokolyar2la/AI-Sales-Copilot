@@ -1,0 +1,233 @@
+{
+  "quantile": "linear interpolation, position=(n-1)*p; timeout observations are censored, not successful hint times",
+  "summary": {
+    "current": {
+      "samples": 16,
+      "delivered_including_correct_pause": 16,
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "blocked": 0,
+      "client_timeout_count": 0,
+      "observed_completion_or_timeout_ms": {
+        "n": 16,
+        "p50": 5510.65,
+        "p95": 10255.2
+      },
+      "delivered_display_proxy_ms": {
+        "n": 16,
+        "p50": 5510.65,
+        "p95": 10255.2
+      },
+      "calls_observed": 18,
+      "calls_missing_samples": 0,
+      "retry_turns_observed": 2,
+      "retry_request_ms_total": 10281.864,
+      "call_metrics": {
+        "ttft_ms": {
+          "n": 0,
+          "p50": null,
+          "p95": null
+        },
+        "first_content_ms": {
+          "n": 0,
+          "p50": null,
+          "p95": null
+        },
+        "content_generation_ms": {
+          "n": 0,
+          "p50": null,
+          "p95": null
+        },
+        "request_ms": {
+          "n": 18,
+          "p50": 5401.783,
+          "p95": 6857.566
+        }
+      },
+      "stages_ms": {
+        "context_copy": {
+          "n": 16,
+          "p50": 0.073,
+          "p95": 0.134
+        },
+        "context_prepare": {
+          "n": 16,
+          "p50": 9.43,
+          "p95": 18.045
+        },
+        "engine": {
+          "n": 16,
+          "p50": 5477.324,
+          "p95": 10222.135
+        },
+        "knowledge_prepare": {
+          "n": 16,
+          "p50": 0.058,
+          "p95": 0.118
+        },
+        "lock_wait": {
+          "n": 16,
+          "p50": 0.003,
+          "p95": 0.006
+        },
+        "provider_requests": {
+          "n": 16,
+          "p50": 5470.082,
+          "p95": 10205.969
+        },
+        "schema_validation": {
+          "n": 16,
+          "p50": 0.131,
+          "p95": 0.528
+        },
+        "server_response_ready": {
+          "n": 16,
+          "p50": 5500.218,
+          "p95": 10242.318
+        },
+        "storage_save": {
+          "n": 16,
+          "p50": 17.608,
+          "p95": 23.041
+        },
+        "validation": {
+          "n": 16,
+          "p50": 0.574,
+          "p95": 1.202
+        }
+      },
+      "render_wait_ms": {
+        "n": 16,
+        "p50": 7.05,
+        "p95": 15.85
+      },
+      "prompt_tokens": {
+        "n": 18,
+        "p50": 7358.5,
+        "p95": 7607.1
+      },
+      "completion_tokens": {
+        "n": 18,
+        "p50": 985.0,
+        "p95": 1375.45
+      },
+      "quality_mean_delivered_score_out_of_12": 10.062,
+      "quality_mean_content_available_out_of_12": 10.062,
+      "provider_fraction_of_display_time_complete_samples": 0.9923512530231006
+    },
+    "stream_off": {
+      "samples": 16,
+      "delivered_including_correct_pause": 14,
+      "failure_count": 2,
+      "failure_rate": 0.125,
+      "blocked": 1,
+      "client_timeout_count": 1,
+      "observed_completion_or_timeout_ms": {
+        "n": 16,
+        "p50": 5324.7,
+        "p95": 40226.075
+      },
+      "delivered_display_proxy_ms": {
+        "n": 14,
+        "p50": 5163.6,
+        "p95": 7745.475
+      },
+      "calls_observed": 17,
+      "calls_missing_samples": 1,
+      "retry_turns_observed": 2,
+      "retry_request_ms_total": 10997.516,
+      "call_metrics": {
+        "ttft_ms": {
+          "n": 17,
+          "p50": 1276.761,
+          "p95": 1639.654
+        },
+        "first_content_ms": {
+          "n": 17,
+          "p50": 1276.767,
+          "p95": 1639.661
+        },
+        "content_generation_ms": {
+          "n": 17,
+          "p50": 3763.58,
+          "p95": 4857.072
+        },
+        "request_ms": {
+          "n": 17,
+          "p50": 5154.522,
+          "p95": 6162.29
+        }
+      },
+      "stages_ms": {
+        "context_copy": {
+          "n": 15,
+          "p50": 0.06,
+          "p95": 0.152
+        },
+        "context_prepare": {
+          "n": 15,
+          "p50": 6.879,
+          "p95": 21.249
+        },
+        "engine": {
+          "n": 15,
+          "p50": 5158.883,
+          "p95": 10629.023
+        },
+        "knowledge_prepare": {
+          "n": 15,
+          "p50": 0.051,
+          "p95": 0.088
+        },
+        "lock_wait": {
+          "n": 15,
+          "p50": 0.003,
+          "p95": 0.008
+        },
+        "provider_requests": {
+          "n": 15,
+          "p50": 5154.513,
+          "p95": 10615.692
+        },
+        "schema_validation": {
+          "n": 15,
+          "p50": 0.123,
+          "p95": 1.078
+        },
+        "server_response_ready": {
+          "n": 15,
+          "p50": 5173.32,
+          "p95": 10648.422
+        },
+        "storage_save": {
+          "n": 15,
+          "p50": 15.353,
+          "p95": 19.407
+        },
+        "validation": {
+          "n": 15,
+          "p50": 0.426,
+          "p95": 1.206
+        }
+      },
+      "render_wait_ms": {
+        "n": 15,
+        "p50": 7.0,
+        "p95": 15.0
+      },
+      "prompt_tokens": {
+        "n": 17,
+        "p50": 7364.0,
+        "p95": 7620.8
+      },
+      "completion_tokens": {
+        "n": 17,
+        "p50": 933.0,
+        "p95": 1207.6
+      },
+      "quality_mean_delivered_score_out_of_12": 8.125,
+      "quality_mean_content_available_out_of_12": 9.286,
+      "provider_fraction_of_display_time_complete_samples": 0.9928526955321217
+    }
+  }
+}

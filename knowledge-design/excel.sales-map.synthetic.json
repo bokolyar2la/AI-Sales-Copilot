@@ -1,0 +1,385 @@
+{
+  "schema_version": "0.1",
+  "metadata": {
+    "classification": "SYNTHETIC_ONLY",
+    "approved_for_production": false,
+    "school": null,
+    "purpose": "Пример структуры, не каталог реальной школы и не вход рабочего LLM"
+  },
+  "primary_product": {
+    "id": "excel",
+    "name": "СИНТЕТИЧЕСКИЙ продукт: Excel для рабочих задач",
+    "positioning": "Самостоятельное решение повторяющихся задач с таблицами",
+    "outcomes": [
+      "Самостоятельно готовить типовые отчёты",
+      "Организовать проверяемые расчёты",
+      "Снизить объём повторного ручного сведения"
+    ],
+    "non_goals": [
+      "Не гарантирует повышение, доход или трудоустройство",
+      "Не заменяет аудит процессов компании"
+    ],
+    "verified_conditions": {
+      "price": null,
+      "duration_weeks": null,
+      "weekly_hours": null,
+      "mentoring": null,
+      "own_files_practice": null
+    }
+  },
+  "audiences": [
+    {
+      "id": "administrator",
+      "label": "Администратор / офисный специалист",
+      "typical_tasks": [
+        "Учёт посещений",
+        "Простой отчёт руководителю"
+      ],
+      "goal_ids": [
+        "independence"
+      ]
+    },
+    {
+      "id": "accounting",
+      "label": "Специалист по учёту",
+      "typical_tasks": [
+        "Сверка сумм",
+        "Поиск ошибок в расчётах"
+      ],
+      "goal_ids": [
+        "accuracy"
+      ]
+    },
+    {
+      "id": "operations",
+      "label": "Операционный специалист",
+      "typical_tasks": [
+        "Сведение одинаковых файлов филиалов"
+      ],
+      "goal_ids": [
+        "repeatable_reporting"
+      ]
+    },
+    {
+      "id": "manager",
+      "label": "Руководитель группы",
+      "typical_tasks": [
+        "Сравнение показателей",
+        "Подготовка управленческой сводки"
+      ],
+      "goal_ids": [
+        "decisions"
+      ]
+    }
+  ],
+  "professional_goals": [
+    {
+      "id": "independence",
+      "description": "Готовить свои отчёты без постоянной помощи коллег",
+      "need_ids": [
+        "basic_skills",
+        "confidence"
+      ]
+    },
+    {
+      "id": "accuracy",
+      "description": "Делать расчёты проверяемыми и избегать повторных исправлений",
+      "need_ids": [
+        "reliable_calculation"
+      ]
+    },
+    {
+      "id": "repeatable_reporting",
+      "description": "Обновлять регулярную отчётность без повторного копирования",
+      "need_ids": [
+        "automation"
+      ]
+    },
+    {
+      "id": "decisions",
+      "description": "Понимать изменения показателей и объяснять их коллегам",
+      "need_ids": [
+        "analysis"
+      ]
+    }
+  ],
+  "potential_needs": [
+    {
+      "id": "basic_skills",
+      "type": "functional",
+      "description": "Освоить базовые операции для конкретного отчёта",
+      "signals": [
+        "Не знает, как собрать простой отчёт"
+      ],
+      "counter_signals": [
+        "Уже уверенно делает такие отчёты"
+      ],
+      "requires_client_confirmation": true,
+      "question_ids": [
+        "q_task"
+      ]
+    },
+    {
+      "id": "confidence",
+      "type": "emotional",
+      "description": "Меньше зависеть от помощи и увереннее объяснять результат",
+      "signals": [
+        "Сам говорит о неловкости или зависимости"
+      ],
+      "counter_signals": [
+        "Не испытывает неудобства, помощь коллег устраивает"
+      ],
+      "requires_client_confirmation": true,
+      "question_ids": [
+        "q_impact"
+      ]
+    },
+    {
+      "id": "reliable_calculation",
+      "type": "functional",
+      "description": "Уменьшить ручные ошибки в расчётах",
+      "signals": [
+        "Пересчитывает после ошибок"
+      ],
+      "counter_signals": [
+        "Расчёты уже автоматизированы и проверяются"
+      ],
+      "requires_client_confirmation": true,
+      "question_ids": [
+        "q_errors"
+      ]
+    },
+    {
+      "id": "automation",
+      "type": "functional",
+      "description": "Автоматизировать повторяющееся объединение источников",
+      "signals": [
+        "Копирует данные из одинаковых файлов каждый период"
+      ],
+      "counter_signals": [
+        "Разовая маленькая таблица без повторений"
+      ],
+      "requires_client_confirmation": true,
+      "question_ids": [
+        "q_repeatability"
+      ]
+    },
+    {
+      "id": "analysis",
+      "type": "professional",
+      "description": "Сравнивать показатели и искать причины изменений",
+      "signals": [
+        "Нужно объяснять отклонения, а не только сводить цифры"
+      ],
+      "counter_signals": [
+        "Только ввод данных и простые итоги"
+      ],
+      "requires_client_confirmation": true,
+      "question_ids": [
+        "q_analysis"
+      ]
+    }
+  ],
+  "diagnostic_questions": [
+    {
+      "id": "q_task",
+      "text": "Какой отчёт вам сейчас нужно делать самостоятельно?",
+      "tests_need_ids": [
+        "basic_skills"
+      ],
+      "decision_impact": "Определяет набор операций, который нужен сейчас",
+      "skip_if": "Клиент уже описал конкретный отчёт",
+      "after_answer": "Если задача ясна, связать её с нужными возможностями; не переспросить желание самостоятельности"
+    },
+    {
+      "id": "q_impact",
+      "text": "Что изменится в вашей работе, когда этот отчёт сможете делать сами?",
+      "tests_need_ids": [
+        "confidence"
+      ],
+      "decision_impact": "Выбирает аргумент самостоятельности или рабочей эффективности, не тариф",
+      "skip_if": "Клиент уже назвал значимость либо просит перейти к предложению",
+      "after_answer": "Использовать прямо названный мотив, не приписывать страх или стыд"
+    },
+    {
+      "id": "q_errors",
+      "text": "На каком этапе расчёта чаще приходится что-то исправлять?",
+      "tests_need_ids": [
+        "reliable_calculation"
+      ],
+      "decision_impact": "Различает ошибку ввода, формул и объединения данных",
+      "skip_if": "Причина ошибки уже названа",
+      "after_answer": "Связать соответствующий навык с проверкой расчёта без гарантии отсутствия ошибок"
+    },
+    {
+      "id": "q_repeatability",
+      "text": "Файлы каждый раз одинаковой структуры или меняются колонки и формат?",
+      "tests_need_ids": [
+        "automation"
+      ],
+      "decision_impact": "Уточняет применимость повторяемой настройки объединения",
+      "skip_if": "Структура уже описана",
+      "after_answer": "Объяснить подходящий механизм и ограничения, перейти к предложению"
+    },
+    {
+      "id": "q_analysis",
+      "text": "Нужен готовый сводный отчёт или также разбор причин изменений показателей?",
+      "tests_need_ids": [
+        "analysis"
+      ],
+      "decision_impact": "Различает сбор данных и аналитическую задачу",
+      "skip_if": "Клиент уже обозначил глубину анализа",
+      "after_answer": "Выбрать акцент программы по текущей задаче"
+    },
+    {
+      "id": "q_bridge",
+      "text": "Расскажу содержание и цену. Чтобы подобрать уровень под ваши отчёты, уточню один момент: нужны простые таблицы или регулярное объединение файлов?",
+      "tests_need_ids": [
+        "basic_skills",
+        "automation"
+      ],
+      "decision_impact": "Реальная развилка между базовыми задачами и автоматизацией",
+      "skip_if": "Уровень задач уже известен или клиент отказался от вопросов",
+      "after_answer": "Сразу персонализированное предложение; новые темы диагностики не открывать"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "tables",
+      "name": "Ввод, оформление и организация таблицы",
+      "evidence_status": "SYNTHETIC",
+      "limitations": [
+        "Наличие реального модуля нужно подтвердить"
+      ]
+    },
+    {
+      "id": "formulas",
+      "name": "Формулы и проверка расчётов",
+      "evidence_status": "SYNTHETIC",
+      "limitations": [
+        "Не обещает отсутствие всех ошибок"
+      ]
+    },
+    {
+      "id": "filters",
+      "name": "Сортировка и фильтры",
+      "evidence_status": "SYNTHETIC",
+      "limitations": [
+        "Не заменяет анализ причин"
+      ]
+    },
+    {
+      "id": "pivot",
+      "name": "Сводные таблицы",
+      "evidence_status": "SYNTHETIC",
+      "limitations": [
+        "Требует корректной структуры исходных данных"
+      ]
+    },
+    {
+      "id": "power_query",
+      "name": "Повторяемое объединение и преобразование файлов",
+      "evidence_status": "SYNTHETIC",
+      "limitations": [
+        "Изменение структуры может потребовать доработки",
+        "Не обещает конкретную экономию времени"
+      ]
+    }
+  ],
+  "need_capability_links": [
+    {
+      "need_id": "basic_skills",
+      "capability_ids": [
+        "tables",
+        "formulas",
+        "filters"
+      ],
+      "argument_template": "Для вашего {report} важны {operations}: это поможет самостоятельно собрать и проверить результат.",
+      "requires_verified_product_source": true
+    },
+    {
+      "need_id": "confidence",
+      "capability_ids": [
+        "tables",
+        "formulas"
+      ],
+      "argument_template": "Вы назвали важным {client_confirmed_motive}; свяжем обучение с самостоятельным выполнением {task}.",
+      "requires_verified_product_source": true
+    },
+    {
+      "need_id": "reliable_calculation",
+      "capability_ids": [
+        "formulas"
+      ],
+      "argument_template": "На этапе {error_stage} можно использовать {verified_skill}, чтобы проверять расчёт.",
+      "requires_verified_product_source": true
+    },
+    {
+      "need_id": "automation",
+      "capability_ids": [
+        "power_query"
+      ],
+      "argument_template": "Для повторяющихся {sources} полезен навык настройки объединения; после изменения данных обновляют результат, а структуру нужно проверить.",
+      "requires_verified_product_source": true
+    },
+    {
+      "need_id": "analysis",
+      "capability_ids": [
+        "pivot",
+        "filters"
+      ],
+      "argument_template": "Для сравнения {metrics} подойдёт {verified_capability}; презентация привязана к вопросу, который вы решаете.",
+      "requires_verified_product_source": true
+    }
+  ],
+  "tariff_selection": {
+    "rules": [
+      "Сначала выбирать решение текущей подтверждённой задачи",
+      "Эмоциональная неловкость и общее желание роста сами по себе не повод предлагать более дорогой тариф",
+      "Нулевой опыт сам по себе не исключает автоматизацию, если она нужна и подтверждён подходящий входной блок",
+      "Не задавать необязательные вопросы после достаточного подбора",
+      "Без реальных подтверждённых условий не называть цену и не обещать свойства"
+    ],
+    "candidates": [
+      {
+        "id": "basic_example",
+        "label": "СИНТЕТИЧЕСКИЙ базовый вариант",
+        "capability_ids": [
+          "tables",
+          "formulas",
+          "filters"
+        ],
+        "choose_when": [
+          "Нужны простые повседневные отчёты",
+          "Нет подтверждённой потребности в объединении источников"
+        ],
+        "not_enough_when": [
+          "Нужно регулярное объединение многих файлов"
+        ],
+        "price": null
+      },
+      {
+        "id": "automation_example",
+        "label": "СИНТЕТИЧЕСКИЙ вариант с автоматизацией",
+        "capability_ids": [
+          "tables",
+          "formulas",
+          "filters",
+          "pivot",
+          "power_query"
+        ],
+        "choose_when": [
+          "Подтверждена повторяющаяся сборка источников либо аналитическая задача"
+        ],
+        "not_enough_when": [
+          "Нужна инженерная система, выходящая за задачи Excel"
+        ],
+        "price": null
+      }
+    ],
+    "missing_information": {
+      "about_client": "Один вопрос только при реальном влиянии ответа на выбор",
+      "about_product": "Заметка менеджеру: проверить модуль, формат практики, нагрузку, полную цену. Не компенсировать неизвестные условия школы интервью клиента."
+    }
+  }
+}

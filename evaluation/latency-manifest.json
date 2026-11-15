@@ -1,0 +1,27 @@
+{
+  "baseline_commit": "6b20388e2a37e523e46349c78c5d8241d38818c5",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "temperature": 0.2,
+  "max_tokens": 3000,
+  "httpx_timeout_seconds": 45,
+  "client_wait_limit_seconds": 125,
+  "production_configuration_changed": false,
+  "arms": {
+    "current": "Buffered HTTP, existing settings",
+    "stream_off": "Same settings with stream=true and include_usage=true; does not render unvalidated partial JSON"
+  },
+  "prompt_sha256": "91cccdad54d44ee6d44046fecb088fc1ef3adccc377045a904b4846fe7096c77",
+  "cases_sha256": "62528000f40198ac9b4a1b762bb3b41db5946e62df45fcbbf49121a3ac770619",
+  "sample_size_per_arm": 16,
+  "replicates_per_case": 1,
+  "order": "alternating AB/BA, sequential",
+  "browser": "installed Microsoft Edge, Playwright headless 1440x1000",
+  "notes": [
+    "Both arms already disable thinking; not a thinking-on vs thinking-off comparison.",
+    "Cache not cleared; earlier invalid harness primed some prompts. Balanced order reduces but does not remove cache/time confounding.",
+    "Fixed historical checkpoints, not full multi-turn actor conversations.",
+    "One stream sample censored by client wait timeout; call counts and token usage for it are unknown.",
+    "Later instrumentation adds initial_save/result_save and validation status breakdown; comparison used aggregate storage_save and existing validation_trace. No generation configuration or prompt changed."
+  ]
+}

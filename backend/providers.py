@@ -5,6 +5,7 @@ from urllib.parse import urlparse
 import httpx
 from .models import Analysis, Fact, Advice, LABELS
 from .prompts import SYSTEM
+from .dialogue_policy import update_state
 
 class DemoProvider:
     name = 'demo'
@@ -62,7 +63,10 @@ class CompatibleProvider:
         headers = {}
         if os.getenv('LLM_API_KEY'):
             headers['Authorization'] = 'Bearer ' + os.environ['LLM_API_KEY']
-        payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': session, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
+        context = {**session}
+        if session.get('turns'):
+            context['dialogue_state'] = update_state(session, [])
+        payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
         payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
         endpoint = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/')
         if urlparse(endpoint).hostname == 'api.deepseek.com':
@@ -71,7 +75,14 @@ class CompatibleProvider:
             response = await client.post(endpoint + '/chat/completions', headers=headers, json=payload)
             response.raise_for_status()
             data = response.json()
-        return Analysis.model_validate_json(data['choices'][0]['message']['content']), data.get('usage', {})
+        try:
+            analysis = Analysis.model_validate_json(data['choices'][0]['message']['content'])
+            if session.get('turns') and analysis.intelligence is None:
+                raise ValueError('Missing intelligence result')
+        except ValueError as exc:
+            exc.usage = data.get('usage', {})
+            raise
+        return analysis, data.get('usage', {})
 
 def get_provider():
     name = os.getenv('LLM_PROVIDER', 'demo')

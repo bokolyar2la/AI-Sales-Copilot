@@ -1,0 +1,155 @@
+{
+  "id": "cb63a7e5-2135-439e-b8fa-a1086e55aca4",
+  "title": "Синтетическая проверка v2",
+  "created_at": "2026-11-15T09:07:36.835035+00:00",
+  "version": 1,
+  "closed": false,
+  "turns": [
+    {
+      "id": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+      "role": "client",
+      "text": "Люблю рисовать, но не знаю, зачем мне учиться дизайну.",
+      "request_id": "af3ead9f-ffe1-4513-a6e5-98e75745d1e7",
+      "created_at": "2026-11-15T09:07:36.854014+00:00"
+    }
+  ],
+  "facts": [
+    {
+      "category": "motivation",
+      "value": "Клиент любит рисовать",
+      "quote": "Люблю рисовать",
+      "source_turn": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+      "status": "CONFIRMED",
+      "replaces": [],
+      "confirms_hypothesis": "",
+      "id": "2bc70609-2718-4217-b975-88e051303d65",
+      "created_at": "2026-11-15T09:07:41.206981+00:00"
+    },
+    {
+      "category": "goal",
+      "value": "Пока не понимает, зачем ему учиться дизайну; цель обучения не определена",
+      "quote": "но не знаю, зачем мне учиться дизайну",
+      "source_turn": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+      "status": "CONFIRMED",
+      "replaces": [],
+      "confirms_hypothesis": "",
+      "id": "389f25e2-dda3-4c32-b06c-e417f10cb6aa",
+      "created_at": "2026-11-15T09:07:41.206981+00:00"
+    }
+  ],
+  "recommendations": [
+    {
+      "action_type": "QUESTION",
+      "suggestion": "Здорово, что вам нравится рисовать. Что вам хотелось бы делать с этим умением — например, рисовать для себя или создавать что-то для других?",
+      "reason": "Клиент назвал интерес (рисование), но цель обучения не определена. Вопрос о конкретном желаемом применении помогает развить задачу без абстрактного «какая у вас цель».",
+      "evidence_ids": [
+        "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1"
+      ],
+      "target_gap": "goal",
+      "confidence": 0.6,
+      "policy_flags": [],
+      "strategy": {
+        "action": "NEED_DEVELOPMENT",
+        "objective": "Помочь клиенту сформулировать конкретное применение интереса к рисованию",
+        "reason": "Клиент прямо говорит, что не знает, зачем учиться дизайну, но любит рисовать. Нужно перейти от абстрактного вопроса к конкретному желаемому применению.",
+        "evidence_ids": [
+          "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1"
+        ],
+        "label": "Помочь сформулировать потребность"
+      },
+      "validation": {
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-iteration-1"
+      },
+      "id": "1581b50a-28b1-42e8-9d96-596eac7434ed",
+      "created_at": "2026-11-15T09:07:41.207612+00:00",
+      "feedback": null,
+      "turn_id": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+      "validation_trace": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-iteration-1"
+        }
+      ],
+      "provider": "compatible",
+      "latency_ms": 4348,
+      "usage": {
+        "prompt_tokens": 8969,
+        "completion_tokens": 669,
+        "total_tokens": 9638,
+        "prompt_cache_hit_tokens": 6400,
+        "prompt_cache_miss_tokens": 2569,
+        "request_count": 1
+      },
+      "prompt_version": "v2-iteration-1-r3"
+    }
+  ],
+  "gaps": [
+    "profile",
+    "experience",
+    "situation",
+    "problem",
+    "consequence",
+    "importance",
+    "urgency",
+    "constraints",
+    "objection",
+    "decision",
+    "next_step"
+  ],
+  "stage": "Выявление потребностей",
+  "analysis_error": null,
+  "sales_context": {
+    "school": "Skillbox",
+    "course": "Дизайн",
+    "manager": ""
+  },
+  "opening": {
+    "id": "5fe80d90-8af3-493e-92bb-01911dd58907",
+    "action_type": "GREETING",
+    "suggestion": "Здравствуйте! Я представляю Skillbox. Вам удобно сейчас поговорить об обучении?",
+    "reason": "Представьтесь и уточните, удобно ли общаться. Затем согласуйте порядок беседы.",
+    "evidence_ids": [],
+    "feedback": null,
+    "created_at": "2026-11-15T09:07:36.835035+00:00"
+  },
+  "dialogue_state": {
+    "version": "edtech-personal-1",
+    "stage": "Выявление потребностей",
+    "events": [
+      {
+        "kind": "interest_shared",
+        "source_turn": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+        "quote": "Люблю рисовать, но не знаю, зачем мне учиться дизайну",
+        "topic": "goal"
+      }
+    ],
+    "questions": [],
+    "objections": [],
+    "price_requests": [],
+    "price_answered": false,
+    "needs_confirmed": false,
+    "ready_to_buy": false,
+    "outcome": null
+  },
+  "hypotheses": [
+    {
+      "id": "89c4ffee-8695-4d2a-a232-394b862cf5e2",
+      "statement": "Интерес к дизайну связан с желанием применять навыки рисования в практических задачах, но конкретное направление ещё не определено",
+      "status": "INFERRED",
+      "evidence": [
+        {
+          "source_turn": "db979311-80dc-42f7-aa8a-ebdfe2dd1ba1",
+          "quote": "Люблю рисовать, но не знаю, зачем мне учиться дизайну"
+        }
+      ],
+      "test_question": "Что вам хотелось бы делать с этим умением — например, рисовать для себя или создавать что-то для других?",
+      "created_at": "2026-11-15T09:07:41.206447+00:00",
+      "updated_at": "2026-11-15T09:07:41.206447+00:00",
+      "history": []
+    }
+  ]
+}

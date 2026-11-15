@@ -14,6 +14,7 @@ class Fact(StrictModel):
     source_turn: str
     status: Literal['CONFIRMED', 'INFERRED'] = 'CONFIRMED'
     replaces: list[str] = Field(default_factory=list)
+    confirms_hypothesis: str = Field(default='', description='ID ранее сохранённой гипотезы, только при прямом подтверждении клиентом.')
 
 class Advice(StrictModel):
     action_type: Literal['GREETING', 'AGENDA', 'INTEREST', 'QUESTION', 'ANSWER', 'SUMMARIZE', 'PRESENT', 'CLARIFY', 'NEXT_STEP', 'NO_ACTION']
@@ -23,9 +24,43 @@ class Advice(StrictModel):
     target_gap: str
     confidence: float = Field(ge=0, le=1)
 
+class DialogueEvent(StrictModel):
+    kind: Literal['greeted', 'agenda_agreed', 'interest_shared', 'needs_confirmed', 'presentation_delivered', 'objection_opened', 'objection_resolved', 'ready_to_buy', 'next_step_agreed', 'declined', 'unavailable', 'question_asked', 'question_answered']
+    source_turn: str
+    quote: str = Field(min_length=1, max_length=2000)
+    topic: str = Field(default='', max_length=120, description='Стабильная смысловая тема: goal, experience, price, time, value, decision и т.п. Для вопроса/возражения обязательна.')
+
+class Evidence(StrictModel):
+    source_turn: str
+    quote: str = Field(min_length=1, max_length=2000)
+
+class HypothesisUpdate(StrictModel):
+    id: str = Field(default='', description='Пусто для новой гипотезы; существующий ID для пересмотра.')
+    statement: str = Field(min_length=1, max_length=500)
+    status: Literal['INFERRED', 'REJECTED'] = 'INFERRED'
+    evidence: list[Evidence] = Field(min_length=1, max_length=5)
+    test_question: str = Field(max_length=400)
+
+class Strategy(StrictModel):
+    action: Literal['DISCOVERY', 'DEEP_DISCOVERY', 'NEED_DEVELOPMENT', 'RAPPORT', 'SALES_RECOVERY', 'SUMMARIZE', 'PRESENTATION', 'VALUE_BUILDING', 'OBJECTION_DIAGNOSIS', 'OBJECTION_HANDLING', 'PRICE_PRESENTATION', 'CLOSING', 'FOLLOW_UP', 'ANSWER', 'NO_ACTION']
+    objective: str = Field(min_length=1, max_length=300)
+    reason: str = Field(min_length=1, max_length=800)
+    evidence_ids: list[str] = Field(min_length=1, max_length=10)
+
+class ProductClaim(StrictModel):
+    text: str = Field(min_length=1, max_length=600)
+    source_id: str
+
+class Intelligence(StrictModel):
+    hypotheses: list[HypothesisUpdate] = Field(default_factory=list, max_length=4)
+    strategy: Strategy
+    product_claims: list[ProductClaim] = Field(default_factory=list, max_length=5)
+
 class Analysis(StrictModel):
     facts: list[Fact] = Field(max_length=30)
     recommendation: Advice
+    events: list[DialogueEvent] = Field(default_factory=list, max_length=12)
+    intelligence: Intelligence | None = None
 
 class NewSession(StrictModel):
     title: str = Field(min_length=1, max_length=120)

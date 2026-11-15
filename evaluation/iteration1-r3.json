@@ -1,0 +1,3936 @@
+{
+  "version": "v2-iteration-1-r3",
+  "date": "2026-11-15",
+  "scope": "Синтетический набор разработки, без будущих реплик. Автоматические проверки не равны экспертной оценке.",
+  "passed": 12,
+  "total": 12,
+  "p95_ms": 5230,
+  "total_tokens": 167127,
+  "results": [
+    {
+      "id": "vague_interest",
+      "title": "Неоформленный интерес",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Посмотрел рекламу программирования, просто интересно. Не знаю, зачем мне курс."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "motivation",
+                "value": "Интерес к программированию возник после просмотра рекламы; конкретной цели пока нет",
+                "quote": "Посмотрел рекламу программирования, просто интересно. Не знаю, зачем мне курс.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Спасибо, что честно сказали — с этого и начнём. Что в рекламе про программирование зацепило больше всего: сама тема или мысль, что можно делать что-то своими руками?",
+              "reason": "Клиент пришёл из рекламы, конкретной задачи нет. Вместо абстрактного «какая цель» опираемся на конкретный эпизод — что именно заинтересовало в рекламе, чтобы найти реальную задачу.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal.interest_trigger",
+              "confidence": 0.6
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Посмотрел рекламу программирования, просто интересно.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Интерес к программированию пока поверхностный, без связи с рабочей или личной задачей",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "просто интересно. Не знаю, зачем мне курс"
+                    }
+                  ],
+                  "test_question": "Что в рекламе про программирование зацепило больше всего?"
+                }
+              ],
+              "strategy": {
+                "action": "NEED_DEVELOPMENT",
+                "objective": "Найти конкретный эпизод или причину интереса, чтобы сформулировать задачу",
+                "reason": "Клиент прямо говорит, что не знает, зачем ему курс; нужен конкретный вход через интерес, а не абстрактный вопрос о цели.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Спасибо, что честно сказали — с этого и начнём. Что в рекламе про программирование зацепило больше всего: сама тема или мысль, что можно делать что-то своими руками?",
+            "reason": "Клиент пришёл из рекламы, конкретной задачи нет. Вместо абстрактного «какая цель» опираемся на конкретный эпизод — что именно заинтересовало в рекламе, чтобы найти реальную задачу.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.interest_trigger",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NEED_DEVELOPMENT",
+              "objective": "Найти конкретный эпизод или причину интереса, чтобы сформулировать задачу",
+              "reason": "Клиент прямо говорит, что не знает, зачем ему курс; нужен конкретный вход через интерес, а не абстрактный вопрос о цели.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Помочь сформулировать потребность"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "5b1ff8d5-b9e0-48dd-b49c-97b982cd324a",
+            "created_at": "2026-11-15T09:06:51.186841+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3668,
+          "usage": {
+            "prompt_tokens": 8551,
+            "completion_tokens": 490,
+            "total_tokens": 9041,
+            "prompt_cache_hit_tokens": 5888,
+            "prompt_cache_miss_tokens": 2663,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Посмотрел рекламу программирования, просто интересно. Не знаю, зачем мне курс."
+          }
+        ],
+        "facts": [
+          {
+            "category": "motivation",
+            "value": "Интерес к программированию возник после просмотра рекламы; конкретной цели пока нет",
+            "quote": "Посмотрел рекламу программирования, просто интересно. Не знаю, зачем мне курс.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "0059b3c7-4cbb-4e8f-b5f4-9128d9b1495a",
+            "created_at": "2026-11-15T09:06:51.185303+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "fd358672-13de-434b-bca4-11936676a87d",
+            "statement": "Интерес к программированию пока поверхностный, без связи с рабочей или личной задачей",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "просто интересно. Не знаю, зачем мне курс"
+              }
+            ],
+            "test_question": "Что в рекламе про программирование зацепило больше всего?",
+            "created_at": "2026-11-15T09:06:51.185303+00:00",
+            "updated_at": "2026-11-15T09:06:51.185303+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Спасибо, что честно сказали — с этого и начнём. Что в рекламе про программирование зацепило больше всего: сама тема или мысль, что можно делать что-то своими руками?",
+            "reason": "Клиент пришёл из рекламы, конкретной задачи нет. Вместо абстрактного «какая цель» опираемся на конкретный эпизод — что именно заинтересовало в рекламе, чтобы найти реальную задачу.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.interest_trigger",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NEED_DEVELOPMENT",
+              "objective": "Найти конкретный эпизод или причину интереса, чтобы сформулировать задачу",
+              "reason": "Клиент прямо говорит, что не знает, зачем ему курс; нужен конкретный вход через интерес, а не абстрактный вопрос о цели.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Помочь сформулировать потребность"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "5b1ff8d5-b9e0-48dd-b49c-97b982cd324a",
+            "created_at": "2026-11-15T09:06:51.186841+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Посмотрел рекламу программирования, просто интересно.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "career_uncertainty",
+      "title": "Смена профессии без понятной цели",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "На нынешней работе всё надоело. Думаю сменить профессию, но не понимаю на какую."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "situation",
+                "value": "Клиент недоволен текущей работой, она ему надоела",
+                "quote": "На нынешней работе всё надоело.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "goal",
+                "value": "Хочет сменить профессию, но пока не определился, на какую",
+                "quote": "Думаю сменить профессию, но не понимаю на какую.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понимаю, бывает непросто, когда текущая работа перестаёт устраивать. Что в нынешней работе вам больше всего хотелось бы изменить — саму сферу, задачи или условия?",
+              "reason": "Клиент сообщил о желании сменить профессию, но направление не определено. Причина недовольства и желаемое изменение неизвестны, поэтому уместен один конкретный вопрос для развития задачи, без перехода к программам.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal.reason_for_change",
+              "confidence": 0.6
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Думаю сменить профессию, но не понимаю на какую.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиент ищет смену сферы из-за неудовлетворённости текущей работой, а не конкретную профессию",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "На нынешней работе всё надоело."
+                    }
+                  ],
+                  "test_question": "Что именно в текущей работе больше всего хотелось бы изменить?"
+                }
+              ],
+              "strategy": {
+                "action": "NEED_DEVELOPMENT",
+                "objective": "Понять, что именно не устраивает в текущей работе и какое изменение клиент хочет получить",
+                "reason": "Клиент не может назвать профессию, поэтому начинаем с конкретного недовольства и желаемого изменения, а не с абстрактного вопроса о цели.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, бывает непросто, когда текущая работа перестаёт устраивать. Что в нынешней работе вам больше всего хотелось бы изменить — саму сферу, задачи или условия?",
+            "reason": "Клиент сообщил о желании сменить профессию, но направление не определено. Причина недовольства и желаемое изменение неизвестны, поэтому уместен один конкретный вопрос для развития задачи, без перехода к программам.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.reason_for_change",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NEED_DEVELOPMENT",
+              "objective": "Понять, что именно не устраивает в текущей работе и какое изменение клиент хочет получить",
+              "reason": "Клиент не может назвать профессию, поэтому начинаем с конкретного недовольства и желаемого изменения, а не с абстрактного вопроса о цели.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Помочь сформулировать потребность"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "60095eb3-95e7-406c-ac0b-c86397962d95",
+            "created_at": "2026-11-15T09:06:51.693217+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 4029,
+          "usage": {
+            "prompt_tokens": 8557,
+            "completion_tokens": 551,
+            "total_tokens": 9108,
+            "prompt_cache_hit_tokens": 5888,
+            "prompt_cache_miss_tokens": 2669,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "На нынешней работе всё надоело. Думаю сменить профессию, но не понимаю на какую."
+          }
+        ],
+        "facts": [
+          {
+            "category": "situation",
+            "value": "Клиент недоволен текущей работой, она ему надоела",
+            "quote": "На нынешней работе всё надоело.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "abdec0e5-4560-41ff-b735-b38fbcc0020a",
+            "created_at": "2026-11-15T09:06:51.693217+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Хочет сменить профессию, но пока не определился, на какую",
+            "quote": "Думаю сменить профессию, но не понимаю на какую.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "9ddd6c5a-3324-4b77-a9e9-6b5380b25d1c",
+            "created_at": "2026-11-15T09:06:51.693217+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "dff2e776-cbdc-4ad3-b923-b338fd11aa17",
+            "statement": "Клиент ищет смену сферы из-за неудовлетворённости текущей работой, а не конкретную профессию",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "На нынешней работе всё надоело."
+              }
+            ],
+            "test_question": "Что именно в текущей работе больше всего хотелось бы изменить?",
+            "created_at": "2026-11-15T09:06:51.693217+00:00",
+            "updated_at": "2026-11-15T09:06:51.693217+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, бывает непросто, когда текущая работа перестаёт устраивать. Что в нынешней работе вам больше всего хотелось бы изменить — саму сферу, задачи или условия?",
+            "reason": "Клиент сообщил о желании сменить профессию, но направление не определено. Причина недовольства и желаемое изменение неизвестны, поэтому уместен один конкретный вопрос для развития задачи, без перехода к программам.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.reason_for_change",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NEED_DEVELOPMENT",
+              "objective": "Понять, что именно не устраивает в текущей работе и какое изменение клиент хочет получить",
+              "reason": "Клиент не может назвать профессию, поэтому начинаем с конкретного недовольства и желаемого изменения, а не с абстрактного вопроса о цели.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Помочь сформулировать потребность"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "60095eb3-95e7-406c-ac0b-c86397962d95",
+            "created_at": "2026-11-15T09:06:51.693217+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Думаю сменить профессию, но не понимаю на какую.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "problem",
+          "consequence",
+          "importance",
+          "motivation",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "executive",
+      "title": "Руководитель, а не кандидат на новую профессию",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Я финансовый директор строительной компании. Менять профессию не собираюсь. Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "profile",
+                "value": "Финансовый директор строительной компании",
+                "quote": "Я финансовый директор строительной компании.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "motivation",
+                "value": "Не собирается менять профессию",
+                "quote": "Менять профессию не собираюсь.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "goal",
+                "value": "Разобраться, где компания теряет деньги",
+                "quote": "Хочу разобраться, где теряем деньги",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "problem",
+                "value": "Ошибки в управлении проектами приводят к кассовым разрывам",
+                "quote": "ошибки в управлении проектами приводят к кассовым разрывам",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Спасибо, что сразу обозначили задачу. Чтобы понять, где именно теряются деньги, подскажите: на каком этапе проекта чаще всего возникают ошибки, которые потом дают кассовый разрыв?",
+              "reason": "Клиент сам описал задачу и проблему (кассовые разрывы из-за ошибок в управлении проектами), менеджер ещё не представился. Следующий шаг — уточнить конкретный этап процесса, чтобы не спрашивать уже известное и не переходить к презентации без деталей.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "current_process",
+              "confidence": 0.7
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиенту нужен инструмент контроля бюджета и денежных потоков по проектам, а не смена профессии",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам."
+                    }
+                  ],
+                  "test_question": "На каком этапе проекта чаще всего возникают ошибки, которые потом дают кассовый разрыв?"
+                }
+              ],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Уточнить, на каком этапе управления проектами возникают ошибки, ведущие к кассовым разрывам",
+                "reason": "Задача и проблема уже названы клиентом, но конкретный процесс и точка потерь неизвестны; нужен один узкий вопрос по текущему процессу.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Спасибо, что сразу обозначили задачу. Чтобы понять, где именно теряются деньги, подскажите: на каком этапе проекта чаще всего возникают ошибки, которые потом дают кассовый разрыв?",
+            "reason": "Клиент сам описал задачу и проблему (кассовые разрывы из-за ошибок в управлении проектами), менеджер ещё не представился. Следующий шаг — уточнить конкретный этап процесса, чтобы не спрашивать уже известное и не переходить к презентации без деталей.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "current_process",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить, на каком этапе управления проектами возникают ошибки, ведущие к кассовым разрывам",
+              "reason": "Задача и проблема уже названы клиентом, но конкретный процесс и точка потерь неизвестны; нужен один узкий вопрос по текущему процессу.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9f06c9b1-055d-4abf-a8d1-9ea6c9023939",
+            "created_at": "2026-11-15T09:06:51.999481+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 4320,
+          "usage": {
+            "prompt_tokens": 8578,
+            "completion_tokens": 701,
+            "total_tokens": 9279,
+            "prompt_cache_hit_tokens": 5888,
+            "prompt_cache_miss_tokens": 2690,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Я финансовый директор строительной компании. Менять профессию не собираюсь. Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам."
+          }
+        ],
+        "facts": [
+          {
+            "category": "profile",
+            "value": "Финансовый директор строительной компании",
+            "quote": "Я финансовый директор строительной компании.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "342228bf-9ed8-4111-bd29-fad178ac8057",
+            "created_at": "2026-11-15T09:06:51.999481+00:00"
+          },
+          {
+            "category": "motivation",
+            "value": "Не собирается менять профессию",
+            "quote": "Менять профессию не собираюсь.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "bb99101c-5b18-4d4f-927d-17cc9a00a452",
+            "created_at": "2026-11-15T09:06:51.999481+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Разобраться, где компания теряет деньги",
+            "quote": "Хочу разобраться, где теряем деньги",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "b579bbdc-eaa1-4e03-b1e9-1a875434fecc",
+            "created_at": "2026-11-15T09:06:51.999481+00:00"
+          },
+          {
+            "category": "problem",
+            "value": "Ошибки в управлении проектами приводят к кассовым разрывам",
+            "quote": "ошибки в управлении проектами приводят к кассовым разрывам",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "7bb415f4-e05c-4f17-8d1d-39fcce79c1ca",
+            "created_at": "2026-11-15T09:06:51.999481+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "b5c1f97d-b89e-4cd5-bb9d-f79b99281145",
+            "statement": "Клиенту нужен инструмент контроля бюджета и денежных потоков по проектам, а не смена профессии",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам."
+              }
+            ],
+            "test_question": "На каком этапе проекта чаще всего возникают ошибки, которые потом дают кассовый разрыв?",
+            "created_at": "2026-11-15T09:06:51.999481+00:00",
+            "updated_at": "2026-11-15T09:06:51.999481+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Спасибо, что сразу обозначили задачу. Чтобы понять, где именно теряются деньги, подскажите: на каком этапе проекта чаще всего возникают ошибки, которые потом дают кассовый разрыв?",
+            "reason": "Клиент сам описал задачу и проблему (кассовые разрывы из-за ошибок в управлении проектами), менеджер ещё не представился. Следующий шаг — уточнить конкретный этап процесса, чтобы не спрашивать уже известное и не переходить к презентации без деталей.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "current_process",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить, на каком этапе управления проектами возникают ошибки, ведущие к кассовым разрывам",
+              "reason": "Задача и проблема уже названы клиентом, но конкретный процесс и точка потерь неизвестны; нужен один узкий вопрос по текущему процессу.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9f06c9b1-055d-4abf-a8d1-9ea6c9023939",
+            "created_at": "2026-11-15T09:06:51.999481+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Хочу разобраться, где теряем деньги: ошибки в управлении проектами приводят к кассовым разрывам.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "experience",
+          "situation",
+          "consequence",
+          "importance",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "resistance",
+      "title": "Первоначальное сопротивление",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Мне пока ничего продавать не надо, я просто смотрю варианты. Но могу минуту послушать."
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понимаю, вы пока присматриваетесь — и это нормально. Чтобы минута прошла с пользой, подскажите, что именно вас интересует: какая задача или направление обучения?",
+              "reason": "Клиент прямо говорит, что пока не готов покупать и просто смотрит варианты, но готов слушать. Это не отказ от контакта, поэтому снижаем обязательства и задаём один полезный вопрос о направлении интереса, не продавая.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal",
+              "confidence": 0.6
+            },
+            "events": [],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "SALES_RECOVERY",
+                "objective": "Мягко выяснить, что именно интересует клиента, без давления и продажи",
+                "reason": "Клиент заявил «просто смотрю варианты», но согласен минуту послушать — это сохранённая готовность к контакту, а не отказ. Снижаем обязательства и задаём один вопрос о направлении интереса.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, вы пока присматриваетесь — и это нормально. Чтобы минута прошла с пользой, подскажите, что именно вас интересует: какая задача или направление обучения?",
+            "reason": "Клиент прямо говорит, что пока не готов покупать и просто смотрит варианты, но готов слушать. Это не отказ от контакта, поэтому снижаем обязательства и задаём один полезный вопрос о направлении интереса, не продавая.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "SALES_RECOVERY",
+              "objective": "Мягко выяснить, что именно интересует клиента, без давления и продажи",
+              "reason": "Клиент заявил «просто смотрю варианты», но согласен минуту послушать — это сохранённая готовность к контакту, а не отказ. Снижаем обязательства и задаём один вопрос о направлении интереса.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Вернуть конструктивный диалог"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "d7e327e7-4154-47e1-961b-b4c9b94454f5",
+            "created_at": "2026-11-15T09:06:54.098569+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2912,
+          "usage": {
+            "prompt_tokens": 8553,
+            "completion_tokens": 286,
+            "total_tokens": 8839,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2153,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Мне пока ничего продавать не надо, я просто смотрю варианты. Но могу минуту послушать."
+          }
+        ],
+        "facts": [],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, вы пока присматриваетесь — и это нормально. Чтобы минута прошла с пользой, подскажите, что именно вас интересует: какая задача или направление обучения?",
+            "reason": "Клиент прямо говорит, что пока не готов покупать и просто смотрит варианты, но готов слушать. Это не отказ от контакта, поэтому снижаем обязательства и задаём один полезный вопрос о направлении интереса, не продавая.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "SALES_RECOVERY",
+              "objective": "Мягко выяснить, что именно интересует клиента, без давления и продажи",
+              "reason": "Клиент заявил «просто смотрю варианты», но согласен минуту послушать — это сохранённая готовность к контакту, а не отказ. Снижаем обязательства и задаём один вопрос о направлении интереса.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Вернуть конструктивный диалог"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "d7e327e7-4154-47e1-961b-b4c9b94454f5",
+            "created_at": "2026-11-15T09:06:54.098569+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Начало",
+          "events": [],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "motivation",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "repeated_price",
+      "title": "Повторный запрос цены",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Сколько стоит курс дизайна?"
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "ANSWER",
+              "suggestion": "Спасибо за вопрос — точную стоимость курса дизайна мне нужно уточнить, чтобы не назвать неверную сумму. Вам важно сначала узнать цену или можем пока обсудить, какое направление дизайна вам интересно?",
+              "reason": "Клиент прямо спросил цену, но в knowledge нет подтверждённой стоимости. Честно обозначаем это и предлагаем один уточняющий шаг по направлению.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "price",
+              "confidence": 0.8
+            },
+            "events": [
+              {
+                "kind": "question_asked",
+                "source_turn": "t1",
+                "quote": "Сколько стоит курс дизайна?",
+                "topic": "price"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "PRICE_PRESENTATION",
+                "objective": "Честно ответить на запрос цены и уточнить направление дизайна",
+                "reason": "Первый запрос цены без подтверждённой стоимости в базе; нельзя называть сумму наугад.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "ANSWER",
+            "suggestion": "Спасибо за вопрос — точную стоимость курса дизайна мне нужно уточнить, чтобы не назвать неверную сумму. Вам важно сначала узнать цену или можем пока обсудить, какое направление дизайна вам интересно?",
+            "reason": "Клиент прямо спросил цену, но в knowledge нет подтверждённой стоимости. Честно обозначаем это и предлагаем один уточняющий шаг по направлению.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "price",
+            "confidence": 0.8,
+            "policy_flags": [],
+            "strategy": {
+              "action": "PRICE_PRESENTATION",
+              "objective": "Честно ответить на запрос цены и уточнить направление дизайна",
+              "reason": "Первый запрос цены без подтверждённой стоимости в базе; нельзя называть сумму наугад.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить о стоимости"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "6b0645d5-4271-4098-9537-b3121d7669c6",
+            "created_at": "2026-11-15T09:06:54.299680+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2606,
+          "usage": {
+            "prompt_tokens": 8541,
+            "completion_tokens": 286,
+            "total_tokens": 8827,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2141,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t2",
+            "role": "manager",
+            "text": "Давайте сначала обсудим ваши задачи, потом вернёмся к стоимости."
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "NO_ACTION",
+              "suggestion": "",
+              "reason": "Последняя реплика — менеджер, клиент ещё не ответил на его предложение обсудить задачи. Новых сведений от клиента нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "target_gap": "",
+              "confidence": 0.85
+            },
+            "events": [],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "NO_ACTION",
+                "objective": "Дождаться ответа клиента на предложение менеджера",
+                "reason": "Последняя реплика принадлежит менеджеру; запрос цены остаётся открытым, но сейчас новых оснований для фразы нет.",
+                "evidence_ids": [
+                  "t2"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Последняя реплика — менеджер, клиент ещё не ответил на его предложение обсудить задачи. Новых сведений от клиента нет.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на предложение менеджера",
+              "reason": "Последняя реплика принадлежит менеджеру; запрос цены остаётся открытым, но сейчас новых оснований для фразы нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "f7d2f507-72a7-4a8e-b313-cd5d18e4e663",
+            "created_at": "2026-11-15T09:06:56.922348+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2623,
+          "usage": {
+            "prompt_tokens": 9060,
+            "completion_tokens": 187,
+            "total_tokens": 9247,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2660,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t3",
+            "role": "client",
+            "text": "Нет, я уже спросил цену. Без суммы не хочу обсуждать свои цели."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "constraints",
+                "value": "Клиент не готов обсуждать свои цели без предварительного озвучивания суммы",
+                "quote": "Без суммы не хочу обсуждать свои цели.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "ANSWER",
+              "suggestion": "Понимаю, сумму важно знать до разговора о целях. У меня нет подтверждённой актуальной стоимости курса дизайна, поэтому не хочу называть неверную цифру — давайте я уточню условия и вернусь к вам с точной суммой.",
+              "reason": "Клиент повторно требует цену и прямо отказывается обсуждать цели без суммы. В knowledge нет подтверждённой стоимости, поэтому честно обозначаем это и согласуем уточнение, не уходя снова к вопросам о целях.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "target_gap": "price",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "objection_opened",
+                "source_turn": "t3",
+                "quote": "Без суммы не хочу обсуждать свои цели.",
+                "topic": "price_amount"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "PRICE_PRESENTATION",
+                "objective": "Честно обозначить отсутствие подтверждённой цены и согласовать уточнение суммы",
+                "reason": "Повторный запрос цены с отказом обсуждать цели до суммы; называть стоимость наугад нельзя, откладывать дальше тоже.",
+                "evidence_ids": [
+                  "t1",
+                  "t3"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "ANSWER",
+            "suggestion": "Понимаю, сумму важно знать до разговора о целях. У меня нет подтверждённой актуальной стоимости курса дизайна, поэтому не хочу называть неверную цифру — давайте я уточню условия и вернусь к вам с точной суммой.",
+            "reason": "Клиент повторно требует цену и прямо отказывается обсуждать цели без суммы. В knowledge нет подтверждённой стоимости, поэтому честно обозначаем это и согласуем уточнение, не уходя снова к вопросам о целях.",
+            "evidence_ids": [
+              "t1",
+              "t3"
+            ],
+            "target_gap": "price",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "PRICE_PRESENTATION",
+              "objective": "Честно обозначить отсутствие подтверждённой цены и согласовать уточнение суммы",
+              "reason": "Повторный запрос цены с отказом обсуждать цели до суммы; называть стоимость наугад нельзя, откладывать дальше тоже.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "label": "Ответить о стоимости"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "e82ec3af-384c-4519-8696-de9fc928853f",
+            "created_at": "2026-11-15T09:06:59.925288+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3003,
+          "usage": {
+            "prompt_tokens": 9406,
+            "completion_tokens": 395,
+            "total_tokens": 9801,
+            "prompt_cache_hit_tokens": 6528,
+            "prompt_cache_miss_tokens": 2878,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Сколько стоит курс дизайна?"
+          },
+          {
+            "id": "t2",
+            "role": "manager",
+            "text": "Давайте сначала обсудим ваши задачи, потом вернёмся к стоимости."
+          },
+          {
+            "id": "t3",
+            "role": "client",
+            "text": "Нет, я уже спросил цену. Без суммы не хочу обсуждать свои цели."
+          }
+        ],
+        "facts": [
+          {
+            "category": "constraints",
+            "value": "Клиент не готов обсуждать свои цели без предварительного озвучивания суммы",
+            "quote": "Без суммы не хочу обсуждать свои цели.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "493484e1-d070-4857-908c-ee8ee9ca8124",
+            "created_at": "2026-11-15T09:06:59.925288+00:00"
+          }
+        ],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "ANSWER",
+            "suggestion": "Спасибо за вопрос — точную стоимость курса дизайна мне нужно уточнить, чтобы не назвать неверную сумму. Вам важно сначала узнать цену или можем пока обсудить, какое направление дизайна вам интересно?",
+            "reason": "Клиент прямо спросил цену, но в knowledge нет подтверждённой стоимости. Честно обозначаем это и предлагаем один уточняющий шаг по направлению.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "price",
+            "confidence": 0.8,
+            "policy_flags": [],
+            "strategy": {
+              "action": "PRICE_PRESENTATION",
+              "objective": "Честно ответить на запрос цены и уточнить направление дизайна",
+              "reason": "Первый запрос цены без подтверждённой стоимости в базе; нельзя называть сумму наугад.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить о стоимости"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "6b0645d5-4271-4098-9537-b3121d7669c6",
+            "created_at": "2026-11-15T09:06:54.299680+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Последняя реплика — менеджер, клиент ещё не ответил на его предложение обсудить задачи. Новых сведений от клиента нет.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на предложение менеджера",
+              "reason": "Последняя реплика принадлежит менеджеру; запрос цены остаётся открытым, но сейчас новых оснований для фразы нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "f7d2f507-72a7-4a8e-b313-cd5d18e4e663",
+            "created_at": "2026-11-15T09:06:56.922348+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "ANSWER",
+            "suggestion": "Понимаю, сумму важно знать до разговора о целях. У меня нет подтверждённой актуальной стоимости курса дизайна, поэтому не хочу называть неверную цифру — давайте я уточню условия и вернусь к вам с точной суммой.",
+            "reason": "Клиент повторно требует цену и прямо отказывается обсуждать цели без суммы. В knowledge нет подтверждённой стоимости, поэтому честно обозначаем это и согласуем уточнение, не уходя снова к вопросам о целях.",
+            "evidence_ids": [
+              "t1",
+              "t3"
+            ],
+            "target_gap": "price",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "PRICE_PRESENTATION",
+              "objective": "Честно обозначить отсутствие подтверждённой цены и согласовать уточнение суммы",
+              "reason": "Повторный запрос цены с отказом обсуждать цели до суммы; называть стоимость наугад нельзя, откладывать дальше тоже.",
+              "evidence_ids": [
+                "t1",
+                "t3"
+              ],
+              "label": "Ответить о стоимости"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "e82ec3af-384c-4519-8696-de9fc928853f",
+            "created_at": "2026-11-15T09:06:59.925288+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Работа с сомнением",
+          "events": [
+            {
+              "kind": "question_asked",
+              "source_turn": "t1",
+              "quote": "Сколько стоит курс дизайна?",
+              "topic": "price"
+            },
+            {
+              "kind": "objection_opened",
+              "source_turn": "t3",
+              "quote": "Без суммы не хочу обсуждать свои цели.",
+              "topic": "price_amount"
+            }
+          ],
+          "questions": [
+            {
+              "topic": "price",
+              "role": "client",
+              "source_turn": "t1",
+              "status": "open"
+            }
+          ],
+          "objections": [
+            {
+              "topic": "price_amount",
+              "source_turn": "t3",
+              "quote": "Без суммы не хочу обсуждать свои цели.",
+              "status": "open"
+            }
+          ],
+          "price_requests": [
+            "t1"
+          ],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "motivation",
+          "urgency",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Работа с сомнением"
+      }
+    },
+    {
+      "id": "value_objection",
+      "title": "Дорого из-за непонятной пользы",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Деньги есть, но дорого для набора видео. Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "experience",
+                "value": "Уже учится по бесплатным урокам",
+                "quote": "по которым уже учусь",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "objection",
+                "value": "Сомнение в ценности: непонятно, что даёт платное обучение сверх бесплатных уроков",
+                "quote": "Не понимаю, что получу сверх бесплатных уроков",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "objection",
+                "value": "Считает цену высокой для формата набора видео",
+                "quote": "Деньги есть, но дорого для набора видео",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "constraints",
+                "value": "Деньги есть, но тратить на набор видео считает дорого",
+                "quote": "Деньги есть, но дорого для набора видео",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "CLARIFY",
+              "suggestion": "Понимаю: вы уже учитесь по бесплатным урокам, и важно понять, что даёт платный формат сверх них. Что вам пока не удаётся решить с помощью бесплатных уроков?",
+              "reason": "Клиент назвал два сомнения: ценность сверх бесплатных уроков и цена за формат видео. Причина сомнения в ценности не раскрыта, поэтому сначала диагностика: чего не хватает в бесплатном обучении. Проверенных условий в базе нет, поэтому не обещаю преимуществ.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "value",
+              "confidence": 0.7
+            },
+            "events": [
+              {
+                "kind": "objection_opened",
+                "source_turn": "t1",
+                "quote": "Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь.",
+                "topic": "value"
+              },
+              {
+                "kind": "objection_opened",
+                "source_turn": "t1",
+                "quote": "Деньги есть, но дорого для набора видео.",
+                "topic": "price_amount"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиенту не хватает в бесплатных уроках обратной связи или практики под свою задачу",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь."
+                    }
+                  ],
+                  "test_question": "Что вам пока не удаётся решить с помощью бесплатных уроков?"
+                }
+              ],
+              "strategy": {
+                "action": "OBJECTION_DIAGNOSIS",
+                "objective": "Выяснить, чего не хватает в бесплатных уроках для задачи клиента",
+                "reason": "Клиент прямо говорит, что не понимает ценность платного обучения сверх бесплатных уроков; причина сомнения не названа, поэтому нужен один диагностический вопрос.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "CLARIFY",
+            "suggestion": "Понимаю: вы уже учитесь по бесплатным урокам, и важно понять, что даёт платный формат сверх них. Что вам пока не удаётся решить с помощью бесплатных уроков?",
+            "reason": "Клиент назвал два сомнения: ценность сверх бесплатных уроков и цена за формат видео. Причина сомнения в ценности не раскрыта, поэтому сначала диагностика: чего не хватает в бесплатном обучении. Проверенных условий в базе нет, поэтому не обещаю преимуществ.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "value",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "OBJECTION_DIAGNOSIS",
+              "objective": "Выяснить, чего не хватает в бесплатных уроках для задачи клиента",
+              "reason": "Клиент прямо говорит, что не понимает ценность платного обучения сверх бесплатных уроков; причина сомнения не названа, поэтому нужен один диагностический вопрос.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выяснить причину сомнения"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "b13c4225-05e4-461a-aa2e-c556d3621761",
+            "created_at": "2026-11-15T09:06:56.100034+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 4100,
+          "usage": {
+            "prompt_tokens": 8563,
+            "completion_tokens": 728,
+            "total_tokens": 9291,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2163,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Деньги есть, но дорого для набора видео. Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь."
+          }
+        ],
+        "facts": [
+          {
+            "category": "experience",
+            "value": "Уже учится по бесплатным урокам",
+            "quote": "по которым уже учусь",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "07e6c5d1-ad84-4f50-90c8-94ade89a14e0",
+            "created_at": "2026-11-15T09:06:56.099465+00:00"
+          },
+          {
+            "category": "objection",
+            "value": "Сомнение в ценности: непонятно, что даёт платное обучение сверх бесплатных уроков",
+            "quote": "Не понимаю, что получу сверх бесплатных уроков",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "515d0e59-4ed3-46f2-88fd-83edba154c73",
+            "created_at": "2026-11-15T09:06:56.099465+00:00"
+          },
+          {
+            "category": "objection",
+            "value": "Считает цену высокой для формата набора видео",
+            "quote": "Деньги есть, но дорого для набора видео",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "54b8e264-df20-401f-a1e0-b10ca321f782",
+            "created_at": "2026-11-15T09:06:56.099465+00:00"
+          },
+          {
+            "category": "constraints",
+            "value": "Деньги есть, но тратить на набор видео считает дорого",
+            "quote": "Деньги есть, но дорого для набора видео",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "01f8daa3-c09a-4bf0-91bf-dd11530ccd8e",
+            "created_at": "2026-11-15T09:06:56.099465+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "03ffc565-ed8e-4b4a-b9fd-11f4776d2c78",
+            "statement": "Клиенту не хватает в бесплатных уроках обратной связи или практики под свою задачу",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь."
+              }
+            ],
+            "test_question": "Что вам пока не удаётся решить с помощью бесплатных уроков?",
+            "created_at": "2026-11-15T09:06:56.099465+00:00",
+            "updated_at": "2026-11-15T09:06:56.099465+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "CLARIFY",
+            "suggestion": "Понимаю: вы уже учитесь по бесплатным урокам, и важно понять, что даёт платный формат сверх них. Что вам пока не удаётся решить с помощью бесплатных уроков?",
+            "reason": "Клиент назвал два сомнения: ценность сверх бесплатных уроков и цена за формат видео. Причина сомнения в ценности не раскрыта, поэтому сначала диагностика: чего не хватает в бесплатном обучении. Проверенных условий в базе нет, поэтому не обещаю преимуществ.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "value",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "OBJECTION_DIAGNOSIS",
+              "objective": "Выяснить, чего не хватает в бесплатных уроках для задачи клиента",
+              "reason": "Клиент прямо говорит, что не понимает ценность платного обучения сверх бесплатных уроков; причина сомнения не названа, поэтому нужен один диагностический вопрос.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выяснить причину сомнения"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "b13c4225-05e4-461a-aa2e-c556d3621761",
+            "created_at": "2026-11-15T09:06:56.100034+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Работа с сомнением",
+          "events": [
+            {
+              "kind": "objection_opened",
+              "source_turn": "t1",
+              "quote": "Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь.",
+              "topic": "value"
+            },
+            {
+              "kind": "objection_opened",
+              "source_turn": "t1",
+              "quote": "Деньги есть, но дорого для набора видео.",
+              "topic": "price_amount"
+            }
+          ],
+          "questions": [],
+          "objections": [
+            {
+              "topic": "value",
+              "source_turn": "t1",
+              "quote": "Не понимаю, что получу сверх бесплатных уроков, по которым уже учусь.",
+              "status": "open"
+            },
+            {
+              "topic": "price_amount",
+              "source_turn": "t1",
+              "quote": "Деньги есть, но дорого для набора видео.",
+              "status": "open"
+            }
+          ],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "motivation",
+          "urgency",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Работа с сомнением"
+      }
+    },
+    {
+      "id": "goal_change",
+      "title": "Пересмотр цели в памяти",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true,
+        "old_goal_retired": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Хочу сменить профессию и стать аналитиком."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "goal",
+                "value": "Сменить профессию и стать аналитиком",
+                "quote": "Хочу сменить профессию и стать аналитиком.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понял, цель — перейти в аналитику. С какого направления или задачи вам было бы интересно начать: работа с данными, отчётность, что-то ещё?",
+              "reason": "Клиент назвал цель — стать аналитиком, но не уточнил направление и текущий опыт. Один вопрос поможет конкретизировать задачу, не повторяя уже сказанное.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal.direction",
+              "confidence": 0.6
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Хочу сменить профессию и стать аналитиком.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиент пока не определился с конкретным направлением аналитики и ему нужна помощь в выборе",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Хочу сменить профессию и стать аналитиком."
+                    }
+                  ],
+                  "test_question": "Какое направление аналитики вам ближе: работа с данными, отчётность или что-то другое?"
+                }
+              ],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Уточнить направление аналитики и исходную точку клиента",
+                "reason": "Известна только общая цель — смена профессии на аналитика; детали задачи и опыта отсутствуют.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, цель — перейти в аналитику. С какого направления или задачи вам было бы интересно начать: работа с данными, отчётность, что-то ещё?",
+            "reason": "Клиент назвал цель — стать аналитиком, но не уточнил направление и текущий опыт. Один вопрос поможет конкретизировать задачу, не повторяя уже сказанное.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.direction",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить направление аналитики и исходную точку клиента",
+              "reason": "Известна только общая цель — смена профессии на аналитика; детали задачи и опыта отсутствуют.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9e6c7a40-ccf1-4339-95c7-4448e7b95a7c",
+            "created_at": "2026-11-15T09:06:57.400515+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3302,
+          "usage": {
+            "prompt_tokens": 8541,
+            "completion_tokens": 430,
+            "total_tokens": 8971,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2141,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t2",
+            "role": "manager",
+            "text": "Что вы хотите изменить в работе?"
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "NO_ACTION",
+              "suggestion": "",
+              "reason": "Последняя реплика — вопрос менеджера о желаемых изменениях в работе; клиент ещё не ответил. Новых сведений от клиента нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "target_gap": "",
+              "confidence": 0.8
+            },
+            "events": [],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "NO_ACTION",
+                "objective": "Дождаться ответа клиента на вопрос менеджера",
+                "reason": "Последняя реплика принадлежит менеджеру и содержит вопрос; ответа клиента пока нет.",
+                "evidence_ids": [
+                  "t2"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на вопрос менеджера",
+              "reason": "Последняя реплика принадлежит менеджеру и содержит вопрос; ответа клиента пока нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "c13402a1-038e-4302-b6be-c53fd6ea34fd",
+            "created_at": "2026-11-15T09:06:59.674009+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2273,
+          "usage": {
+            "prompt_tokens": 9317,
+            "completion_tokens": 175,
+            "total_tokens": 9492,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2917,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t3",
+            "role": "client",
+            "text": "Я передумал менять профессию. Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "goal",
+                "value": "Лучше контролировать отчёты своей команды, оставаясь руководителем",
+                "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [
+                  "88ee9e24-fc10-422f-bf3a-527f2720969f"
+                ],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "profile",
+                "value": "Руководитель, у которого в подчинении есть команда с отчётностью",
+                "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понял, менять профессию не нужно — задача в контроле отчётов команды. Что сейчас в этих отчётах вызывает больше всего сложностей: проверять цифры, сводить данные или понимать, всё ли учтено?",
+              "reason": "Клиент сменил цель: не смена профессии, а контроль отчётности команды при сохранении роли руководителя. Конкретная сложность в текущем процессе пока неизвестна — один вопрос уточнит её, не возвращаясь к уже отвеченному.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "target_gap": "problem.current_process",
+              "confidence": 0.65
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t3",
+                "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "0554587c-54a0-4fc8-8294-e3f033c1e014",
+                  "statement": "Клиент пока не определился с конкретным направлением аналитики и ему нужна помощь в выборе",
+                  "status": "REJECTED",
+                  "evidence": [
+                    {
+                      "source_turn": "t3",
+                      "quote": "Я передумал менять профессию. Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+                    }
+                  ],
+                  "test_question": ""
+                },
+                {
+                  "id": "",
+                  "statement": "Клиенту нужны навыки проверки и сведения отчётов, чтобы контролировать работу команды без смены профессии",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t3",
+                      "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+                    }
+                  ],
+                  "test_question": "Что именно в отчётах команды вам сложнее всего проверять или сводить?"
+                }
+              ],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Уточнить конкретную сложность в текущем процессе контроля отчётности команды",
+                "reason": "Цель изменилась: клиент остаётся руководителем и хочет контролировать отчёты команды. Текущий процесс и конкретное препятствие неизвестны.",
+                "evidence_ids": [
+                  "t3"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, менять профессию не нужно — задача в контроле отчётов команды. Что сейчас в этих отчётах вызывает больше всего сложностей: проверять цифры, сводить данные или понимать, всё ли учтено?",
+            "reason": "Клиент сменил цель: не смена профессии, а контроль отчётности команды при сохранении роли руководителя. Конкретная сложность в текущем процессе пока неизвестна — один вопрос уточнит её, не возвращаясь к уже отвеченному.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "problem.current_process",
+            "confidence": 0.65,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить конкретную сложность в текущем процессе контроля отчётности команды",
+              "reason": "Цель изменилась: клиент остаётся руководителем и хочет контролировать отчёты команды. Текущий процесс и конкретное препятствие неизвестны.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "b31fb8a6-5a7b-4bd5-a680-c7d99446d128",
+            "created_at": "2026-11-15T09:07:04.904191+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 5230,
+          "usage": {
+            "prompt_tokens": 9643,
+            "completion_tokens": 756,
+            "total_tokens": 10399,
+            "prompt_cache_hit_tokens": 6528,
+            "prompt_cache_miss_tokens": 3115,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Хочу сменить профессию и стать аналитиком."
+          },
+          {
+            "id": "t2",
+            "role": "manager",
+            "text": "Что вы хотите изменить в работе?"
+          },
+          {
+            "id": "t3",
+            "role": "client",
+            "text": "Я передумал менять профессию. Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+          }
+        ],
+        "facts": [
+          {
+            "category": "goal",
+            "value": "Сменить профессию и стать аналитиком",
+            "quote": "Хочу сменить профессию и стать аналитиком.",
+            "source_turn": "t1",
+            "status": "OUTDATED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "88ee9e24-fc10-422f-bf3a-527f2720969f",
+            "created_at": "2026-11-15T09:06:57.400515+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Лучше контролировать отчёты своей команды, оставаясь руководителем",
+            "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [
+              "88ee9e24-fc10-422f-bf3a-527f2720969f"
+            ],
+            "confirms_hypothesis": "",
+            "id": "b9ecc33e-29c1-451b-a527-4940c993aa7e",
+            "created_at": "2026-11-15T09:07:04.902975+00:00"
+          },
+          {
+            "category": "profile",
+            "value": "Руководитель, у которого в подчинении есть команда с отчётностью",
+            "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "49d216e1-d636-43df-b0c9-e4af4050ab8a",
+            "created_at": "2026-11-15T09:07:04.902975+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "0554587c-54a0-4fc8-8294-e3f033c1e014",
+            "statement": "Клиент пока не определился с конкретным направлением аналитики и ему нужна помощь в выборе",
+            "status": "REJECTED",
+            "evidence": [
+              {
+                "source_turn": "t3",
+                "quote": "Я передумал менять профессию. Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+              }
+            ],
+            "test_question": "",
+            "created_at": "2026-11-15T09:06:57.400515+00:00",
+            "updated_at": "2026-11-15T09:07:04.902975+00:00",
+            "history": [
+              {
+                "id": "0554587c-54a0-4fc8-8294-e3f033c1e014",
+                "statement": "Клиент пока не определился с конкретным направлением аналитики и ему нужна помощь в выборе",
+                "status": "INFERRED",
+                "evidence": [
+                  {
+                    "source_turn": "t1",
+                    "quote": "Хочу сменить профессию и стать аналитиком."
+                  }
+                ],
+                "test_question": "Какое направление аналитики вам ближе: работа с данными, отчётность или что-то другое?",
+                "created_at": "2026-11-15T09:06:57.400515+00:00",
+                "updated_at": "2026-11-15T09:06:57.400515+00:00"
+              }
+            ]
+          },
+          {
+            "id": "09d912b9-34c5-44ce-863c-a5467e91d311",
+            "statement": "Клиенту нужны навыки проверки и сведения отчётов, чтобы контролировать работу команды без смены профессии",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t3",
+                "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем."
+              }
+            ],
+            "test_question": "Что именно в отчётах команды вам сложнее всего проверять или сводить?",
+            "created_at": "2026-11-15T09:07:04.902975+00:00",
+            "updated_at": "2026-11-15T09:07:04.902975+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, цель — перейти в аналитику. С какого направления или задачи вам было бы интересно начать: работа с данными, отчётность, что-то ещё?",
+            "reason": "Клиент назвал цель — стать аналитиком, но не уточнил направление и текущий опыт. Один вопрос поможет конкретизировать задачу, не повторяя уже сказанное.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.direction",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить направление аналитики и исходную точку клиента",
+              "reason": "Известна только общая цель — смена профессии на аналитика; детали задачи и опыта отсутствуют.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9e6c7a40-ccf1-4339-95c7-4448e7b95a7c",
+            "created_at": "2026-11-15T09:06:57.400515+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на вопрос менеджера",
+              "reason": "Последняя реплика принадлежит менеджеру и содержит вопрос; ответа клиента пока нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "c13402a1-038e-4302-b6be-c53fd6ea34fd",
+            "created_at": "2026-11-15T09:06:59.674009+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, менять профессию не нужно — задача в контроле отчётов команды. Что сейчас в этих отчётах вызывает больше всего сложностей: проверять цифры, сводить данные или понимать, всё ли учтено?",
+            "reason": "Клиент сменил цель: не смена профессии, а контроль отчётности команды при сохранении роли руководителя. Конкретная сложность в текущем процессе пока неизвестна — один вопрос уточнит её, не возвращаясь к уже отвеченному.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "problem.current_process",
+            "confidence": 0.65,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить конкретную сложность в текущем процессе контроля отчётности команды",
+              "reason": "Цель изменилась: клиент остаётся руководителем и хочет контролировать отчёты команды. Текущий процесс и конкретное препятствие неизвестны.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "b31fb8a6-5a7b-4bd5-a680-c7d99446d128",
+            "created_at": "2026-11-15T09:07:04.904191+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Хочу сменить профессию и стать аналитиком.",
+              "topic": "goal"
+            },
+            {
+              "kind": "interest_shared",
+              "source_turn": "t3",
+              "quote": "Мне нужно лучше контролировать отчёты моей команды, оставаясь руководителем.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "motivation",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "unknown_guarantee",
+      "title": "Неподтверждённая гарантия",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?"
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "goal",
+                "value": "Клиент хочет гарантию трудоустройства и зарплату от 150 тысяч рублей после оплаты обучения",
+                "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "ANSWER",
+              "suggestion": "Честно скажу: гарантировать трудоустройство и конкретную зарплату я не могу, и у меня нет подтверждённых условий о таких гарантиях по программе. Чтобы я мог подобрать подходящий вариант, подскажите, какую работу и в какой сфере вы рассматриваете?",
+              "reason": "Клиент прямо спрашивает о гарантии работы и зарплаты от 150 тысяч. В knowledge нет approved_claims, поэтому нельзя подтверждать гарантии; отвечаем честно и уточняем карьерную задачу, не обещая результат.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "question_asked",
+                "source_turn": "t1",
+                "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+                "topic": "decision.guarantee"
+              },
+              {
+                "kind": "objection_opened",
+                "source_turn": "t1",
+                "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+                "topic": "value"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиент рассматривает обучение как способ выйти на доход от 150 тысяч и хочет снизить риск вложения",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?"
+                    }
+                  ],
+                  "test_question": "Какую работу и в какой сфере вы рассматриваете?"
+                }
+              ],
+              "strategy": {
+                "action": "ANSWER",
+                "objective": "Честно ответить об отсутствии подтверждённых гарантий и выяснить, какую работу клиент рассматривает",
+                "reason": "Прямой вопрос о гарантиях трудоустройства и зарплаты; проверенных условий нет, поэтому отвечаем без обещаний и переходим к задаче клиента.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "ANSWER",
+            "suggestion": "Честно скажу: гарантировать трудоустройство и конкретную зарплату я не могу, и у меня нет подтверждённых условий о таких гарантиях по программе. Чтобы я мог подобрать подходящий вариант, подскажите, какую работу и в какой сфере вы рассматриваете?",
+            "reason": "Клиент прямо спрашивает о гарантии работы и зарплаты от 150 тысяч. В knowledge нет approved_claims, поэтому нельзя подтверждать гарантии; отвечаем честно и уточняем карьерную задачу, не обещая результат.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "ANSWER",
+              "objective": "Честно ответить об отсутствии подтверждённых гарантий и выяснить, какую работу клиент рассматривает",
+              "reason": "Прямой вопрос о гарантиях трудоустройства и зарплаты; проверенных условий нет, поэтому отвечаем без обещаний и переходим к задаче клиента.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на вопрос"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "5e66a705-ed2d-4e92-bbc1-82e34f184b85",
+            "created_at": "2026-11-15T09:06:59.884154+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3784,
+          "usage": {
+            "prompt_tokens": 8547,
+            "completion_tokens": 566,
+            "total_tokens": 9113,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2147,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?"
+          }
+        ],
+        "facts": [
+          {
+            "category": "goal",
+            "value": "Клиент хочет гарантию трудоустройства и зарплату от 150 тысяч рублей после оплаты обучения",
+            "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "b2b746fa-5ddd-4a35-b42c-9a7a97bd2ca3",
+            "created_at": "2026-11-15T09:06:59.884154+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "1aa3aae8-45f6-4f6f-9630-d6d984fb377a",
+            "statement": "Клиент рассматривает обучение как способ выйти на доход от 150 тысяч и хочет снизить риск вложения",
+            "status": "INFERRED",
+            "evidence": [
+              {
+                "source_turn": "t1",
+                "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?"
+              }
+            ],
+            "test_question": "Какую работу и в какой сфере вы рассматриваете?",
+            "created_at": "2026-11-15T09:06:59.884154+00:00",
+            "updated_at": "2026-11-15T09:06:59.884154+00:00",
+            "history": []
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "ANSWER",
+            "suggestion": "Честно скажу: гарантировать трудоустройство и конкретную зарплату я не могу, и у меня нет подтверждённых условий о таких гарантиях по программе. Чтобы я мог подобрать подходящий вариант, подскажите, какую работу и в какой сфере вы рассматриваете?",
+            "reason": "Клиент прямо спрашивает о гарантии работы и зарплаты от 150 тысяч. В knowledge нет approved_claims, поэтому нельзя подтверждать гарантии; отвечаем честно и уточняем карьерную задачу, не обещая результат.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "ANSWER",
+              "objective": "Честно ответить об отсутствии подтверждённых гарантий и выяснить, какую работу клиент рассматривает",
+              "reason": "Прямой вопрос о гарантиях трудоустройства и зарплаты; проверенных условий нет, поэтому отвечаем без обещаний и переходим к задаче клиента.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на вопрос"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "5e66a705-ed2d-4e92-bbc1-82e34f184b85",
+            "created_at": "2026-11-15T09:06:59.884154+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Работа с сомнением",
+          "events": [
+            {
+              "kind": "question_asked",
+              "source_turn": "t1",
+              "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+              "topic": "decision.guarantee"
+            },
+            {
+              "kind": "objection_opened",
+              "source_turn": "t1",
+              "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+              "topic": "value"
+            }
+          ],
+          "questions": [
+            {
+              "topic": "decision.guarantee",
+              "role": "client",
+              "source_turn": "t1",
+              "status": "open"
+            }
+          ],
+          "objections": [
+            {
+              "topic": "value",
+              "source_turn": "t1",
+              "quote": "Если заплачу, вы гарантируете работу и зарплату от 150 тысяч?",
+              "status": "open"
+            }
+          ],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "motivation",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Работа с сомнением"
+      }
+    },
+    {
+      "id": "known_constraint",
+      "title": "Ограничение времени уже известно",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Работаю до десяти вечера. На обучение только час в неделю, больше не получится. Хочу научиться вести семейный бюджет в таблице."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "constraints",
+                "value": "Работает до 22:00; на обучение может выделить только около часа в неделю",
+                "quote": "Работаю до десяти вечера. На обучение только час в неделю, больше не получится.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "goal",
+                "value": "Научиться вести семейный бюджет в таблице",
+                "quote": "Хочу научиться вести семейный бюджет в таблице.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понял: час в неделю и задача вести семейный бюджет в таблице. Что вам важнее всего видеть в такой таблице — например, контроль расходов по категориям или план на месяц?",
+              "reason": "Клиент уже назвал цель и ограничение по времени, поэтому не спрашиваем причину интереса повторно. Не хватает конкретного желаемого результата, чтобы подобрать подходящий вариант.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal.success_criterion",
+              "confidence": 0.7
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Хочу научиться вести семейный бюджет в таблице.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Уточнить, как должен выглядеть удобный семейный бюджет и какой результат важен",
+                "reason": "Цель и ограничение по времени известны, но критерий успеха не раскрыт; проверенных условий продукта нет, поэтому не переходим к презентации.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понял: час в неделю и задача вести семейный бюджет в таблице. Что вам важнее всего видеть в такой таблице — например, контроль расходов по категориям или план на месяц?",
+            "reason": "Клиент уже назвал цель и ограничение по времени, поэтому не спрашиваем причину интереса повторно. Не хватает конкретного желаемого результата, чтобы подобрать подходящий вариант.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.success_criterion",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить, как должен выглядеть удобный семейный бюджет и какой результат важен",
+              "reason": "Цель и ограничение по времени известны, но критерий успеха не раскрыт; проверенных условий продукта нет, поэтому не переходим к презентации.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "87879b39-5d6d-40eb-acaa-9ca1d6fdfecc",
+            "created_at": "2026-11-15T09:07:03.692541+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3808,
+          "usage": {
+            "prompt_tokens": 8565,
+            "completion_tokens": 427,
+            "total_tokens": 8992,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2165,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Работаю до десяти вечера. На обучение только час в неделю, больше не получится. Хочу научиться вести семейный бюджет в таблице."
+          }
+        ],
+        "facts": [
+          {
+            "category": "constraints",
+            "value": "Работает до 22:00; на обучение может выделить только около часа в неделю",
+            "quote": "Работаю до десяти вечера. На обучение только час в неделю, больше не получится.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "3b9e920c-d455-4f2f-99e2-54813b86ae2f",
+            "created_at": "2026-11-15T09:07:03.692038+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Научиться вести семейный бюджет в таблице",
+            "quote": "Хочу научиться вести семейный бюджет в таблице.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "5d0c6c94-eeba-4e15-932b-cf720f068dc7",
+            "created_at": "2026-11-15T09:07:03.692038+00:00"
+          }
+        ],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понял: час в неделю и задача вести семейный бюджет в таблице. Что вам важнее всего видеть в такой таблице — например, контроль расходов по категориям или план на месяц?",
+            "reason": "Клиент уже назвал цель и ограничение по времени, поэтому не спрашиваем причину интереса повторно. Не хватает конкретного желаемого результата, чтобы подобрать подходящий вариант.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.success_criterion",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Уточнить, как должен выглядеть удобный семейный бюджет и какой результат важен",
+              "reason": "Цель и ограничение по времени известны, но критерий успеха не раскрыт; проверенных условий продукта нет, поэтому не переходим к презентации.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "87879b39-5d6d-40eb-acaa-9ca1d6fdfecc",
+            "created_at": "2026-11-15T09:07:03.692541+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Хочу научиться вести семейный бюджет в таблице.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "motivation",
+          "urgency",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    },
+    {
+      "id": "ready_buyer",
+      "title": "Готовность к покупке",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "С программой я уже ознакомился, всё подходит. Готов оформить, осталось уточнить условия оплаты."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "decision",
+                "value": "Клиент ознакомился с программой, она ему подходит, готов оформить",
+                "quote": "С программой я уже ознакомился, всё подходит. Готов оформить",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "next_step",
+                "value": "Нужно уточнить условия оплаты перед оформлением",
+                "quote": "осталось уточнить условия оплаты",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "ANSWER",
+              "suggestion": "Спасибо, что посмотрели программу. У меня сейчас нет подтверждённых условий оплаты по этой программе, поэтому не хочу называть вам неверные данные — давайте я уточню актуальные условия и вернусь с точной информацией. Вам удобно, если я напишу, как только они будут у меня на руках?",
+              "reason": "Клиент явно готов оформить и просит условия оплаты, но в knowledge нет approved_claims и продуктовых условий. Нельзя выдумывать способы оплаты; честно обозначаем необходимость проверки и согласуем возврат с информацией.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "payment",
+              "confidence": 0.85
+            },
+            "events": [
+              {
+                "kind": "ready_to_buy",
+                "source_turn": "t1",
+                "quote": "Готов оформить",
+                "topic": "purchase"
+              },
+              {
+                "kind": "question_asked",
+                "source_turn": "t1",
+                "quote": "осталось уточнить условия оплаты",
+                "topic": "payment"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "ANSWER",
+                "objective": "Честно ответить на запрос условий оплаты и согласовать возврат с проверенными данными",
+                "reason": "Клиент готов оформить и спрашивает про оплату; проверенных условий в базе нет, поэтому отвечаем прямо и согласуем следующий контакт.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "ANSWER",
+            "suggestion": "Спасибо, что посмотрели программу. У меня сейчас нет подтверждённых условий оплаты по этой программе, поэтому не хочу называть вам неверные данные — давайте я уточню актуальные условия и вернусь с точной информацией. Вам удобно, если я напишу, как только они будут у меня на руках?",
+            "reason": "Клиент явно готов оформить и просит условия оплаты, но в knowledge нет approved_claims и продуктовых условий. Нельзя выдумывать способы оплаты; честно обозначаем необходимость проверки и согласуем возврат с информацией.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "payment",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "ANSWER",
+              "objective": "Честно ответить на запрос условий оплаты и согласовать возврат с проверенными данными",
+              "reason": "Клиент готов оформить и спрашивает про оплату; проверенных условий в базе нет, поэтому отвечаем прямо и согласуем следующий контакт.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на вопрос"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9f018e91-4a9d-4ef4-8101-2e2ae560a492",
+            "created_at": "2026-11-15T09:07:03.364137+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3439,
+          "usage": {
+            "prompt_tokens": 8557,
+            "completion_tokens": 503,
+            "total_tokens": 9060,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2157,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "С программой я уже ознакомился, всё подходит. Готов оформить, осталось уточнить условия оплаты."
+          }
+        ],
+        "facts": [
+          {
+            "category": "decision",
+            "value": "Клиент ознакомился с программой, она ему подходит, готов оформить",
+            "quote": "С программой я уже ознакомился, всё подходит. Готов оформить",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "abcb5009-8937-43b1-9150-e4fb3e9e35aa",
+            "created_at": "2026-11-15T09:07:03.364137+00:00"
+          },
+          {
+            "category": "next_step",
+            "value": "Нужно уточнить условия оплаты перед оформлением",
+            "quote": "осталось уточнить условия оплаты",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "a42d6da4-85a2-4f15-94da-cd8db3e14020",
+            "created_at": "2026-11-15T09:07:03.364137+00:00"
+          }
+        ],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "ANSWER",
+            "suggestion": "Спасибо, что посмотрели программу. У меня сейчас нет подтверждённых условий оплаты по этой программе, поэтому не хочу называть вам неверные данные — давайте я уточню актуальные условия и вернусь с точной информацией. Вам удобно, если я напишу, как только они будут у меня на руках?",
+            "reason": "Клиент явно готов оформить и просит условия оплаты, но в knowledge нет approved_claims и продуктовых условий. Нельзя выдумывать способы оплаты; честно обозначаем необходимость проверки и согласуем возврат с информацией.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "payment",
+            "confidence": 0.85,
+            "policy_flags": [],
+            "strategy": {
+              "action": "ANSWER",
+              "objective": "Честно ответить на запрос условий оплаты и согласовать возврат с проверенными данными",
+              "reason": "Клиент готов оформить и спрашивает про оплату; проверенных условий в базе нет, поэтому отвечаем прямо и согласуем следующий контакт.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Ответить на вопрос"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "9f018e91-4a9d-4ef4-8101-2e2ae560a492",
+            "created_at": "2026-11-15T09:07:03.364137+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Оформление / следующий шаг",
+          "events": [
+            {
+              "kind": "ready_to_buy",
+              "source_turn": "t1",
+              "quote": "Готов оформить",
+              "topic": "purchase"
+            },
+            {
+              "kind": "question_asked",
+              "source_turn": "t1",
+              "quote": "осталось уточнить условия оплаты",
+              "topic": "payment"
+            }
+          ],
+          "questions": [
+            {
+              "topic": "payment",
+              "role": "client",
+              "source_turn": "t1",
+              "status": "open"
+            }
+          ],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": true,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "motivation",
+          "urgency",
+          "constraints",
+          "objection"
+        ],
+        "stage": "Оформление / следующий шаг"
+      }
+    },
+    {
+      "id": "clear_refusal",
+      "title": "Явный отказ от контакта",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "objection",
+                "value": "Клиент не хочет разговаривать и просит больше не звонить и не предлагать обучение",
+                "quote": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "NO_ACTION",
+              "suggestion": "",
+              "reason": "Клиент явно отказался от разговора и попросил не звонить и не предлагать обучение — давление недопустимо, разговор корректно завершается.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "",
+              "confidence": 0.97
+            },
+            "events": [
+              {
+                "kind": "declined",
+                "source_turn": "t1",
+                "quote": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение.",
+                "topic": "no_interest"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "NO_ACTION",
+                "objective": "Корректно завершить контакт по просьбе клиента",
+                "reason": "Явный отказ от продолжения общения и просьба не звонить; новые вопросы или предложения неуместны.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Клиент отказался: завершите разговор без дальнейшего убеждения.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "",
+            "confidence": 0.97,
+            "policy_flags": [
+              "respect_refusal"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Корректно завершить контакт по просьбе клиента",
+              "reason": "Явный отказ от продолжения общения и просьба не звонить; новые вопросы или предложения неуместны.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "respect_refusal"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "eb7bfc98-0f77-4a36-aceb-55dfef2f1410",
+            "created_at": "2026-11-15T09:07:05.906675+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "respect_refusal"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2542,
+          "usage": {
+            "prompt_tokens": 8549,
+            "completion_tokens": 316,
+            "total_tokens": 8865,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2149,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение."
+          }
+        ],
+        "facts": [
+          {
+            "category": "objection",
+            "value": "Клиент не хочет разговаривать и просит больше не звонить и не предлагать обучение",
+            "quote": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение.",
+            "source_turn": "t1",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "8291ac6d-b86d-422a-a4d1-095b272def0c",
+            "created_at": "2026-11-15T09:07:05.906675+00:00"
+          }
+        ],
+        "hypotheses": [],
+        "recommendations": [
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Клиент отказался: завершите разговор без дальнейшего убеждения.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "",
+            "confidence": 0.97,
+            "policy_flags": [
+              "respect_refusal"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Корректно завершить контакт по просьбе клиента",
+              "reason": "Явный отказ от продолжения общения и просьба не звонить; новые вопросы или предложения неуместны.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "respect_refusal"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "eb7bfc98-0f77-4a36-aceb-55dfef2f1410",
+            "created_at": "2026-11-15T09:07:05.906675+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "respect_refusal"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Отказ",
+          "events": [
+            {
+              "kind": "declined",
+              "source_turn": "t1",
+              "quote": "Не хочу разговаривать. Не звоните мне больше и не предлагайте обучение.",
+              "topic": "no_interest"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": "declined"
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "goal",
+          "motivation",
+          "urgency",
+          "constraints",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Отказ"
+      }
+    },
+    {
+      "id": "hypothesis_revision",
+      "title": "Гипотеза не должна стать ложным фактом",
+      "passed": true,
+      "checks": {
+        "strategy": true,
+        "not_blocked": true,
+        "spoken_or_deliberate_silence": true,
+        "hypotheses_separate": true
+      },
+      "rows": [
+        {
+          "turn": {
+            "id": "t1",
+            "role": "client",
+            "text": "Присматриваюсь к дизайну, пока просто интересно."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "motivation",
+                "value": "Интересуется дизайном, пока на этапе знакомства, без конкретной задачи",
+                "quote": "Присматриваюсь к дизайну, пока просто интересно.",
+                "source_turn": "t1",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понимаю, знакомство с направлением — хороший первый шаг. Что именно в дизайне привлекло ваше внимание: визуальная часть, работа с интерфейсами или что-то ещё?",
+              "reason": "Клиент только обозначил интерес к дизайну без конкретной задачи. Один открытый вопрос поможет понять направление, не превращая разговор в анкету.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "target_gap": "goal.direction",
+              "confidence": 0.6
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t1",
+                "quote": "Присматриваюсь к дизайну, пока просто интересно.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "",
+                  "statement": "Клиент рассматривает дизайн как возможное направление обучения, но ещё не определил конкретную сферу",
+                  "status": "INFERRED",
+                  "evidence": [
+                    {
+                      "source_turn": "t1",
+                      "quote": "Присматриваюсь к дизайну, пока просто интересно."
+                    }
+                  ],
+                  "test_question": "Что именно в дизайне привлекло ваше внимание?"
+                }
+              ],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Понять, какое направление дизайна интересует клиента",
+                "reason": "Интерес заявлен обобщённо, конкретной задачи нет; нужен один уточняющий вопрос о направлении.",
+                "evidence_ids": [
+                  "t1"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, знакомство с направлением — хороший первый шаг. Что именно в дизайне привлекло ваше внимание: визуальная часть, работа с интерфейсами или что-то ещё?",
+            "reason": "Клиент только обозначил интерес к дизайну без конкретной задачи. Один открытый вопрос поможет понять направление, не превращая разговор в анкету.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.direction",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Понять, какое направление дизайна интересует клиента",
+              "reason": "Интерес заявлен обобщённо, конкретной задачи нет; нужен один уточняющий вопрос о направлении.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "39c0fb5e-47cd-47e4-ae61-9b53468825ca",
+            "created_at": "2026-11-15T09:07:06.644957+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2952,
+          "usage": {
+            "prompt_tokens": 8545,
+            "completion_tokens": 451,
+            "total_tokens": 8996,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2145,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t2",
+            "role": "manager",
+            "text": "Вы рассматриваете это как новую профессию или для своих задач?"
+          },
+          "raw": {
+            "facts": [],
+            "recommendation": {
+              "action_type": "NO_ACTION",
+              "suggestion": "",
+              "reason": "Последняя реплика — вопрос менеджера о цели (профессия или свои задачи); ответа клиента ещё нет. Новых сведений от клиента нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "target_gap": "",
+              "confidence": 0.8
+            },
+            "events": [],
+            "intelligence": {
+              "hypotheses": [],
+              "strategy": {
+                "action": "NO_ACTION",
+                "objective": "Дождаться ответа клиента на вопрос о цели",
+                "reason": "Менеджер задал уточняющий вопрос, клиент ещё не ответил; новых оснований для следующей фразы нет.",
+                "evidence_ids": [
+                  "t2"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на вопрос о цели",
+              "reason": "Менеджер задал уточняющий вопрос, клиент ещё не ответил; новых оснований для следующей фразы нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "15b26cea-5a57-4754-b6f1-942656a92d29",
+            "created_at": "2026-11-15T09:07:08.688715+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 2044,
+          "usage": {
+            "prompt_tokens": 9341,
+            "completion_tokens": 183,
+            "total_tokens": 9524,
+            "prompt_cache_hit_tokens": 6400,
+            "prompt_cache_miss_tokens": 2941,
+            "request_count": 1
+          }
+        },
+        {
+          "turn": {
+            "id": "t3",
+            "role": "client",
+            "text": "Не хочу новую профессию и заработок мне не нужен. Хочу оформлять семейные фотоальбомы для себя."
+          },
+          "raw": {
+            "facts": [
+              {
+                "category": "goal",
+                "value": "Хочет оформлять семейные фотоальбомы для себя",
+                "quote": "Хочу оформлять семейные фотоальбомы для себя.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [],
+                "confirms_hypothesis": ""
+              },
+              {
+                "category": "motivation",
+                "value": "Не рассматривает дизайн как новую профессию и не ищет заработок",
+                "quote": "Не хочу новую профессию и заработок мне не нужен.",
+                "source_turn": "t3",
+                "status": "CONFIRMED",
+                "replaces": [
+                  "d3c023e1-16cf-4ad4-928e-21bf1e4482fe"
+                ],
+                "confirms_hypothesis": ""
+              }
+            ],
+            "recommendation": {
+              "action_type": "QUESTION",
+              "suggestion": "Понял, задача — оформлять семейные фотоальбомы для себя. А как сейчас собираете альбомы: вручную раскладываете фото или уже пробовали какие-то программы?",
+              "reason": "Клиент прямо назвал задачу и исключил смену профессии. Следующий недостающий аспект — текущий процесс и опыт, чтобы понять, что именно нужно освоить.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "target_gap": "current_process",
+              "confidence": 0.7
+            },
+            "events": [
+              {
+                "kind": "interest_shared",
+                "source_turn": "t3",
+                "quote": "Хочу оформлять семейные фотоальбомы для себя.",
+                "topic": "goal"
+              }
+            ],
+            "intelligence": {
+              "hypotheses": [
+                {
+                  "id": "e05566dc-284b-46ac-89a3-b06d79431334",
+                  "statement": "Клиент рассматривает дизайн как возможное направление обучения, но ещё не определил конкретную сферу",
+                  "status": "REJECTED",
+                  "evidence": [
+                    {
+                      "source_turn": "t3",
+                      "quote": "Не хочу новую профессию и заработок мне не нужен. Хочу оформлять семейные фотоальбомы для себя."
+                    }
+                  ],
+                  "test_question": "Что именно в оформлении альбомов вам хотелось бы освоить в первую очередь?"
+                }
+              ],
+              "strategy": {
+                "action": "DISCOVERY",
+                "objective": "Понять текущий процесс оформления альбомов и имеющийся опыт",
+                "reason": "Задача названа конкретно, но неизвестно, как клиент собирает альбомы сейчас и что уже пробовал; это определяет подбор программы.",
+                "evidence_ids": [
+                  "t3"
+                ]
+              },
+              "product_claims": []
+            }
+          },
+          "shown": {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, задача — оформлять семейные фотоальбомы для себя. А как сейчас собираете альбомы: вручную раскладываете фото или уже пробовали какие-то программы?",
+            "reason": "Клиент прямо назвал задачу и исключил смену профессии. Следующий недостающий аспект — текущий процесс и опыт, чтобы понять, что именно нужно освоить.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "current_process",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Понять текущий процесс оформления альбомов и имеющийся опыт",
+              "reason": "Задача названа конкретно, но неизвестно, как клиент собирает альбомы сейчас и что уже пробовал; это определяет подбор программы.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "cadcee11-8f3c-41e8-b5b2-ca1ea0a87ad9",
+            "created_at": "2026-11-15T09:07:12.581396+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          "latency_ms": 3893,
+          "usage": {
+            "prompt_tokens": 9672,
+            "completion_tokens": 610,
+            "total_tokens": 10282,
+            "prompt_cache_hit_tokens": 6528,
+            "prompt_cache_miss_tokens": 3144,
+            "request_count": 1
+          }
+        }
+      ],
+      "session": {
+        "turns": [
+          {
+            "id": "t1",
+            "role": "client",
+            "text": "Присматриваюсь к дизайну, пока просто интересно."
+          },
+          {
+            "id": "t2",
+            "role": "manager",
+            "text": "Вы рассматриваете это как новую профессию или для своих задач?"
+          },
+          {
+            "id": "t3",
+            "role": "client",
+            "text": "Не хочу новую профессию и заработок мне не нужен. Хочу оформлять семейные фотоальбомы для себя."
+          }
+        ],
+        "facts": [
+          {
+            "category": "motivation",
+            "value": "Интересуется дизайном, пока на этапе знакомства, без конкретной задачи",
+            "quote": "Присматриваюсь к дизайну, пока просто интересно.",
+            "source_turn": "t1",
+            "status": "OUTDATED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "d3c023e1-16cf-4ad4-928e-21bf1e4482fe",
+            "created_at": "2026-11-15T09:07:06.644423+00:00"
+          },
+          {
+            "category": "goal",
+            "value": "Хочет оформлять семейные фотоальбомы для себя",
+            "quote": "Хочу оформлять семейные фотоальбомы для себя.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [],
+            "confirms_hypothesis": "",
+            "id": "544e2f71-d489-4bd7-b523-6b97a0bcb092",
+            "created_at": "2026-11-15T09:07:12.581396+00:00"
+          },
+          {
+            "category": "motivation",
+            "value": "Не рассматривает дизайн как новую профессию и не ищет заработок",
+            "quote": "Не хочу новую профессию и заработок мне не нужен.",
+            "source_turn": "t3",
+            "status": "CONFIRMED",
+            "replaces": [
+              "d3c023e1-16cf-4ad4-928e-21bf1e4482fe"
+            ],
+            "confirms_hypothesis": "",
+            "id": "25bd4837-6908-42ba-a8e6-df15e8e17d94",
+            "created_at": "2026-11-15T09:07:12.581396+00:00"
+          }
+        ],
+        "hypotheses": [
+          {
+            "id": "e05566dc-284b-46ac-89a3-b06d79431334",
+            "statement": "Клиент рассматривает дизайн как возможное направление обучения, но ещё не определил конкретную сферу",
+            "status": "REJECTED",
+            "evidence": [
+              {
+                "source_turn": "t3",
+                "quote": "Не хочу новую профессию и заработок мне не нужен. Хочу оформлять семейные фотоальбомы для себя."
+              }
+            ],
+            "test_question": "Что именно в оформлении альбомов вам хотелось бы освоить в первую очередь?",
+            "created_at": "2026-11-15T09:07:06.644423+00:00",
+            "updated_at": "2026-11-15T09:07:12.581396+00:00",
+            "history": [
+              {
+                "id": "e05566dc-284b-46ac-89a3-b06d79431334",
+                "statement": "Клиент рассматривает дизайн как возможное направление обучения, но ещё не определил конкретную сферу",
+                "status": "INFERRED",
+                "evidence": [
+                  {
+                    "source_turn": "t1",
+                    "quote": "Присматриваюсь к дизайну, пока просто интересно."
+                  }
+                ],
+                "test_question": "Что именно в дизайне привлекло ваше внимание?",
+                "created_at": "2026-11-15T09:07:06.644423+00:00",
+                "updated_at": "2026-11-15T09:07:06.644423+00:00"
+              }
+            ]
+          }
+        ],
+        "recommendations": [
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понимаю, знакомство с направлением — хороший первый шаг. Что именно в дизайне привлекло ваше внимание: визуальная часть, работа с интерфейсами или что-то ещё?",
+            "reason": "Клиент только обозначил интерес к дизайну без конкретной задачи. Один открытый вопрос поможет понять направление, не превращая разговор в анкету.",
+            "evidence_ids": [
+              "t1"
+            ],
+            "target_gap": "goal.direction",
+            "confidence": 0.6,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Понять, какое направление дизайна интересует клиента",
+              "reason": "Интерес заявлен обобщённо, конкретной задачи нет; нужен один уточняющий вопрос о направлении.",
+              "evidence_ids": [
+                "t1"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "39c0fb5e-47cd-47e4-ae61-9b53468825ca",
+            "created_at": "2026-11-15T09:07:06.644957+00:00",
+            "feedback": null,
+            "turn_id": "t1",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "NO_ACTION",
+            "suggestion": "",
+            "reason": "Вопрос уже произнесён. Дождитесь ответа клиента.",
+            "evidence_ids": [
+              "t2"
+            ],
+            "target_gap": "",
+            "confidence": 0.8,
+            "policy_flags": [
+              "wait_for_answer"
+            ],
+            "strategy": {
+              "action": "NO_ACTION",
+              "objective": "Дождаться ответа клиента на вопрос о цели",
+              "reason": "Менеджер задал уточняющий вопрос, клиент ещё не ответил; новых оснований для следующей фразы нет.",
+              "evidence_ids": [
+                "t2"
+              ],
+              "label": "Дать клиенту ответить"
+            },
+            "validation": {
+              "status": "adjusted",
+              "issues": [
+                "wait_for_answer"
+              ],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "15b26cea-5a57-4754-b6f1-942656a92d29",
+            "created_at": "2026-11-15T09:07:08.688715+00:00",
+            "feedback": null,
+            "turn_id": "t2",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "adjusted",
+                "issues": [
+                  "wait_for_answer"
+                ],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          },
+          {
+            "action_type": "QUESTION",
+            "suggestion": "Понял, задача — оформлять семейные фотоальбомы для себя. А как сейчас собираете альбомы: вручную раскладываете фото или уже пробовали какие-то программы?",
+            "reason": "Клиент прямо назвал задачу и исключил смену профессии. Следующий недостающий аспект — текущий процесс и опыт, чтобы понять, что именно нужно освоить.",
+            "evidence_ids": [
+              "t3"
+            ],
+            "target_gap": "current_process",
+            "confidence": 0.7,
+            "policy_flags": [],
+            "strategy": {
+              "action": "DISCOVERY",
+              "objective": "Понять текущий процесс оформления альбомов и имеющийся опыт",
+              "reason": "Задача названа конкретно, но неизвестно, как клиент собирает альбомы сейчас и что уже пробовал; это определяет подбор программы.",
+              "evidence_ids": [
+                "t3"
+              ],
+              "label": "Выявление задачи"
+            },
+            "validation": {
+              "status": "passed",
+              "issues": [],
+              "checks_version": "v2-iteration-1"
+            },
+            "id": "cadcee11-8f3c-41e8-b5b2-ca1ea0a87ad9",
+            "created_at": "2026-11-15T09:07:12.581396+00:00",
+            "feedback": null,
+            "turn_id": "t3",
+            "validation_trace": [
+              {
+                "attempt": 1,
+                "status": "passed",
+                "issues": [],
+                "checks_version": "v2-iteration-1"
+              }
+            ]
+          }
+        ],
+        "sales_context": {
+          "school": "Skillbox",
+          "course": "",
+          "manager": ""
+        },
+        "dialogue_state": {
+          "version": "edtech-personal-1",
+          "stage": "Выявление потребностей",
+          "events": [
+            {
+              "kind": "interest_shared",
+              "source_turn": "t1",
+              "quote": "Присматриваюсь к дизайну, пока просто интересно.",
+              "topic": "goal"
+            },
+            {
+              "kind": "interest_shared",
+              "source_turn": "t3",
+              "quote": "Хочу оформлять семейные фотоальбомы для себя.",
+              "topic": "goal"
+            }
+          ],
+          "questions": [],
+          "objections": [],
+          "price_requests": [],
+          "price_answered": false,
+          "needs_confirmed": false,
+          "ready_to_buy": false,
+          "outcome": null
+        },
+        "gaps": [
+          "profile",
+          "experience",
+          "situation",
+          "problem",
+          "consequence",
+          "importance",
+          "urgency",
+          "constraints",
+          "objection",
+          "decision",
+          "next_step"
+        ],
+        "stage": "Выявление потребностей"
+      }
+    }
+  ]
+}

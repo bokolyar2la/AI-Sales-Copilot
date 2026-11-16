@@ -5,7 +5,7 @@ from time import perf_counter
 from .diagnostics import timed, add_call
 from urllib.parse import urlparse
 import httpx
-from .models import Analysis, Fact, Advice, LABELS
+from .models import Analysis, LiveAnalysis, Fact, Advice, LABELS
 from .prompts import SYSTEM
 from .dialogue_policy import update_state, conversation_signals, spoken_turn_ids
 
@@ -88,9 +88,10 @@ class CompatibleProvider:
         headers = {}
         if os.getenv('LLM_API_KEY'):
             headers['Authorization'] = 'Bearer ' + os.environ['LLM_API_KEY']
+        response_contract = LiveAnalysis if session.get('turns') else Analysis
         with timed('context_prepare'):
             context = model_context(session)
-            payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': Analysis.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
+            payload = {'model': model, 'messages': [{'role': 'system', 'content': SYSTEM}, {'role': 'user', 'content': json.dumps({'session': context, 'knowledge': knowledge, 'schema': response_contract.model_json_schema()}, ensure_ascii=False)}], 'response_format': {'type': 'json_object'}, 'temperature': 0.2}
             payload['max_tokens'] = int(os.getenv('LLM_MAX_TOKENS', '3000'))
         endpoint = os.environ.get('LLM_BASE_URL', 'http://127.0.0.1:11434/v1').rstrip('/')
         if urlparse(endpoint).hostname == 'api.deepseek.com':
@@ -100,13 +101,7 @@ class CompatibleProvider:
         data = await self._complete(endpoint, headers, payload)
         try:
             with timed('schema_validation'):
-                analysis = Analysis.model_validate_json(data['choices'][0]['message']['content'])
-                if session.get('turns') and analysis.intelligence is None:
-                    raise ValueError('Missing intelligence result')
-                if session.get('turns') and analysis.intelligence.sales_plan is None:
-                    raise ValueError('Missing sales plan')
-                if session.get('turns') and analysis.intelligence.sales_plan.need_depth is None:
-                    raise ValueError('Missing sales_plan.need_depth')
+                analysis = response_contract.model_validate_json(data['choices'][0]['message']['content'])
         except ValueError as exc:
             exc.usage = data.get('usage', {})
             raise

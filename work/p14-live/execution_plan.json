@@ -1,0 +1,17 @@
+{
+  "dry_run": false,
+  "scenarios": [
+    "income",
+    "video",
+    "program",
+    "no_catalog"
+  ],
+  "baseline_calls": 8,
+  "max_engine_calls": 12,
+  "hard_call_limit": 12,
+  "max_output_tokens_bound": 36000,
+  "input_token_estimate": null,
+  "cost_estimate": null,
+  "limits_note": "Input tokenization and current pricing unavailable; output bound is not total tokens or dollar budget.",
+  "comparison_limits": "Fixed checkpoints with equal manually confirmed facts. A reconstructs state from this input, not a continuous prior model session; includes up to one regeneration and local recovery. B one request, no recovery. A/B answer schemas differ. Product claims independently require human review."
+}

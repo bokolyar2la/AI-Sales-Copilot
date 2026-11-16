@@ -1,0 +1,837 @@
+[
+  {
+    "id": "vague",
+    "description": "Размытый интерес",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что привлекло внимание?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Просто увидел рекламу Excel, пока присматриваюсь."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "goal",
+        "value": "Просто увидел рекламу Excel, пока присматриваюсь.",
+        "quote": "Просто увидел рекламу Excel, пока присматриваюсь.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "DISCOVERY",
+      "NEED_DEVELOPMENT"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "career",
+    "description": "Смена работы",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Для чего вам Excel?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Я администратор, хочу сменить работу, но пока не знаю на какую."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "goal",
+        "value": "Я администратор, хочу сменить работу, но пока не знаю на какую.",
+        "quote": "Я администратор, хочу сменить работу, но пока не знаю на какую.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "EXPLORE_MOTIVATION",
+      "DISCOVERY"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "income",
+    "description": "Рост дохода",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что хотите изменить в работе?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Получаю 45 тысяч, хочу 65–70, роста на нынешнем месте нет."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "motivation",
+        "value": "Получаю 45 тысяч, хочу 65–70, роста на нынешнем месте нет.",
+        "quote": "Получаю 45 тысяч, хочу 65–70, роста на нынешнем месте нет.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "NEED_DEVELOPMENT",
+      "EXPLORE_MOTIVATION"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "fear",
+    "description": "Страх вакансий",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что мешает откликаться?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Требований так много, боюсь, что не справлюсь."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "objection",
+        "value": "Требований так много, боюсь, что не справлюсь.",
+        "quote": "Требований так много, боюсь, что не справлюсь.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "OBJECTION_DIAGNOSIS",
+      "OBJECTION_HANDLING"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "video",
+    "description": "Неудачное самообучение",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Как пробовали учиться?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Смотрел видео, бросал: после работы устаю и не понимаю порядок тем."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "problem",
+        "value": "Смотрел видео, бросал: после работы устаю и не понимаю порядок тем.",
+        "quote": "Смотрел видео, бросал: после работы устаю и не понимаю порядок тем.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "DISCOVERY",
+      "VALUE_BUILDING"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "work",
+    "description": "Excel для работы",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что делаете с таблицами?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Каждую неделю вручную собираю отчёты из восьми файлов, трачу весь вечер."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "problem",
+        "value": "Каждую неделю вручную собираю отчёты из восьми файлов, трачу весь вечер.",
+        "quote": "Каждую неделю вручную собираю отчёты из восьми файлов, трачу весь вечер.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "DEEP_DISCOVERY",
+      "VALUE_BUILDING"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "minor",
+    "description": "Некритичная проблема",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Насколько это мешает?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Пять минут в неделю, меня это устраивает, срочности нет."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "importance",
+        "value": "Пять минут в неделю, меня это устраивает, срочности нет.",
+        "quote": "Пять минут в неделю, меня это устраивает, срочности нет.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "DISCOVERY",
+      "ANSWER",
+      "NO_ACTION"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "price",
+    "description": "Цена на старте",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Вам удобно обсудить обучение?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Сначала скажите, сколько стоит обучение."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "decision",
+        "value": "Сначала скажите, сколько стоит обучение.",
+        "quote": "Сначала скажите, сколько стоит обучение.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "PRICE_PRESENTATION",
+      "ANSWER"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "program",
+    "description": "Запрос программы",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Нужны простые отчёты или объединение файлов?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Только простые отчёты. Мы уже обсудили задачу, расскажите программу."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "goal",
+        "value": "Только простые отчёты. Мы уже обсудили задачу, расскажите программу.",
+        "quote": "Только простые отчёты. Мы уже обсудили задачу, расскажите программу.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "PRESENTATION",
+      "SELECT_SOLUTION"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "expensive",
+    "description": "Дорого",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Стоимость тестового варианта 12000 рублей."
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Дорого, не понимаю, чем это лучше бесплатных видео."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "objection",
+        "value": "Дорого, не понимаю, чем это лучше бесплатных видео.",
+        "quote": "Дорого, не понимаю, чем это лучше бесплатных видео.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "OBJECTION_HANDLING",
+      "OBJECTION_DIAGNOSIS"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "think",
+    "description": "Я подумаю",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Как вам предложенный вариант?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Я подумаю, не уверен, что смогу регулярно заниматься."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "objection",
+        "value": "Я подумаю, не уверен, что смогу регулярно заниматься.",
+        "quote": "Я подумаю, не уверен, что смогу регулярно заниматься.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "OBJECTION_HANDLING",
+      "OBJECTION_DIAGNOSIS"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "buy",
+    "description": "Готов купить",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Какие вопросы остались?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Программу изучил, всё подходит. Готов оплатить, какие условия?"
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "decision",
+        "value": "Программу изучил, всё подходит. Готов оплатить, какие условия?",
+        "quote": "Программу изучил, всё подходит. Готов оплатить, какие условия?",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "CLOSING",
+      "ANSWER"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "deviation",
+    "description": "Менеджер меняет направление",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Хочу сменить работу, думаю освоить Excel."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что для вас важнее: должность или самостоятельность в отчётах?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Самостоятельность. Менять работу уже не хочу."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "goal",
+        "value": "Самостоятельность. Менять работу уже не хочу.",
+        "quote": "Самостоятельность. Менять работу уже не хочу.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "NEED_DEVELOPMENT",
+      "DISCOVERY",
+      "VALUE_BUILDING"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "no_catalog",
+    "description": "Skillbox без каталога",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Skillbox",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Что хотите уточнить?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Пришлите программу и условия, хочу посмотреть перед решением."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "next_step",
+        "value": "Пришлите программу и условия, хочу посмотреть перед решением.",
+        "quote": "Пришлите программу и условия, хочу посмотреть перед решением.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "FOLLOW_UP",
+      "ANSWER"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  },
+  {
+    "id": "refusal",
+    "description": "Окончательный отказ",
+    "origin": "synthetic",
+    "source_note": "Синтетический случай по темам задания; не исходная запись клиента.",
+    "school": "Eduson",
+    "course": "Excel",
+    "turns": [
+      {
+        "id": "t1",
+        "role": "client",
+        "text": "Интересует Excel для работы."
+      },
+      {
+        "id": "t2",
+        "role": "manager",
+        "text": "Продолжим обсуждение?"
+      },
+      {
+        "id": "t3",
+        "role": "client",
+        "text": "Нет, не звоните мне больше."
+      }
+    ],
+    "facts": [
+      {
+        "id": "f1",
+        "category": "decision",
+        "value": "Нет, не звоните мне больше.",
+        "quote": "Нет, не звоните мне больше.",
+        "source_turn": "t3",
+        "status": "CONFIRMED"
+      }
+    ],
+    "approved_claims": [
+      {
+        "id": "synthetic_basic",
+        "approved": true,
+        "text": "Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей."
+      }
+    ],
+    "catalog_origin": "synthetic_only_not_school_terms",
+    "checkpoint": "t3",
+    "allowed_actions": [
+      "NO_ACTION"
+    ],
+    "undesirable_actions": [
+      "Повторять уже отвеченный вопрос",
+      "Переходить к контакту без основания"
+    ],
+    "critical_errors": [
+      "Выдуманные условия или гарантия трудоустройства",
+      "Игнорирование окончательного отказа"
+    ]
+  }
+]

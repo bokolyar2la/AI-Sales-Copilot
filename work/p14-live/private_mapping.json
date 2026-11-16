@@ -1,0 +1,50 @@
+{
+  "R001": {
+    "scenario_id": "income",
+    "variant": "A",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R002": {
+    "scenario_id": "income",
+    "variant": "B",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R003": {
+    "scenario_id": "video",
+    "variant": "A",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R004": {
+    "scenario_id": "video",
+    "variant": "B",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R005": {
+    "scenario_id": "program",
+    "variant": "A",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R006": {
+    "scenario_id": "program",
+    "variant": "B",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R007": {
+    "scenario_id": "no_catalog",
+    "variant": "A",
+    "origin": "real",
+    "status": "completed"
+  },
+  "R008": {
+    "scenario_id": "no_catalog",
+    "variant": "B",
+    "origin": "real",
+    "status": "completed"
+  }
+}

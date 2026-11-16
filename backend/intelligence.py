@@ -34,7 +34,7 @@ for action in ('QUESTION','CLARIFY','ANSWER'):
 ALLOWED['PRESENT'].add('SELECT_SOLUTION')
 
 
-def validate_plan(session, analysis, rec):
+def validate_plan(session, analysis, rec, knowledge=None):
     plan = analysis.intelligence.sales_plan if analysis.intelligence else None
     if plan is None:
         return []  # Legacy/demo sessions remain readable; live adapter requires a plan.
@@ -48,10 +48,18 @@ def validate_plan(session, analysis, rec):
     explicit_next_step = (signals['offer_requested'] or signals['client_declines_questions']
         or signals['offer_due_after_bridge'] or state.get('ready_to_buy')
         or state.get('outcome') in ('declined','unavailable','next_step_agreed'))
+    supported = [f for f in session.get('facts', []) if f['status']=='CONFIRMED' and f['source_turn'] in plan.need_evidence_ids]
+    categories = {f['category'] for f in supported}
+    claims = analysis.intelligence.product_claims
+    short_value = (action=='VALUE_BUILDING' and rec['action_type']=='ANSWER'
+        and len(rec['suggestion'])<=450 and 'goal' in categories
+        and bool(categories & {'problem','motivation','constraints'})
+        and bool(claims) and all(knowledge_sources(knowledge).get(c.source_id)==c.text
+                                and c.text in rec['suggestion'] for c in claims))
     needs_development = plan.need_depth in ('SURFACE_INTEREST','GENERAL_GOAL') or plan.priority_thread is not None
     if plan.priority_thread and not plan.need_evidence_ids:
         issues.append('thread_without_client_evidence')
-    if session['turns'][-1]['role']=='client' and needs_development and not explicit_next_step:
+    if session['turns'][-1]['role']=='client' and needs_development and not explicit_next_step and not short_value:
         if (plan.readiness in ('READY_FOR_OFFER','READY_TO_BUY') or
             action in ('PRESENTATION','SELECT_SOLUTION','VALUE_BUILDING','FOLLOW_UP','CLOSING','NO_ACTION') or
             rec['action_type'] in ('PRESENT','NEXT_STEP')):
@@ -208,12 +216,18 @@ def validate_recommendation(session, analysis, rec, knowledge):
     issues = list(rec.get('policy_flags', []))
     blocked = ['dismissed_repeat'] if 'dismissed_repeat' in issues else []
     phrase = result['suggestion']
+    # Detect the specific semantic repeat even if the model renamed its topic.
+    client_words = ' '.join(t['text'] for t in session['turns'] if t['role']=='client')
+    novice = bool(re.search(r'(?:почти|практически)[^.!?]{0,25}(?:не работал|не знаю|не знает)|с нуля|нулевой (?:уровень|опыт)', client_words, re.I))
+    level_choice = bool(re.search(r'(?:основ|простые таблиц|базов)[^?]*или[^?]*(?:сложн|автоматизац|продвинут)', phrase, re.I))
+    if novice and level_choice and not conversation_signals(session)['offer_requested']:
+        blocked.append('known_novice_false_choice')
     compatibility = None
     unanswered = unresolved_exit(session, analysis, rec)
     if unanswered:
         blocked.append('unresolved_objection_before_exit')
     if analysis.intelligence:
-        blocked.extend(validate_plan(session, analysis, rec))
+        blocked.extend(validate_plan(session, analysis, rec, knowledge))
         strategy = analysis.intelligence.strategy.model_dump()
         turns = {t['id'] for t in session['turns']}
         if any(e not in turns for e in strategy['evidence_ids']):
@@ -295,6 +309,12 @@ def validate_recommendation(session, analysis, rec, knowledge):
                 session['sales_plan'] = result['sales_plan']
     result['validation'] = {'status': 'blocked' if blocked else ('adjusted' if issues else 'passed'),
                             'issues': list(dict.fromkeys(issues + blocked)), 'checks_version': 'v2-sales-leadership-1'}
+    if 'develop_need_before_offer' in blocked:
+        p = analysis.intelligence.sales_plan
+        result['validation']['need_decision'] = {'action_type':rec['action_type'], 'strategy':analysis.intelligence.strategy.action,
+            'readiness':p.readiness, 'need_depth':p.need_depth, 'priority_thread':p.priority_thread.model_dump() if p.priority_thread else None,
+            'confirmed_categories':sorted({f['category'] for f in session.get('facts',[]) if f['status']=='CONFIRMED'}),
+            'reason':'Предложение или завершение при нераскрытой теме; короткий аргумент требует связи с подтверждённой целью, препятствием и утверждённым свойством продукта.'}
     if unanswered:
         result['validation']['unanswered_objections'] = unanswered
     if compatibility:

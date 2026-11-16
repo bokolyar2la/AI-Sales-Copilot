@@ -1,0 +1,10 @@
+{
+  "run_status": "completed",
+  "saved_checkpoints": 8,
+  "api_calls_reserved": 8,
+  "call_limit": 12,
+  "active_checkpoint": null,
+  "error_type": null,
+  "quality_comparison": "not_performed",
+  "note": "Reserved requests may have been charged; uncertain checkpoints are not retried."
+}

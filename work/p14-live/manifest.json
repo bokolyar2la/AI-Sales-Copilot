@@ -1,0 +1,42 @@
+{
+  "commit": "185097c139b19f68c7c48849fca42ac7803c72b4",
+  "working_tree": "M backend/diagnostics.py\n M backend/engine.py\n M backend/intelligence.py\n M backend/intelligence_prompt.md\n M backend/models.py\n M backend/providers.py\n?? backend/tests/test_analysis_recovery.py\n?? backend/tests/test_live_contract.py\n?? backend/tests/test_value_recovery.py\n?? experiments/\n?? work/",
+  "file_hashes": {
+    "backend\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend\\call_flow.py": "d4f948a8cefebaeacb8661a44efd38c16d55eeec2262116b116a686c2bee3838",
+    "backend\\configure_llm.py": "a14c2be3d8c7bb88b8322dba53abc965a035c59d3611a752357d546fad358347",
+    "backend\\context.py": "28d09b5aafa5b50ef32b6cf901e5060dd5800b395d55d5af58395dbd061b96ef",
+    "backend\\diagnostics.py": "44b922db86272008a65108f24cc5eb2743a2db08a5cad2032f85f037cb777ac2",
+    "backend\\dialogue_policy.py": "86963d66cf7c3c721f53df69f9883573520f08c5be61985b6513bfb882510842",
+    "backend\\engine.py": "0b9110378d09b0132bf8c5d0918cecc755e9d2fc032c8667ea063d3accb599f4",
+    "backend\\intelligence.py": "e22c13906bb9e70d5ef11fd3e2c63442fd883e688ff9dea7d3a6b3f5ee0db154",
+    "backend\\main.py": "c66664d6aa7719151a3a6865660ef46b163f75614855dbfc6bfb78320957f67e",
+    "backend\\models.py": "d46fc5c252da1c8c5e7998d036550ff5e2b9390b491e50074e89b02f411d8a73",
+    "backend\\prompts.py": "38e40f690a345e54cdcdc665f0423b9eb0a3560a9d912972749222ef92daf9af",
+    "backend\\providers.py": "b5f5f3ad5767cab00d2476cbf5cfc14a73ea9a0e3c287915b5fa9be215bb1f8e",
+    "backend\\storage.py": "dc7faa381d0ff2c4175dd28d9d593b567099513670ac6a5406329bbdcaa69adc",
+    "backend\\intelligence_prompt.md": "f069032ab19a3b08ed7fdfe25835cdc15db08ee5ab7c296fb0ee0f7df22e3c01",
+    "experiments\\sales_benchmark\\minimal_prompt.txt": "0d4af20bec90ce692f979f63db07e2101ccaab102c7a0b70eaad9e6f219ef5d2",
+    "experiments\\sales_benchmark\\run.py": "e8885735c655e6f5bdf9b4018fd7bf7db4beedd5ea139cf662e8ac271814b980",
+    "experiments\\sales_benchmark\\scenarios.json": "0719be20d6fe1407ffbcfc8de9a125fdb98c3ab6fc739a3d4a1db985bdee1a36",
+    "experiments\\sales_benchmark\\live.py": "88a05223e6184dfa1c4e696ac1edc6da76dd7919af9b4bcb14dd8d3a4ea41a65",
+    "experiments\\sales_benchmark\\pilot.json": "05ec14376500a13e95a8f3785694deeb7dbc24116307d756a6cf3f34de69f94d",
+    "experiments\\sales_benchmark\\multiturn.json": "274a5a2abc4b72e08108beee578f4e751ef0c6588eadabd5033abeaaf357c2b2",
+    "experiments\\sales_benchmark\\journal.py": "9d3821058cf365eb18d8462b440c61ca996d3c2861c4d27a4ed29eb0d90c4129"
+  },
+  "model": "deepseek-flash",
+  "generation": {
+    "temperature": 0.2,
+    "max_tokens": 3000,
+    "thinking": "disabled"
+  },
+  "historical_data": "Two original multi-turn conversations unavailable in inspected evaluation artifacts; all bundled cases synthetic.",
+  "metrics_policy": "Only imported measured API metrics; offline replay time is not model latency.",
+  "seed": 17,
+  "scenario_ids": [
+    "income",
+    "video",
+    "program",
+    "no_catalog"
+  ]
+}

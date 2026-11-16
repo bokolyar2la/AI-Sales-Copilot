@@ -1,0 +1,940 @@
+{
+  "identity": {
+    "commit": "185097c139b19f68c7c48849fca42ac7803c72b4",
+    "file_hashes": {
+      "backend\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "backend\\call_flow.py": "d4f948a8cefebaeacb8661a44efd38c16d55eeec2262116b116a686c2bee3838",
+      "backend\\configure_llm.py": "a14c2be3d8c7bb88b8322dba53abc965a035c59d3611a752357d546fad358347",
+      "backend\\context.py": "28d09b5aafa5b50ef32b6cf901e5060dd5800b395d55d5af58395dbd061b96ef",
+      "backend\\diagnostics.py": "44b922db86272008a65108f24cc5eb2743a2db08a5cad2032f85f037cb777ac2",
+      "backend\\dialogue_policy.py": "86963d66cf7c3c721f53df69f9883573520f08c5be61985b6513bfb882510842",
+      "backend\\engine.py": "0b9110378d09b0132bf8c5d0918cecc755e9d2fc032c8667ea063d3accb599f4",
+      "backend\\intelligence.py": "e22c13906bb9e70d5ef11fd3e2c63442fd883e688ff9dea7d3a6b3f5ee0db154",
+      "backend\\main.py": "c66664d6aa7719151a3a6865660ef46b163f75614855dbfc6bfb78320957f67e",
+      "backend\\models.py": "d46fc5c252da1c8c5e7998d036550ff5e2b9390b491e50074e89b02f411d8a73",
+      "backend\\prompts.py": "38e40f690a345e54cdcdc665f0423b9eb0a3560a9d912972749222ef92daf9af",
+      "backend\\providers.py": "b5f5f3ad5767cab00d2476cbf5cfc14a73ea9a0e3c287915b5fa9be215bb1f8e",
+      "backend\\storage.py": "dc7faa381d0ff2c4175dd28d9d593b567099513670ac6a5406329bbdcaa69adc",
+      "backend\\intelligence_prompt.md": "f069032ab19a3b08ed7fdfe25835cdc15db08ee5ab7c296fb0ee0f7df22e3c01",
+      "experiments\\sales_benchmark\\minimal_prompt.txt": "0d4af20bec90ce692f979f63db07e2101ccaab102c7a0b70eaad9e6f219ef5d2",
+      "experiments\\sales_benchmark\\run.py": "e8885735c655e6f5bdf9b4018fd7bf7db4beedd5ea139cf662e8ac271814b980",
+      "experiments\\sales_benchmark\\scenarios.json": "0719be20d6fe1407ffbcfc8de9a125fdb98c3ab6fc739a3d4a1db985bdee1a36",
+      "experiments\\sales_benchmark\\live.py": "88a05223e6184dfa1c4e696ac1edc6da76dd7919af9b4bcb14dd8d3a4ea41a65",
+      "experiments\\sales_benchmark\\pilot.json": "05ec14376500a13e95a8f3785694deeb7dbc24116307d756a6cf3f34de69f94d",
+      "experiments\\sales_benchmark\\multiturn.json": "274a5a2abc4b72e08108beee578f4e751ef0c6588eadabd5033abeaaf357c2b2",
+      "experiments\\sales_benchmark\\journal.py": "9d3821058cf365eb18d8462b440c61ca996d3c2861c4d27a4ed29eb0d90c4129"
+    },
+    "scenarios": "a9571f96cb6098729bae136525322e71648c66092b5f365f3a13d1e441ad6601",
+    "model": "deepseek-flash",
+    "generation": {
+      "temperature": 0.2,
+      "max_tokens": 3000,
+      "thinking": "disabled"
+    },
+    "seed": 17
+  },
+  "limit": 12,
+  "used": 8,
+  "status": "completed",
+  "active": null,
+  "results": [
+    {
+      "scenario_id": "income",
+      "scenario_hash": "5a83b46ed30a2847293b36078efdcc6c17815ef270e0e255be2087e1d48612bf",
+      "variant": "A",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "OBJECTION_DIAGNOSIS",
+        "reason": "Клиент раскрыл мотивацию (рост дохода) и препятствие (страх не соответствовать, слабый Excel). Уточнение, что именно пугает, позволит точнее связать обучение с его задачей и снять сомнение.",
+        "say_to_customer": "Понимаю: с почти нулевым Excel сложно решиться откликаться. А что именно пугает больше — что не пройдёте по навыкам в самой работе или сам процесс откликов и собеседований?"
+      },
+      "metrics": {
+        "latency_ms": 6131.66,
+        "api_calls": 1,
+        "input_tokens": 9276,
+        "output_tokens": 1016,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-sales-leadership-1"
+      },
+      "validation_trace": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        }
+      ],
+      "diagnostics": {
+        "trace_id": "315198d5-d27e-4036-8058-5af25c71c934",
+        "stages_ms": {
+          "context_copy": 0.03,
+          "context_prepare": 8.359,
+          "provider_requests": 6106.174,
+          "schema_validation": 3.287,
+          "validation": 5.251,
+          "engine": 6131.266
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 9276,
+              "completion_tokens": 1016,
+              "total_tokens": 10292,
+              "prompt_tokens_details": {
+                "cached_tokens": 7296
+              },
+              "prompt_cache_hit_tokens": 7296,
+              "prompt_cache_miss_tokens": 1980
+            },
+            "request_ms": 6106.194
+          }
+        ],
+        "validations": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"facts\": [{\"category\": \"experience\", \"value\": \"Excel почти не знает\", \"quote\": \"Excel почти не знаю\", \"source_turn\": \"c3\", \"status\": \"CONFIRMED\"}, {\"category\": \"problem\", \"value\": \"Не уверен, что соответствует требованиям вакансий; страшно откликаться\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\", \"source_turn\": \"c3\", \"status\": \"CONFIRMED\"}], \"events\": [{\"kind\": \"objection_opened\", \"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\", \"topic\": \"неуверенность в соответствии требованиям\"}], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понимаю: с почти нулевым Excel сложно решиться откликаться. А что именно пугает больше — что не пройдёте по навыкам в самой работе или сам процесс откликов и собеседований?\", \"reason\": \"Клиент раскрыл мотивацию (рост дохода) и препятствие (страх не соответствовать, слабый Excel). Уточнение, что именно пугает, позволит точнее связать обучение с его задачей и снять сомнение.\", \"evidence_ids\": [\"c2\", \"c3\"], \"target_gap\": \"причина страха откликов\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"OBJECTION_DIAGNOSIS\", \"objective\": \"Понять, что именно стоит за страхом откликов, чтобы точнее аргументировать ценность обучения\", \"reason\": \"Клиент сам назвал сомнение в соответствии требованиям и страх откликаться; нужно разграничить пробел в навыках и барьер откликов.\", \"evidence_ids\": [\"c2\", \"c3\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Подвести к выбору обучения Excel для смены работы с ростом дохода\", \"next_goal\": \"Выяснить, что именно мешает откликаться: навыки или сам процесс\", \"significant_needs\": [\"Смена работы с ростом дохода с 45 до 65–70 тыс.\", \"Освоить Excel, так как он требуется в вакансиях\", \"Преодолеть неуверенность в соответствии требованиям\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\"], \"critical_gaps\": [{\"topic\": \"причина страха откликов\", \"impact\": \"Если барьер в навыках — акцент на освоении Excel; если в самом процессе откликов — нужен другой аргумент и поддержка\"}], \"useful_gaps\": [\"Сроки поиска работы\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"причина страха откликов\", \"new_information\": \"Что именно пугает: нехватка навыков или сам процесс откликов и собеседований\", \"decision_impact\": \"Определяет, на чём строить аргументацию: освоение Excel или уверенность при откликах\", \"already_answered\": false, \"changes_selection\": false, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать обучение Excel с задачей смены работы и снять сомнение\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиент опасается, что без навыков Excel его не пригласят на желаемые вакансии\", \"evidence\": [{\"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\"}], \"test_question\": \"Что именно пугает больше — нехватка навыков или сам процесс откликов?\"}], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед предложением: подходящий уровень программы для почти нулевого Excel, формат и полную стоимость 12000 руб., условия практики и обратной связи.\"}}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 9276,
+            "completion_tokens": 1016,
+            "total_tokens": 10292,
+            "prompt_tokens_details": {
+              "cached_tokens": 7296
+            },
+            "prompt_cache_hit_tokens": 7296,
+            "prompt_cache_miss_tokens": 1980
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "income",
+      "scenario_hash": "5a83b46ed30a2847293b36078efdcc6c17815ef270e0e255be2087e1d48612bf",
+      "variant": "B",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "Снять возражение о неуверенности и связать обучение с целью по зарплате, затем предложить конкретный следующий шаг",
+        "reason": "Клиент назвал ключевой барьер — страх несоответствия требованиям при почти нулевом Excel; это прямо связано с целью смены работы и желаемой зарплатой 65–70 тыс.",
+        "say_to_customer": "Понимаю, страх откликаться при слабом Excel — это нормально, и как раз это решаемо: программа идёт последовательно от формул к простым отчётам, то есть вы закрываете именно то, что просят в вакансиях. Полная стоимость — 12 000 рублей. Хотите, расскажу, как будет построено обучение под вашу цель выйти на 65–70?"
+      },
+      "metrics": {
+        "latency_ms": 2680.29,
+        "api_calls": 1,
+        "input_tokens": 780,
+        "output_tokens": 190,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "schema_only"
+      },
+      "diagnostics": {
+        "trace_id": "416a8586-fd9f-44bc-a273-b07a262e78f0",
+        "stages_ms": {
+          "provider_requests": 2668.43
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 780,
+              "completion_tokens": 190,
+              "total_tokens": 970,
+              "prompt_tokens_details": {
+                "cached_tokens": 640
+              },
+              "prompt_cache_hit_tokens": 640,
+              "prompt_cache_miss_tokens": 140
+            },
+            "request_ms": 2668.477
+          }
+        ],
+        "validations": [],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"decision\": \"Снять возражение о неуверенности и связать обучение с целью по зарплате, затем предложить конкретный следующий шаг\", \"reason\": \"Клиент назвал ключевой барьер — страх несоответствия требованиям при почти нулевом Excel; это прямо связано с целью смены работы и желаемой зарплатой 65–70 тыс.\", \"say_to_customer\": \"Понимаю, страх откликаться при слабом Excel — это нормально, и как раз это решаемо: программа идёт последовательно от формул к простым отчётам, то есть вы закрываете именно то, что просят в вакансиях. Полная стоимость — 12 000 рублей. Хотите, расскажу, как будет построено обучение под вашу цель выйти на 65–70?\"}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 780,
+            "completion_tokens": 190,
+            "total_tokens": 970,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 140
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "video",
+      "scenario_hash": "fa6387819fbc0eafa485137e84dadb640d10b0d5a57d53b4baf792494dffaf0c",
+      "variant": "A",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "NEED_DEVELOPMENT",
+        "reason": "Клиент раскрыл прошлую неудачу с видео и назвал две причины: усталость и отсутствие структуры. Уточнение, что важнее — структура или прикладные задачи — поможет связать подбор с его опытом и аргументировать ценность.",
+        "say_to_customer": "Понимаю: без понятной последовательности и при усталости после работы легко забросить. А что для вас важнее — чтобы темы шли по порядку от простого к сложному или чтобы сразу разбирать задачи из вакансий?"
+      },
+      "metrics": {
+        "latency_ms": 6031.57,
+        "api_calls": 1,
+        "input_tokens": 9424,
+        "output_tokens": 968,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-sales-leadership-1"
+      },
+      "validation_trace": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        }
+      ],
+      "diagnostics": {
+        "trace_id": "e18a484d-3983-46ce-957e-ba2e42e025bc",
+        "stages_ms": {
+          "context_copy": 0.026,
+          "context_prepare": 3.299,
+          "provider_requests": 6018.374,
+          "schema_validation": 0.112,
+          "validation": 0.349,
+          "engine": 6031.461
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 9424,
+              "completion_tokens": 968,
+              "total_tokens": 10392,
+              "prompt_tokens_details": {
+                "cached_tokens": 7424
+              },
+              "prompt_cache_hit_tokens": 7424,
+              "prompt_cache_miss_tokens": 2000
+            },
+            "request_ms": 6018.391
+          }
+        ],
+        "validations": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"facts\": [{\"category\": \"experience\", \"value\": \"Пробовал учиться по видео, но бросил: после работы устаёт, не понимает последовательность тем.\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\", \"source_turn\": \"c4\", \"status\": \"CONFIRMED\"}], \"events\": [{\"kind\": \"question_answered\", \"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\", \"topic\": \"experience\"}], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понимаю: без понятной последовательности и при усталости после работы легко забросить. А что для вас важнее — чтобы темы шли по порядку от простого к сложному или чтобы сразу разбирать задачи из вакансий?\", \"reason\": \"Клиент раскрыл прошлую неудачу с видео и назвал две причины: усталость и отсутствие структуры. Уточнение, что важнее — структура или прикладные задачи — поможет связать подбор с его опытом и аргументировать ценность.\", \"evidence_ids\": [\"c4\", \"c3\"], \"target_gap\": \"формат обучения\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"NEED_DEVELOPMENT\", \"objective\": \"Понять, какой формат обучения снимет прошлую неудачу с видео\", \"reason\": \"Есть подтверждённая проблема (бросил видео из-за усталости и отсутствия структуры), но неясно, что именно поможет клиенту дойти до конца.\", \"evidence_ids\": [\"c4\", \"c3\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Подвести к выбору курса Excel для смены работы с ростом дохода\", \"next_goal\": \"Выяснить, что поможет клиенту не бросить обучение на этот раз\", \"significant_needs\": [\"Смена работы с ростом дохода с 45 до 65–70 тыс.\", \"Освоить Excel, который требуется в вакансиях\", \"Понятная последовательность тем\", \"Учёба совместима с усталостью после работы\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\", \"c4\"], \"critical_gaps\": [{\"topic\": \"формат обучения\", \"impact\": \"Структурированный курс с последовательными темами против прикладных задач меняет акцент презентации и аргумент против прошлой неудачи\"}], \"useful_gaps\": [\"удобное время занятий\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"формат обучения\", \"new_information\": \"Что важнее: последовательность тем или прикладные задачи из вакансий\", \"decision_impact\": \"Определяет, на что делать акцент в предложении и как снять прошлую неудачу\", \"already_answered\": false, \"changes_selection\": true, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать формат курса с прошлой неудачей и перейти к предложению\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиенту нужна внешняя структура и поддержка, чтобы довести обучение до конца\", \"evidence\": [{\"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\"}], \"test_question\": \"Что помогло бы вам не бросить на этот раз?\", \"status\": \"INFERRED\"}], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед предложением: подходящий уровень курса, формат и график занятий, полная стоимость 12000 руб. и условия доступа.\"}}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 9424,
+            "completion_tokens": 968,
+            "total_tokens": 10392,
+            "prompt_tokens_details": {
+              "cached_tokens": 7424
+            },
+            "prompt_cache_hit_tokens": 7424,
+            "prompt_cache_miss_tokens": 2000
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "video",
+      "scenario_hash": "fa6387819fbc0eafa485137e84dadb640d10b0d5a57d53b4baf792494dffaf0c",
+      "variant": "B",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "Связать его прошлую неудачу с самостоятельным обучением с последовательной структурой курса и назвать цену, затем спросить о готовности начать.",
+        "reason": "Клиент подтвердил цель, мотивацию и барьер (усталость, отсутствие структуры); сейчас уместно перейти к презентации решения и цене, а не задавать новые вопросы.",
+        "say_to_customer": "Понимаю: без понятной последовательности и с усталостью после работы видео легко забросить. В курсе темы идут по порядку — формулы, затем простые отчёты, — чтобы не теряться. Полная стоимость 12 000 рублей. Готовы попробовать начать?"
+      },
+      "metrics": {
+        "latency_ms": 2355.02,
+        "api_calls": 1,
+        "input_tokens": 928,
+        "output_tokens": 170,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "schema_only"
+      },
+      "diagnostics": {
+        "trace_id": "389c85a2-da93-4181-8a2c-7d4061bcda0f",
+        "stages_ms": {
+          "provider_requests": 2348.484
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 928,
+              "completion_tokens": 170,
+              "total_tokens": 1098,
+              "prompt_tokens_details": {
+                "cached_tokens": 768
+              },
+              "prompt_cache_hit_tokens": 768,
+              "prompt_cache_miss_tokens": 160
+            },
+            "request_ms": 2348.493
+          }
+        ],
+        "validations": [],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"decision\": \"Связать его прошлую неудачу с самостоятельным обучением с последовательной структурой курса и назвать цену, затем спросить о готовности начать.\", \"reason\": \"Клиент подтвердил цель, мотивацию и барьер (усталость, отсутствие структуры); сейчас уместно перейти к презентации решения и цене, а не задавать новые вопросы.\", \"say_to_customer\": \"Понимаю: без понятной последовательности и с усталостью после работы видео легко забросить. В курсе темы идут по порядку — формулы, затем простые отчёты, — чтобы не теряться. Полная стоимость 12 000 рублей. Готовы попробовать начать?\"}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 928,
+            "completion_tokens": 170,
+            "total_tokens": 1098,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            },
+            "prompt_cache_hit_tokens": 768,
+            "prompt_cache_miss_tokens": 160
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "program",
+      "scenario_hash": "06a3fb0ae5a0644f92d02add063fa876d3877b691eb1840153aa073f09cfee50",
+      "variant": "A",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "PRESENTATION",
+        "reason": "Клиент прямо попросил рассказать программу под свои задачи, шесть вопросов уже задано, потребность и ограничение по времени раскрыты. Есть утверждённое описание подходящего варианта и полная цена — переходим к презентации без нового вопроса.",
+        "say_to_customer": "Под ваши задачи — простые офисные таблицы и отчёты — подходит вариант с формулами и последовательными темами: как раз чтобы не терять нить, как с видео. Полная стоимость — 12 000 рублей. Учитывая три часа в неделю, можно идти небольшими шагами без перегрузки."
+      },
+      "metrics": {
+        "latency_ms": 4229.95,
+        "api_calls": 1,
+        "input_tokens": 9717,
+        "output_tokens": 711,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-sales-leadership-1"
+      },
+      "validation_trace": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        }
+      ],
+      "diagnostics": {
+        "trace_id": "03331bac-6e77-46b3-b8d2-6c704ddaa6ee",
+        "stages_ms": {
+          "context_copy": 0.052,
+          "context_prepare": 5.783,
+          "provider_requests": 4215.107,
+          "schema_validation": 0.097,
+          "validation": 0.362,
+          "engine": 4229.83
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 9717,
+              "completion_tokens": 711,
+              "total_tokens": 10428,
+              "prompt_tokens_details": {
+                "cached_tokens": 7808
+              },
+              "prompt_cache_hit_tokens": 7808,
+              "prompt_cache_miss_tokens": 1909
+            },
+            "request_ms": 4215.125
+          }
+        ],
+        "validations": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"facts\": [], \"events\": [{\"kind\": \"question_answered\", \"source_turn\": \"c6\", \"quote\": \"Три часа в неделю выделю.\", \"topic\": \"time\"}], \"recommendation\": {\"action_type\": \"PRESENT\", \"suggestion\": \"Под ваши задачи — простые офисные таблицы и отчёты — подходит вариант с формулами и последовательными темами: как раз чтобы не терять нить, как с видео. Полная стоимость — 12 000 рублей. Учитывая три часа в неделю, можно идти небольшими шагами без перегрузки.\", \"reason\": \"Клиент прямо попросил рассказать программу под свои задачи, шесть вопросов уже задано, потребность и ограничение по времени раскрыты. Есть утверждённое описание подходящего варианта и полная цена — переходим к презентации без нового вопроса.\", \"evidence_ids\": [\"c5\", \"c6\", \"c4\"], \"target_gap\": \"\", \"confidence\": 0.8}, \"intelligence\": {\"strategy\": {\"action\": \"PRESENTATION\", \"objective\": \"Показать вариант под простые таблицы и отчёты с полной стоимостью\", \"reason\": \"Прямой запрос программы, задача и ограничение по времени известны, есть утверждённые сведения о подходящем варианте.\", \"evidence_ids\": [\"c5\", \"c6\", \"c4\"]}, \"sales_plan\": {\"need_depth\": \"PRODUCT_LINKED\", \"commercial_goal\": \"Подвести к выбору учебного варианта по Excel для смены работы на 65–70 тыс.\", \"next_goal\": \"Показать подходящий вариант и стоимость, получить отклик клиента\", \"significant_needs\": [\"Смена работы: в вакансиях нужен Excel\", \"Рост дохода с 45 до 65–70 тыс.\", \"Простые офисные таблицы и отчёты без сложной автоматизации\", \"Понятная последовательность тем, чтобы не бросить как видео\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c5\", \"c4\", \"c6\"], \"critical_gaps\": [], \"useful_gaps\": [\"Опыт откликов и обратной связи от работодателей\"], \"readiness\": \"READY_FOR_OFFER\", \"question\": null, \"after_answer_action\": \"CLOSING\", \"after_answer_goal\": \"Получить отклик на предложение и обсудить следующий шаг\"}, \"hypotheses\": [], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед конкретным предложением: соответствует ли вариант уровню новичка, есть ли практика на простых отчётах, формат и график при 3 часах в неделю, полная цена 12 000 руб. и условия оплаты. Не обещать трудоустройство или рост дохода.\"}}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 9717,
+            "completion_tokens": 711,
+            "total_tokens": 10428,
+            "prompt_tokens_details": {
+              "cached_tokens": 7808
+            },
+            "prompt_cache_hit_tokens": 7808,
+            "prompt_cache_miss_tokens": 1909
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "program",
+      "scenario_hash": "06a3fb0ae5a0644f92d02add063fa876d3877b691eb1840153aa073f09cfee50",
+      "variant": "B",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "Презентовать программу под задачи клиента и назвать стоимость",
+        "reason": "Клиент прямо запросил программу, подтвердил цель (простые таблицы и отчёты), время (3 часа в неделю) и мотивацию к смене работы; есть утверждённое свойство и цена.",
+        "say_to_customer": "Отлично, под ваши задачи подойдёт вариант с формулами и простыми отчётами — темы идут последовательно, как раз чтобы не бросить, как с видео. Формат рассчитан и на 3 часа в неделю. Полная стоимость — 12 000 рублей. Расскажу, как устроены темы по неделям?"
+      },
+      "metrics": {
+        "latency_ms": 2084.83,
+        "api_calls": 1,
+        "input_tokens": 1218,
+        "output_tokens": 165,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "schema_only"
+      },
+      "diagnostics": {
+        "trace_id": "bcdda80f-5d77-4a82-888b-9e5da0439939",
+        "stages_ms": {
+          "provider_requests": 2077.12
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 1218,
+              "completion_tokens": 165,
+              "total_tokens": 1383,
+              "prompt_tokens_details": {
+                "cached_tokens": 256
+              },
+              "prompt_cache_hit_tokens": 256,
+              "prompt_cache_miss_tokens": 962
+            },
+            "request_ms": 2077.135
+          }
+        ],
+        "validations": [],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"decision\": \"Презентовать программу под задачи клиента и назвать стоимость\", \"reason\": \"Клиент прямо запросил программу, подтвердил цель (простые таблицы и отчёты), время (3 часа в неделю) и мотивацию к смене работы; есть утверждённое свойство и цена.\", \"say_to_customer\": \"Отлично, под ваши задачи подойдёт вариант с формулами и простыми отчётами — темы идут последовательно, как раз чтобы не бросить, как с видео. Формат рассчитан и на 3 часа в неделю. Полная стоимость — 12 000 рублей. Расскажу, как устроены темы по неделям?\"}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 1218,
+            "completion_tokens": 165,
+            "total_tokens": 1383,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 962
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "no_catalog",
+      "scenario_hash": "bcd8781834268ac04c4b0982bdba993cb89371fbaba453b2d324f3215d42189c",
+      "variant": "A",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "EXPLORE_MOTIVATION",
+        "reason": "Клиент раскрыл причину бросить видео: усталость и отсутствие понятной последовательности. Мотивация смены работы и желаемый доход уже известны, но неясно, что именно важнее изменить — задачи или доход; это влияет на аргументацию ценности обучения.",
+        "say_to_customer": "Понятно: самостоятельно не хватило структуры и сил после работы. А что для вас важнее всего изменить в работе — саму должность и задачи или в первую очередь доход?"
+      },
+      "metrics": {
+        "latency_ms": 5549.62,
+        "api_calls": 1,
+        "input_tokens": 9375,
+        "output_tokens": 852,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "passed",
+        "issues": [],
+        "checks_version": "v2-sales-leadership-1"
+      },
+      "validation_trace": [
+        {
+          "attempt": 1,
+          "status": "passed",
+          "issues": [],
+          "checks_version": "v2-sales-leadership-1"
+        }
+      ],
+      "diagnostics": {
+        "trace_id": "0e32c911-e362-4052-92ba-6f5be817ef1e",
+        "stages_ms": {
+          "context_copy": 0.036,
+          "context_prepare": 4.425,
+          "provider_requests": 5536.196,
+          "schema_validation": 0.105,
+          "validation": 0.703,
+          "engine": 5549.518
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 9375,
+              "completion_tokens": 852,
+              "total_tokens": 10227,
+              "prompt_tokens_details": {
+                "cached_tokens": 6016
+              },
+              "prompt_cache_hit_tokens": 6016,
+              "prompt_cache_miss_tokens": 3359
+            },
+            "request_ms": 5536.209
+          }
+        ],
+        "validations": [
+          {
+            "attempt": 1,
+            "status": "passed",
+            "issues": [],
+            "checks_version": "v2-sales-leadership-1"
+          }
+        ],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"facts\": [], \"events\": [], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понятно: самостоятельно не хватило структуры и сил после работы. А что для вас важнее всего изменить в работе — саму должность и задачи или в первую очередь доход?\", \"reason\": \"Клиент раскрыл причину бросить видео: усталость и отсутствие понятной последовательности. Мотивация смены работы и желаемый доход уже известны, но неясно, что именно важнее изменить — задачи или доход; это влияет на аргументацию ценности обучения.\", \"evidence_ids\": [\"c2\", \"c4\"], \"target_gap\": \"приоритет желаемого изменения\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"EXPLORE_MOTIVATION\", \"objective\": \"Понять, что именно клиент хочет изменить в работе, чтобы связать обучение с его приоритетом\", \"reason\": \"Есть общая цель и причина прошлой неудачи, но неясно, что важнее — смена задач или рост дохода; это меняет аргумент.\", \"evidence_ids\": [\"c2\", \"c4\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Помочь клиенту перейти к подбору обучения Excel для смены работы и роста дохода\", \"next_goal\": \"Выяснить приоритет желаемого изменения: задачи/должность или доход\", \"significant_needs\": [\"Сменить работу, где требуется Excel\", \"Рост дохода с 45 до 65–70 тысяч\", \"Понятная последовательность обучения и учёт усталости после работы\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\", \"c4\"], \"critical_gaps\": [{\"topic\": \"приоритет желаемого изменения\", \"impact\": \"Если важнее задачи и должность — акцент на практических навыках; если доход — на связи навыка с требованиями вакансий и уверенностью при откликах\"}], \"useful_gaps\": [\"формат и время обучения\", \"бюджет\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"приоритет желаемого изменения\", \"new_information\": \"Что важнее изменить: задачи/должность или доход\", \"decision_impact\": \"Определяет, на чём строить аргументацию: практические навыки или связь с требованиями вакансий и доходом\", \"already_answered\": false, \"changes_selection\": false, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать приоритет клиента с подходящим обучением Excel и перейти к предложению\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиенту может быть важна не только зарплата, но и уверенность при откликах и понятная структура обучения\", \"evidence\": [{\"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\"}, {\"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\"}], \"test_question\": \"Что для вас важнее изменить в работе — задачи или доход?\"}], \"product_claims\": [], \"manager_note\": \"Проверить до конкретного предложения: подходящий уровень программы Excel, формат и нагрузку с учётом усталости после работы, полную стоимость и условия обучения. Не обещать трудоустройство или рост дохода.\"}}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 9375,
+            "completion_tokens": 852,
+            "total_tokens": 10227,
+            "prompt_tokens_details": {
+              "cached_tokens": 6016
+            },
+            "prompt_cache_hit_tokens": 6016,
+            "prompt_cache_miss_tokens": 3359
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    },
+    {
+      "scenario_id": "no_catalog",
+      "scenario_hash": "bcd8781834268ac04c4b0982bdba993cb89371fbaba453b2d324f3215d42189c",
+      "variant": "B",
+      "origin": "real",
+      "status": "completed",
+      "output": {
+        "decision": "Связать прошлую неудачу с самостоятельным обучением с потребностью в понятной структуре и подвести к презентации формата программы",
+        "reason": "Клиент подтвердил проблему: бросает видео из-за усталости и отсутствия последовательности тем — это ключевой барьер, который можно закрыть структурированной программой",
+        "say_to_customer": "Понял вас: дело не в лени, а в том, что без понятной последовательности и поддержки легко бросить. Расскажу, как устроена программа — с чего начинаем и как идём по темам, чтобы вы дошли до результата даже после работы."
+      },
+      "metrics": {
+        "latency_ms": 2036.39,
+        "api_calls": 1,
+        "input_tokens": 879,
+        "output_tokens": 159,
+        "cost_usd": null
+      },
+      "validation": {
+        "status": "schema_only"
+      },
+      "diagnostics": {
+        "trace_id": "08d0d35f-35a6-4bd8-a9b0-c1e88f0164bc",
+        "stages_ms": {
+          "provider_requests": 2026.567
+        },
+        "calls": [
+          {
+            "stream": false,
+            "model": "deepseek-flash",
+            "thinking": "disabled",
+            "ttft_ms": null,
+            "first_content_ms": null,
+            "content_generation_ms": null,
+            "finish_reason": "stop",
+            "response_model": "deepseek-flash",
+            "status": "ok",
+            "usage": {
+              "prompt_tokens": 879,
+              "completion_tokens": 159,
+              "total_tokens": 1038,
+              "prompt_tokens_details": {
+                "cached_tokens": 640
+              },
+              "prompt_cache_hit_tokens": 640,
+              "prompt_cache_miss_tokens": 239
+            },
+            "request_ms": 2026.579
+          }
+        ],
+        "validations": [],
+        "request_count": 1,
+        "retry_count": 0,
+        "retry_request_ms": 0
+      },
+      "raw_responses": [
+        {
+          "content": "{\"decision\": \"Связать прошлую неудачу с самостоятельным обучением с потребностью в понятной структуре и подвести к презентации формата программы\", \"reason\": \"Клиент подтвердил проблему: бросает видео из-за усталости и отсутствия последовательности тем — это ключевой барьер, который можно закрыть структурированной программой\", \"say_to_customer\": \"Понял вас: дело не в лени, а в том, что без понятной последовательности и поддержки легко бросить. Расскажу, как устроена программа — с чего начинаем и как идём по темам, чтобы вы дошли до результата даже после работы.\"}",
+          "finish_reason": "stop",
+          "response_model": "deepseek-flash",
+          "usage": {
+            "prompt_tokens": 879,
+            "completion_tokens": 159,
+            "total_tokens": 1038,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 239
+          }
+        }
+      ],
+      "product_audit": {
+        "flags": [],
+        "status": "human_review_required",
+        "note": "Каждое продуктовое утверждение проверяет независимый эксперт; отсутствие флага не доказывает точность."
+      },
+      "diagnostic_category": "UNKNOWN"
+    }
+  ],
+  "calls": [
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "income",
+        "A"
+      ],
+      "raw": {
+        "content": "{\"facts\": [{\"category\": \"experience\", \"value\": \"Excel почти не знает\", \"quote\": \"Excel почти не знаю\", \"source_turn\": \"c3\", \"status\": \"CONFIRMED\"}, {\"category\": \"problem\", \"value\": \"Не уверен, что соответствует требованиям вакансий; страшно откликаться\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\", \"source_turn\": \"c3\", \"status\": \"CONFIRMED\"}], \"events\": [{\"kind\": \"objection_opened\", \"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\", \"topic\": \"неуверенность в соответствии требованиям\"}], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понимаю: с почти нулевым Excel сложно решиться откликаться. А что именно пугает больше — что не пройдёте по навыкам в самой работе или сам процесс откликов и собеседований?\", \"reason\": \"Клиент раскрыл мотивацию (рост дохода) и препятствие (страх не соответствовать, слабый Excel). Уточнение, что именно пугает, позволит точнее связать обучение с его задачей и снять сомнение.\", \"evidence_ids\": [\"c2\", \"c3\"], \"target_gap\": \"причина страха откликов\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"OBJECTION_DIAGNOSIS\", \"objective\": \"Понять, что именно стоит за страхом откликов, чтобы точнее аргументировать ценность обучения\", \"reason\": \"Клиент сам назвал сомнение в соответствии требованиям и страх откликаться; нужно разграничить пробел в навыках и барьер откликов.\", \"evidence_ids\": [\"c2\", \"c3\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Подвести к выбору обучения Excel для смены работы с ростом дохода\", \"next_goal\": \"Выяснить, что именно мешает откликаться: навыки или сам процесс\", \"significant_needs\": [\"Смена работы с ростом дохода с 45 до 65–70 тыс.\", \"Освоить Excel, так как он требуется в вакансиях\", \"Преодолеть неуверенность в соответствии требованиям\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\"], \"critical_gaps\": [{\"topic\": \"причина страха откликов\", \"impact\": \"Если барьер в навыках — акцент на освоении Excel; если в самом процессе откликов — нужен другой аргумент и поддержка\"}], \"useful_gaps\": [\"Сроки поиска работы\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"причина страха откликов\", \"new_information\": \"Что именно пугает: нехватка навыков или сам процесс откликов и собеседований\", \"decision_impact\": \"Определяет, на чём строить аргументацию: освоение Excel или уверенность при откликах\", \"already_answered\": false, \"changes_selection\": false, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать обучение Excel с задачей смены работы и снять сомнение\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиент опасается, что без навыков Excel его не пригласят на желаемые вакансии\", \"evidence\": [{\"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\"}], \"test_question\": \"Что именно пугает больше — нехватка навыков или сам процесс откликов?\"}], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед предложением: подходящий уровень программы для почти нулевого Excel, формат и полную стоимость 12000 руб., условия практики и обратной связи.\"}}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 9276,
+          "completion_tokens": 1016,
+          "total_tokens": 10292,
+          "prompt_tokens_details": {
+            "cached_tokens": 7296
+          },
+          "prompt_cache_hit_tokens": 7296,
+          "prompt_cache_miss_tokens": 1980
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "income",
+        "B"
+      ],
+      "raw": {
+        "content": "{\"decision\": \"Снять возражение о неуверенности и связать обучение с целью по зарплате, затем предложить конкретный следующий шаг\", \"reason\": \"Клиент назвал ключевой барьер — страх несоответствия требованиям при почти нулевом Excel; это прямо связано с целью смены работы и желаемой зарплатой 65–70 тыс.\", \"say_to_customer\": \"Понимаю, страх откликаться при слабом Excel — это нормально, и как раз это решаемо: программа идёт последовательно от формул к простым отчётам, то есть вы закрываете именно то, что просят в вакансиях. Полная стоимость — 12 000 рублей. Хотите, расскажу, как будет построено обучение под вашу цель выйти на 65–70?\"}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 780,
+          "completion_tokens": 190,
+          "total_tokens": 970,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 140
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "video",
+        "A"
+      ],
+      "raw": {
+        "content": "{\"facts\": [{\"category\": \"experience\", \"value\": \"Пробовал учиться по видео, но бросил: после работы устаёт, не понимает последовательность тем.\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\", \"source_turn\": \"c4\", \"status\": \"CONFIRMED\"}], \"events\": [{\"kind\": \"question_answered\", \"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\", \"topic\": \"experience\"}], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понимаю: без понятной последовательности и при усталости после работы легко забросить. А что для вас важнее — чтобы темы шли по порядку от простого к сложному или чтобы сразу разбирать задачи из вакансий?\", \"reason\": \"Клиент раскрыл прошлую неудачу с видео и назвал две причины: усталость и отсутствие структуры. Уточнение, что важнее — структура или прикладные задачи — поможет связать подбор с его опытом и аргументировать ценность.\", \"evidence_ids\": [\"c4\", \"c3\"], \"target_gap\": \"формат обучения\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"NEED_DEVELOPMENT\", \"objective\": \"Понять, какой формат обучения снимет прошлую неудачу с видео\", \"reason\": \"Есть подтверждённая проблема (бросил видео из-за усталости и отсутствия структуры), но неясно, что именно поможет клиенту дойти до конца.\", \"evidence_ids\": [\"c4\", \"c3\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Подвести к выбору курса Excel для смены работы с ростом дохода\", \"next_goal\": \"Выяснить, что поможет клиенту не бросить обучение на этот раз\", \"significant_needs\": [\"Смена работы с ростом дохода с 45 до 65–70 тыс.\", \"Освоить Excel, который требуется в вакансиях\", \"Понятная последовательность тем\", \"Учёба совместима с усталостью после работы\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\", \"c4\"], \"critical_gaps\": [{\"topic\": \"формат обучения\", \"impact\": \"Структурированный курс с последовательными темами против прикладных задач меняет акцент презентации и аргумент против прошлой неудачи\"}], \"useful_gaps\": [\"удобное время занятий\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"формат обучения\", \"new_information\": \"Что важнее: последовательность тем или прикладные задачи из вакансий\", \"decision_impact\": \"Определяет, на что делать акцент в предложении и как снять прошлую неудачу\", \"already_answered\": false, \"changes_selection\": true, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать формат курса с прошлой неудачей и перейти к предложению\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиенту нужна внешняя структура и поддержка, чтобы довести обучение до конца\", \"evidence\": [{\"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\"}], \"test_question\": \"Что помогло бы вам не бросить на этот раз?\", \"status\": \"INFERRED\"}], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед предложением: подходящий уровень курса, формат и график занятий, полная стоимость 12000 руб. и условия доступа.\"}}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 9424,
+          "completion_tokens": 968,
+          "total_tokens": 10392,
+          "prompt_tokens_details": {
+            "cached_tokens": 7424
+          },
+          "prompt_cache_hit_tokens": 7424,
+          "prompt_cache_miss_tokens": 2000
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "video",
+        "B"
+      ],
+      "raw": {
+        "content": "{\"decision\": \"Связать его прошлую неудачу с самостоятельным обучением с последовательной структурой курса и назвать цену, затем спросить о готовности начать.\", \"reason\": \"Клиент подтвердил цель, мотивацию и барьер (усталость, отсутствие структуры); сейчас уместно перейти к презентации решения и цене, а не задавать новые вопросы.\", \"say_to_customer\": \"Понимаю: без понятной последовательности и с усталостью после работы видео легко забросить. В курсе темы идут по порядку — формулы, затем простые отчёты, — чтобы не теряться. Полная стоимость 12 000 рублей. Готовы попробовать начать?\"}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 928,
+          "completion_tokens": 170,
+          "total_tokens": 1098,
+          "prompt_tokens_details": {
+            "cached_tokens": 768
+          },
+          "prompt_cache_hit_tokens": 768,
+          "prompt_cache_miss_tokens": 160
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "program",
+        "A"
+      ],
+      "raw": {
+        "content": "{\"facts\": [], \"events\": [{\"kind\": \"question_answered\", \"source_turn\": \"c6\", \"quote\": \"Три часа в неделю выделю.\", \"topic\": \"time\"}], \"recommendation\": {\"action_type\": \"PRESENT\", \"suggestion\": \"Под ваши задачи — простые офисные таблицы и отчёты — подходит вариант с формулами и последовательными темами: как раз чтобы не терять нить, как с видео. Полная стоимость — 12 000 рублей. Учитывая три часа в неделю, можно идти небольшими шагами без перегрузки.\", \"reason\": \"Клиент прямо попросил рассказать программу под свои задачи, шесть вопросов уже задано, потребность и ограничение по времени раскрыты. Есть утверждённое описание подходящего варианта и полная цена — переходим к презентации без нового вопроса.\", \"evidence_ids\": [\"c5\", \"c6\", \"c4\"], \"target_gap\": \"\", \"confidence\": 0.8}, \"intelligence\": {\"strategy\": {\"action\": \"PRESENTATION\", \"objective\": \"Показать вариант под простые таблицы и отчёты с полной стоимостью\", \"reason\": \"Прямой запрос программы, задача и ограничение по времени известны, есть утверждённые сведения о подходящем варианте.\", \"evidence_ids\": [\"c5\", \"c6\", \"c4\"]}, \"sales_plan\": {\"need_depth\": \"PRODUCT_LINKED\", \"commercial_goal\": \"Подвести к выбору учебного варианта по Excel для смены работы на 65–70 тыс.\", \"next_goal\": \"Показать подходящий вариант и стоимость, получить отклик клиента\", \"significant_needs\": [\"Смена работы: в вакансиях нужен Excel\", \"Рост дохода с 45 до 65–70 тыс.\", \"Простые офисные таблицы и отчёты без сложной автоматизации\", \"Понятная последовательность тем, чтобы не бросить как видео\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c5\", \"c4\", \"c6\"], \"critical_gaps\": [], \"useful_gaps\": [\"Опыт откликов и обратной связи от работодателей\"], \"readiness\": \"READY_FOR_OFFER\", \"question\": null, \"after_answer_action\": \"CLOSING\", \"after_answer_goal\": \"Получить отклик на предложение и обсудить следующий шаг\"}, \"hypotheses\": [], \"product_claims\": [{\"text\": \"Вымышленный учебный вариант: формулы, простые отчёты, последовательные темы. Полная стоимость 12000 рублей.\", \"source_id\": \"synthetic_basic\"}], \"manager_note\": \"Проверить перед конкретным предложением: соответствует ли вариант уровню новичка, есть ли практика на простых отчётах, формат и график при 3 часах в неделю, полная цена 12 000 руб. и условия оплаты. Не обещать трудоустройство или рост дохода.\"}}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 9717,
+          "completion_tokens": 711,
+          "total_tokens": 10428,
+          "prompt_tokens_details": {
+            "cached_tokens": 7808
+          },
+          "prompt_cache_hit_tokens": 7808,
+          "prompt_cache_miss_tokens": 1909
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "program",
+        "B"
+      ],
+      "raw": {
+        "content": "{\"decision\": \"Презентовать программу под задачи клиента и назвать стоимость\", \"reason\": \"Клиент прямо запросил программу, подтвердил цель (простые таблицы и отчёты), время (3 часа в неделю) и мотивацию к смене работы; есть утверждённое свойство и цена.\", \"say_to_customer\": \"Отлично, под ваши задачи подойдёт вариант с формулами и простыми отчётами — темы идут последовательно, как раз чтобы не бросить, как с видео. Формат рассчитан и на 3 часа в неделю. Полная стоимость — 12 000 рублей. Расскажу, как устроены темы по неделям?\"}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 1218,
+          "completion_tokens": 165,
+          "total_tokens": 1383,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "prompt_cache_hit_tokens": 256,
+          "prompt_cache_miss_tokens": 962
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "no_catalog",
+        "A"
+      ],
+      "raw": {
+        "content": "{\"facts\": [], \"events\": [], \"recommendation\": {\"action_type\": \"QUESTION\", \"suggestion\": \"Понятно: самостоятельно не хватило структуры и сил после работы. А что для вас важнее всего изменить в работе — саму должность и задачи или в первую очередь доход?\", \"reason\": \"Клиент раскрыл причину бросить видео: усталость и отсутствие понятной последовательности. Мотивация смены работы и желаемый доход уже известны, но неясно, что именно важнее изменить — задачи или доход; это влияет на аргументацию ценности обучения.\", \"evidence_ids\": [\"c2\", \"c4\"], \"target_gap\": \"приоритет желаемого изменения\", \"confidence\": 0.6}, \"intelligence\": {\"strategy\": {\"action\": \"EXPLORE_MOTIVATION\", \"objective\": \"Понять, что именно клиент хочет изменить в работе, чтобы связать обучение с его приоритетом\", \"reason\": \"Есть общая цель и причина прошлой неудачи, но неясно, что важнее — смена задач или рост дохода; это меняет аргумент.\", \"evidence_ids\": [\"c2\", \"c4\"]}, \"sales_plan\": {\"need_depth\": \"MOTIVE_OR_CHANGE\", \"commercial_goal\": \"Помочь клиенту перейти к подбору обучения Excel для смены работы и роста дохода\", \"next_goal\": \"Выяснить приоритет желаемого изменения: задачи/должность или доход\", \"significant_needs\": [\"Сменить работу, где требуется Excel\", \"Рост дохода с 45 до 65–70 тысяч\", \"Понятная последовательность обучения и учёт усталости после работы\"], \"need_evidence_ids\": [\"c1\", \"c2\", \"c3\", \"c4\"], \"critical_gaps\": [{\"topic\": \"приоритет желаемого изменения\", \"impact\": \"Если важнее задачи и должность — акцент на практических навыках; если доход — на связи навыка с требованиями вакансий и уверенностью при откликах\"}], \"useful_gaps\": [\"формат и время обучения\", \"бюджет\"], \"readiness\": \"NEEDS_CLARIFICATION\", \"question\": {\"topic\": \"приоритет желаемого изменения\", \"new_information\": \"Что важнее изменить: задачи/должность или доход\", \"decision_impact\": \"Определяет, на чём строить аргументацию: практические навыки или связь с требованиями вакансий и доходом\", \"already_answered\": false, \"changes_selection\": false, \"changes_argument\": true, \"essential_now\": true}, \"after_answer_action\": \"PRESENTATION\", \"after_answer_goal\": \"Связать приоритет клиента с подходящим обучением Excel и перейти к предложению\"}, \"hypotheses\": [{\"id\": \"\", \"statement\": \"Клиенту может быть важна не только зарплата, но и уверенность при откликах и понятная структура обучения\", \"evidence\": [{\"source_turn\": \"c3\", \"quote\": \"Не уверен, что соответствую требованиям. Excel почти не знаю, откликаться страшно.\"}, {\"source_turn\": \"c4\", \"quote\": \"Смотрел видео, бросил: после работы устаю, не понимаю последовательность тем.\"}], \"test_question\": \"Что для вас важнее изменить в работе — задачи или доход?\"}], \"product_claims\": [], \"manager_note\": \"Проверить до конкретного предложения: подходящий уровень программы Excel, формат и нагрузку с учётом усталости после работы, полную стоимость и условия обучения. Не обещать трудоустройство или рост дохода.\"}}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 9375,
+          "completion_tokens": 852,
+          "total_tokens": 10227,
+          "prompt_tokens_details": {
+            "cached_tokens": 6016
+          },
+          "prompt_cache_hit_tokens": 6016,
+          "prompt_cache_miss_tokens": 3359
+        }
+      }
+    },
+    {
+      "status": "response_received",
+      "checkpoint": [
+        "no_catalog",
+        "B"
+      ],
+      "raw": {
+        "content": "{\"decision\": \"Связать прошлую неудачу с самостоятельным обучением с потребностью в понятной структуре и подвести к презентации формата программы\", \"reason\": \"Клиент подтвердил проблему: бросает видео из-за усталости и отсутствия последовательности тем — это ключевой барьер, который можно закрыть структурированной программой\", \"say_to_customer\": \"Понял вас: дело не в лени, а в том, что без понятной последовательности и поддержки легко бросить. Расскажу, как устроена программа — с чего начинаем и как идём по темам, чтобы вы дошли до результата даже после работы.\"}",
+        "finish_reason": "stop",
+        "response_model": "deepseek-flash",
+        "usage": {
+          "prompt_tokens": 879,
+          "completion_tokens": 159,
+          "total_tokens": 1038,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 239
+        }
+      }
+    }
+  ]
+}

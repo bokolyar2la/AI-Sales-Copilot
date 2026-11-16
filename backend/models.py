@@ -91,6 +91,16 @@ class Analysis(StrictModel):
     events: list[DialogueEvent] = Field(default_factory=list, max_length=12)
     intelligence: Intelligence | None = None
 
+# Live responses are strict; legacy stored/demo analyses remain readable.
+class LiveSalesPlan(SalesPlan):
+    need_depth: Literal['SURFACE_INTEREST', 'GENERAL_GOAL', 'MOTIVE_OR_CHANGE', 'PRODUCT_LINKED'] = Field(description=SalesPlan.model_fields['need_depth'].description)
+
+class LiveIntelligence(Intelligence):
+    sales_plan: LiveSalesPlan
+
+class LiveAnalysis(Analysis):
+    intelligence: LiveIntelligence
+
 class NewSession(StrictModel):
     title: str = Field(min_length=1, max_length=120)
     school: str = Field(default='', max_length=120)

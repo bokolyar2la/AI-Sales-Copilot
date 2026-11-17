@@ -30,9 +30,13 @@ def scrub(value):
     return value
 
 class ObservedProvider(CompatibleProvider):
-    def __init__(self,budget):
-        super().__init__();self.budget=budget;self.raw=[]
+    def __init__(self,budget,warning=None):
+        super().__init__();self.budget=budget;self.raw=[];self.warning=warning
     async def _complete(self,endpoint,headers,payload):
+        if self.warning:
+            from copy import deepcopy
+            payload=deepcopy(payload)
+            payload["messages"][0]["content"] += "\n\n"+self.warning
         token=self.budget.take()
         data=await super()._complete(endpoint,headers,payload)
         self.raw.append(scrub({'content':data['choices'][0]['message']['content'],
@@ -64,10 +68,10 @@ def configured():
     return os.environ['LLM_MODEL']
 
 
-def make_runner(budget):
+def make_runner(budget, *, warning=None, audit=None):
     async def execute(case,variant):
         from .run import inputs,HERE,digest,minimal_output
-        state,common=inputs(case);provider=ObservedProvider(budget)
+        state,common=inputs(case);provider=ObservedProvider(budget,warning=warning)
         record={'scenario_id':case['id'],'scenario_hash':digest(case),'variant':variant,'origin':'real','status':'missing','output':None,'metrics':None}
         if budget.used>=budget.limit:
             record.update(origin='missing',status='not_run',error_code='call_limit');return record
@@ -93,7 +97,7 @@ def make_runner(budget):
         record['metrics']={'latency_ms':round((perf_counter()-start)*1000,2),'api_calls':budget.used-before,
                            'input_tokens':sum(u.get('prompt_tokens',0) for u in usage) if usage and all(isinstance(u,dict) and 'prompt_tokens' in u for u in usage) else None,
                            'output_tokens':sum(u.get('completion_tokens',0) for u in usage) if usage and all(isinstance(u,dict) and 'completion_tokens' in u for u in usage) else None,'cost_usd':None}
-        record['product_audit']=product_audit(case,record['output'])
+        record['product_audit']=(audit or product_audit)(case,record['output'])
         record['diagnostic_category']='UNKNOWN'
         return scrub(record)
     execute.budget=budget

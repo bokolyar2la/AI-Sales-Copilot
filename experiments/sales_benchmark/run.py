@@ -74,10 +74,10 @@ def manifest(model):
             'historical_data':'Two original multi-turn conversations unavailable in inspected evaluation artifacts; all bundled cases synthetic.',
             'metrics_policy':'Only imported measured API metrics; offline replay time is not model latency.'}
 
-async def run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_override=None,live_runner=None,resume=False,generation=None):
+async def run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_override=None,live_runner=None,resume=False,generation=None,variants=('A','B')):
     import os
     if not live_runner:
-        return await _run(out,mode,saved,model,seed,cases_override,live_runner,resume,generation)
+        return await _run(out,mode,saved,model,seed,cases_override,live_runner,resume,generation,variants)
     out=Path(out)
     if not resume and out.exists() and any(out.iterdir()):raise ValueError('Output directory must be empty')
     out.mkdir(parents=True,exist_ok=True)
@@ -85,7 +85,7 @@ async def run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_ov
     fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
     try:
         os.write(fd,str(os.getpid()).encode())
-        return await _run(out,mode,saved,model,seed,cases_override,live_runner,resume,generation)
+        return await _run(out,mode,saved,model,seed,cases_override,live_runner,resume,generation,variants)
     except BaseException as exc:
         journal=getattr(live_runner.budget,'journal',None)
         if journal:
@@ -95,10 +95,12 @@ async def run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_ov
         os.close(fd);lock.unlink()
 
 
-async def _run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_override=None,live_runner=None,resume=False,generation=None):
+async def _run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_override=None,live_runner=None,resume=False,generation=None,variants=('A','B')):
     out=Path(out)
     if out.exists() and any(p.name!='.run.lock' for p in out.iterdir()) and not resume:raise ValueError('Output directory must be empty')
     out.mkdir(parents=True,exist_ok=True)
+    if not variants or len(set(variants))!=len(variants) or set(variants)-{'A','B','C'}:raise ValueError('Invalid variants')
+    if 'C' in variants and mode!='missing' and not live_runner:raise ValueError('C requires its runner; no mock substitution')
     cases=[validate(c) for c in (cases_override if cases_override is not None else read(HERE/'scenarios.json'))]
     if len({c['id'] for c in cases})!=len(cases):raise ValueError('Duplicate scenario')
     supplied=read(saved) if saved else []
@@ -113,7 +115,7 @@ async def _run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_o
         from .journal import Journal
         version=manifest(model)
         identity={'commit':version['commit'],'file_hashes':version['file_hashes'],'scenarios':digest(cases),
-                  'model':model,'generation':generation or version['generation'],'seed':seed}
+                  'model':model,'generation':generation or version['generation'],'seed':seed,'variants':list(variants)}
         journal=Journal(out,identity,live_runner.budget.limit,resume)
         live_runner.budget.journal=journal;live_runner.budget.used=journal.data['used']
         write(out/'manifest.json',{**version,'generation':identity['generation'],'scenario_ids':[c['id'] for c in cases]})
@@ -123,7 +125,10 @@ async def _run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_o
     for c in cases:
         a,b=inputs(c);case_hash=digest(c)
         prepared.append({'scenario_id':c['id'],'scenario_hash':case_hash,'A':{'session':a,'knowledge':{'approved_claims':c['approved_claims']}},'B':{'system':(HERE/'minimal_prompt.txt').read_text(encoding='utf-8'),'input':b}})
-        for variant in ('A','B'):
+        if 'C' in variants:
+            from experiments.hybrid_c.engine import context
+            prepared[-1]['C']={'input':context(a,c['approved_claims'])}
+        for variant in variants:
             if live_runner:
                 if any(r['scenario_id']==c['id'] and r['variant']==variant for r in results):continue
                 journal.start([c['id'],variant])
@@ -181,7 +186,7 @@ async def _run(out,mode='missing',saved=None,model='unspecified',seed=17,cases_o
     return results
 
 def summarize(out,review):
-    out=Path(out);mapping=read(out/'private_mapping.json');scores={'A':[],'B':[]};seen=set();critical=[];paired={};categories=[]
+    out=Path(out);mapping=read(out/'private_mapping.json');scores={v:[] for v in sorted({m['variant'] for m in mapping.values()})};seen=set();critical=[];paired={};categories=[]
     with Path(review).open(encoding='utf-8-sig',newline='') as f:
         for row in csv.DictReader(f):
             rid=row['response_id']
@@ -199,7 +204,7 @@ def summarize(out,review):
             paired.setdefault(meta['scenario_id'],{})[meta['variant']]=score
             if row['critical_violations']:critical.append({'response_id':rid,'violation':row['critical_violations']})
     result={'reviewed':{v:len(rows) for v,rows in scores.items()},'means':{v:{k:sum(r[k] for r in rows)/len(rows) for k in CRITERIA} if rows else None for v,rows in scores.items()},'critical_violations':critical,'note':'Описательные оценки; превосходство не установлено. Сравнивайте одинаковые парные случаи.'}
-    complete=[p for p in paired.values() if set(p)=={'A','B'}]
+    complete=[p for p in paired.values() if {'A','B'}<=set(p)]
     result['diagnostic_categories']=categories
     result['paired_cases']=len(complete)
     result['paired_difference_A_minus_B']={k:sum(p['A'][k]-p['B'][k] for p in complete)/len(complete) for k in CRITERIA} if complete else None
